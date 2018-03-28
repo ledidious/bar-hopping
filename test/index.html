@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Map test</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="nav">
+        <div id="item1">Add marker</div>
+        <div id="item2">Clear all marker</div>
+        <div id="item3">
+            <select name="marker" id="marker">
+                <option value="russia" selected>Russland</option>
+                <option value="germany">Deutschland</option>
+                <option value="zugspitze">Zugspitze</option>
+                <option value="okinawa">Okinawa</option>
+            </select>
+            <button id="bt_newMarker">ADD!</button>
+        </div>
+        <div id="item4">item 4</div>
+        <div id="item5">item 5</div>
+    </div>
+    <div id="map"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="googleMap.js"></script>
+    <script>
+        // google map ======================================
+        function myMap() {
+            let mapOptions = {
+                center: { lat: 47.4211, lng: 10.9852 },
+                zoom: 2,
+            };
+
+            let map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // bind callbacks ==========================
+            $("#item1").click(function() {
+                createMarker(map);
+            });
+            $("#item2").click(function() {
+                clearMarker();
+            });
+            $("#bt_newMarker").click(function() {
+                addMarker(map, $("#marker").val());
+            });
+            $("#item4").click(function() {
+
+            });
+            $("#item5").click(function() {
+
+            })
+            // ==========================================
+        }
+        // ==================================================
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUfXbzl88V9EOUa2J6VCRYVRhKkQxzuCM&callback=myMap"></script>
+</body>
+
+</html>
