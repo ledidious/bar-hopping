@@ -32,3 +32,7 @@ body {
   -moz-box-shadow: 11px 11px 39px -6px rgba(0,0,0,0.75);
   box-shadow: 11px 11px 39px -6px rgba(0,0,0,0.75);
 }
+
+li:hover {
+  border: 1px solid black;
+}
