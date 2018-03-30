@@ -21,42 +21,51 @@
             </select>
             <button id="bt_newMarker">ADD!</button>
         </div>
-        <div id="item4">item 4</div>
+        <div id="item4">
+            click inside the map to create a marker. <br/>
+            click on a number to move to the marker.
+            <ul id="marker"></ul>
+        </div>
         <div id="item5">item 5</div>
     </div>
     <div id="map"></div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="googleMap.js"></script>
+    <script src="./googleMap.js"></script>
     <script>
         // google map ======================================
         function myMap() {
-            let mapOptions = {
-                center: { lat: 47.4211, lng: 10.9852 },
-                zoom: 2,
-            };
-
-            let map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            let map = initMap()
 
             // bind callbacks ==========================
-            // jquery format
-            $("#item1").click(function() {
+            $("#item1").click(function () {
                 createMarker(map);
             });
-            $("#item2").click(function() {
+            $("#item2").click(function () {
                 clearMarker();
             });
-            $("#bt_newMarker").click(function() {
+            $("#bt_newMarker").click(function () {
                 addMarker(map, $("#marker").val());
             });
-            $("#item4").click(function() {
+            $("#item4").click(function () {
 
             });
-            $("#item5").click(function() {
+            $("#item5").click(function () {
 
             })
             // ==========================================
+
+            // get the marker and set the loacation for the map
+            $("#item4 ul").on("click", "li", function () {
+                let marker = markers[$(this).index()];
+                let latLng = {
+                    lat: marker.position.lat(),
+                    lng: marker.position.lng()
+                }
+                map.setZoom(9);
+                map.panTo(latLng);
+            })
         }
         // ==================================================
     </script>
