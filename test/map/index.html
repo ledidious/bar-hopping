@@ -9,6 +9,20 @@
 </head>
 
 <body>
+    <div id="sidebar1">
+        <!-- this will demonstrate if the history overlows a scrollbar appear inside the box -->
+        <h3 class="item">Sidebar 1</h3>
+        <div id="hugeDiv" class="item">Test</div>
+    </div>
+    <div id="sidebar2">
+        <div class="bar">
+            <h3>Lingen Atom-Bar</h3>
+            <div class="content">
+                Das ein geiles Wochenende Jungs!
+            </div>
+            <img src="http://blog.lvz.de/reportage/files/2017/01/Noels-Ballroom-Kneipe-LVZ-Reportage-24.jpg" alt="Die Bar">
+        </div>
+    </div>
     <div id="nav">
         <div id="item1">Add marker</div>
         <div id="item2">Clear all marker</div>
@@ -22,11 +36,14 @@
             <button id="bt_newMarker">ADD!</button>
         </div>
         <div id="item4">
-            click inside the map to create a marker. <br/>
-            click on a number to move to the marker.
+            click inside the map to create a marker.
+            <br/> click on a number to move to the marker.
             <ul id="marker"></ul>
         </div>
-        <div id="item5">item 5</div>
+        <div id="item5">
+            <button id="showSidebar1">Show sidebar 1</button>
+            <button id="showSidebar2">Show sidebar 2</button>
+        </div>
     </div>
     <div id="map"></div>
 
@@ -51,8 +68,11 @@
             $("#item4").click(function () {
 
             });
-            $("#item5").click(function () {
-
+            $("#showSidebar1").click(function () {
+                $("#sidebar1").toggle("slow")
+            })
+            $("#showSidebar2").click(function () {
+                $("#sidebar2").toggle("slow")
             })
             // ==========================================
 
