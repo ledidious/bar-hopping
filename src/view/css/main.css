@@ -24,8 +24,11 @@
     width: 350px;
 }
 
+/* map width and height have to be fixed, for example 900px or 100% 
+    auto will not work*/
 #map {
-    width: auto;
+    width: 100%;
+    height: 100%;
 }
 
 #map {
