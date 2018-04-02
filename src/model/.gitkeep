@@ -1,0 +1,4 @@
+
+To upload this directory!
+
+Git manages only files and not directories. So empty directories will not be pushed to the repository.
