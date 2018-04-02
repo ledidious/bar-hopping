@@ -1,0 +1,55 @@
+/*
+  Identifiers
+*/
+
+#profile {
+    float: left;
+    width: 250px;
+}
+
+#profile-back-button-icon {
+    font-size: 30px;
+}
+
+#profile-title {
+    float: left;
+}
+
+#profile-back-button {
+    float: right;
+}
+
+#tours {
+    float: left;
+    width: 350px;
+}
+
+#map {
+    width: auto;
+}
+
+#map {
+    float: left;
+}
+
+/*
+  Classes
+*/
+
+.panel {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.panel-title {
+
+}
+
+/*
+  By tag names
+*/
+
+body {
+
+}
