@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $sCssFile; ?>">
 <?php } ?>
 
+<!-- Best practices for loading javascript is to load it at the end of the 
+     file inside the body-tag -->
 <?php if (file_exists($sJsFile = "../js/{$sPageName}.js")) { ?>
 
     <!-- JS source -->
