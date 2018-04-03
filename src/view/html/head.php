@@ -21,12 +21,3 @@
     <!-- CSS source -->
     <link rel="stylesheet" type="text/css" href="<?php echo $sCssFile; ?>">
 <?php } ?>
-
-<?php if (file_exists($sJsFile = "../js/{$sPageName}.js")) { ?>
-
-    <!-- JS source -->
-    <script type="javascript" src="<?php echo $sJsFile ?>"></script>
-
-<?php } ?>
-
-
