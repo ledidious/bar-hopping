@@ -1,18 +1,11 @@
-/*
-    Function callback called by google maps api. See main.php.
+
+/**
+ * Generator for uniqued IDs
+ * Used for marker IDs
  */
-// noinspection JSUnusedGlobalSymbols
-function myMap() {
-
-    // set initial options
-    let mapOptions = {
-        center: {
-            lat: 47.4211,
-            lng: 10.9852
-        },
-        zoom: 2,
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     };
-
-    // create the map and place it in the div with the id map
-    let map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
