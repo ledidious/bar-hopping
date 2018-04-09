@@ -7,7 +7,7 @@
         <!-- Header -->
         <?php
             $sPageName = "main";
-            require_once "head.php"
+            require_once "header.php"
         ?>
     </head>
 
