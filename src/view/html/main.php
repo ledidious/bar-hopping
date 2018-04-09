@@ -36,11 +36,15 @@
         <!-- Footer -->
         <?php require_once "footer.php"?>
 
-        <!-- if the user clicked a location in the location list or clicked a marker this variable 
-        will set to the id to performe next steps on the right data -->
-        <!-- <script>
-            const userID = <?php // echo $userID; ?>;
-        </script> -->
+        <script src="../js/locationHandler.class.js"></script>
+        <script src="../js/location.class.js"></script>
+        <script src="../js/map.js">
+            let map;
+            let locationHandler = new LocationHandler();
+            locationHandler.linkMap(map);
+
+
+        </script>
 
         <!-- Google maps js -->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUfXbzl88V9EOUa2J6VCRYVRhKkQxzuCM&callback=initMap"></script>
