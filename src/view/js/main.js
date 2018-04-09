@@ -1,6 +1,7 @@
 /*
     Function callback called by google maps api. See main.php.
  */
+
 // noinspection JSUnusedGlobalSymbols
 function myMap() {
 

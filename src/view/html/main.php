@@ -34,10 +34,11 @@
         <div id="map"></div>
 
         <!-- Footer -->
-        <?php require_once "footer.php"?>
+        <?php require_once "footer.php" ?>
 
         <!-- Google maps js -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUfXbzl88V9EOUa2J6VCRYVRhKkQxzuCM&callback=myMap"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUfXbzl88V9EOUa2J6VCRYVRhKkQxzuCM&callback=myMap"></script>
     </body>
 
 </html>
