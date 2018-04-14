@@ -9,7 +9,7 @@ function guidGenerator() {
     let S4 = function () {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 
 
@@ -48,12 +48,11 @@ function initMap() {
         })
         /**TODO: attach create method to click event
          * process to create tour, rating, and pictures
-        */
+         */
 
         // attach click event handler to the marker
         google.maps.event.addListener(_marker, "click", function (e) {
             //TODO: add function to scrolle to the right location inside the list
         });
     });
-
 }

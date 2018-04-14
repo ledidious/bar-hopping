@@ -33,18 +33,13 @@
         <!-- Map. Referenced by javascript so keep identifier. -->
         <div id="map"></div>
 
-        <!-- Footer -->
-        <?php require_once "footer.php" ?>
-
+        <!-- Javascripts -->
         <script src="../js/locationHandler.class.js"></script>
         <script src="../js/location.class.js"></script>
-        <script src="../js/map.js">
-            let map;
-            let locationHandler = new LocationHandler();
-            locationHandler.linkMap(map);
+        <script src="../js/map.js"></script>
 
-
-        </script>
+        <!-- Footer -->
+        <?php require_once "footer.php" ?>
 
         <!-- Google maps js -->
         <script async defer

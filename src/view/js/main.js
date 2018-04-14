@@ -17,3 +17,8 @@ function myMap() {
     // create the map and place it in the div with the id map
     let map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
+
+// Startup
+let map;
+let locationHandler = new LocationHandler();
+locationHandler.linkMap(map);
