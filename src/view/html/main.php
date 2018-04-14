@@ -6,7 +6,7 @@
 
         <!-- Header -->
         <?php
-            $sPageName = "main";
+            $sPageName = basename(__FILE__, ".php");
             require_once "header.php"
         ?>
     </head>
