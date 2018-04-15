@@ -13,20 +13,14 @@
 
     <body>
         <div id="nav">
-            <div id="profile" class="panel">
-                <h2 id="profile-title">Profil</h2>
 
-                <div id="profile-back">
-                    <button id="profile-back-button">
-                        <i id="profile-back-button-icon" class="material-icons">arrow_back</i>
-                    </button>
-                </div>
+            <!-- Profile -->
+            <div id="profile" class="panel">
+                <?php require_once "main/main_profile.php" ?>
             </div>
 
             <div id="tours" class="panel">
-                <p>
-                    <span>Tours</span>
-                </p>
+                <?php require_once "main/main_tours.php" ?>
             </div>
         </div>
 

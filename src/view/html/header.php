@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 
 <!-- Google icon pack -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+<!-- Global css -->
+<link rel="stylesheet" href="../css/global.css"/>
 
 <!---------------------------------------->
 <!-- Page specific -->

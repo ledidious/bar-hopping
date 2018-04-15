@@ -1,27 +1,21 @@
+@import "main/main_profile.css";
+@import "main/main_tours.css";
+
 /*
   Identifiers
 */
 
 #profile {
-    float: left;
+    position: absolute;
     width: 250px;
-}
-
-#profile-back-button-icon {
-    font-size: 30px;
-}
-
-#profile-title {
-    float: left;
-}
-
-#profile-back-button {
-    float: right;
+    height: 97%;
 }
 
 #tours {
-    float: left;
+    position: absolute;
     width: 350px;
+    height: 97%;
+    left: 270px;
 }
 
 #map {
@@ -48,8 +42,14 @@
     background-color: honeydew;
 }
 
-.panel-title {
+.title-buttons {
+    float: right;
+    padding: 0;
+    margin-top: 13px;
+}
 
+.title-buttons-icons {
+    font-size: 20px;
 }
 
 /*

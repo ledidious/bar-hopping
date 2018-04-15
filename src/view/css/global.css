@@ -1,0 +1,24 @@
+/*
+    Continue block into new row if not
+    floated to left or right
+*/
+hr, div[float = "none"] {
+    clear: left;
+}
+
+/*
+ * Expand behavior
+ */
+.expand-button {
+    /* Marker class */
+}
+
+.expand-icon_expanded {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+.expand-icon_collapsed {
+    transform: rotate(180deg);
+    transition: 0.5s;
+}

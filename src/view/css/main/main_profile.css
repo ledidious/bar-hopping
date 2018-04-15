@@ -1,0 +1,55 @@
+
+#profile-title {
+    float: left;
+}
+
+#profile-back-button {
+    margin-right: 5px;
+}
+
+#profile-bar {
+    height: 5px;
+}
+
+#profile-bar-edit {
+    float: right;
+}
+
+#profile-bar-edit-icon {
+    font-size: 20px;
+}
+
+#profile-image {
+    background: url("/img/google.png") no-repeat;
+    background-size: auto;
+    width: 100%;
+    height: 100px;
+
+    margin-top: 35px;
+}
+
+#profile-info div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 20px;
+}
+
+#profile-info label {
+    float: left;
+}
+
+#profile-info input {
+    float: right;
+}
+
+#profile-info span {
+    float: right;
+}
+
+#profile-favorites {
+    clear: left;
+}
+
+#aria div {
+    background: green;
+}

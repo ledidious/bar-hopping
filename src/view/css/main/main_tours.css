@@ -1,0 +1,23 @@
+
+#tours-title-heading {
+    float: left;
+}
+
+#tours-title-actions {
+    float: right;
+}
+
+#tours-title-actions-back {
+    margin-right: 5px;
+}
+
+#tours-title-actions-add {
+    height: 27px;
+    margin-right: 10px;
+}
+
+#tours-title-actions-add-icon {
+    font-size: 30px;
+    color: darkgreen;
+    line-height: 22px;
+}
