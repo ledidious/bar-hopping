@@ -15,7 +15,7 @@
     <hr>
 
     <div id="tours-list">
-        <span class="expand-button" bh-expandable="tours-list-group_1">Geplante Touren</span>
+        <span class="expand-button" bh-expandable="tours-list-group_1" onclick="print(this)">Geplante Touren</span>
         <div id="tours-list-group_1">
 
             <span class="expand-button" bh-expandable="tours-list-group_1-tour_1">Tour 1</span>

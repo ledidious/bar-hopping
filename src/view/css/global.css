@@ -22,3 +22,7 @@ hr, div[float = "none"] {
     transform: rotate(180deg);
     transition: 0.5s;
 }
+
+.expand-button, .expand-icon_expanded, .expand-icon_collapsed:hover {
+    cursor: pointer;
+}
