@@ -1,145 +1,103 @@
--- phpMyAdmin SQL Dump
--- version 4.2.12deb2+deb8u2
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Erstellungszeit: 25. Apr 2018 um 15:15
--- Server Version: 5.5.59-0+deb8u1
--- PHP-Version: 5.6.33-0+deb8u1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server Version:               10.1.31-MariaDB - mariadb.org binary distribution
+-- Server Betriebssystem:        Win32
+-- HeidiSQL Version:             9.5.0.5196
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
---
--- Datenbank: `bar-hopping`
---
 
--- --------------------------------------------------------
+-- Exportiere Datenbank Struktur für bar-hopping
+CREATE DATABASE IF NOT EXISTS `bar-hopping` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+USE `bar-hopping`;
 
---
--- Tabellenstruktur für Tabelle `MARKER`
---
-
+-- Exportiere Struktur von Tabelle bar-hopping.MARKER
 CREATE TABLE IF NOT EXISTS `MARKER` (
-`id` int(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `lat` double(15,0) NOT NULL,
   `lng` double(15,0) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin NOT NULL
+  `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
+-- Exportiere Daten aus Tabelle bar-hopping.MARKER: ~0 rows (ungefähr)
+DELETE FROM `MARKER`;
+/*!40000 ALTER TABLE `MARKER` DISABLE KEYS */;
+/*!40000 ALTER TABLE `MARKER` ENABLE KEYS */;
 
---
--- Tabellenstruktur für Tabelle `RATING`
---
-
+-- Exportiere Struktur von Tabelle bar-hopping.RATING
 CREATE TABLE IF NOT EXISTS `RATING` (
-`id` int(20) NOT NULL,
-  `comment` text COLLATE utf8_bin NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `imagePath` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `comment` text COLLATE utf8_bin,
   `value` int(1) NOT NULL,
-  `fk_tourID` int(20) NOT NULL,
-  `fk_markerID` int(20) NOT NULL,
-  `imagePath` varchar(50) COLLATE utf8_bin NOT NULL
+  `fk_TOURID` int(20) NOT NULL,
+  `fk_MARKERID` int(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_MARKERID02` (`fk_MARKERID`),
+  KEY `fk_TOURID02` (`fk_TOURID`),
+  CONSTRAINT `fk_MARKERID02` FOREIGN KEY (`fk_MARKERID`) REFERENCES `MARKER` (`id`),
+  CONSTRAINT `fk_TOURID02` FOREIGN KEY (`fk_TOURID`) REFERENCES `TOUR` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
+-- Exportiere Daten aus Tabelle bar-hopping.RATING: ~0 rows (ungefähr)
+DELETE FROM `RATING`;
+/*!40000 ALTER TABLE `RATING` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RATING` ENABLE KEYS */;
 
---
--- Tabellenstruktur für Tabelle `TOUR`
---
-
+-- Exportiere Struktur von Tabelle bar-hopping.TOUR
 CREATE TABLE IF NOT EXISTS `TOUR` (
-`id` int(20) NOT NULL,
-  `fk_userID` int(20) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin DEFAULT NULL
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `fk_USERID` int(20) NOT NULL,
+  `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_USERID` (`fk_USERID`),
+  CONSTRAINT `fk_USERID` FOREIGN KEY (`fk_USERID`) REFERENCES `USER` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
+-- Exportiere Daten aus Tabelle bar-hopping.TOUR: ~0 rows (ungefähr)
+DELETE FROM `TOUR`;
+/*!40000 ALTER TABLE `TOUR` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TOUR` ENABLE KEYS */;
 
---
--- Tabellenstruktur für Tabelle `TOUR2MARKER`
---
-
+-- Exportiere Struktur von Tabelle bar-hopping.TOUR2MARKER
 CREATE TABLE IF NOT EXISTS `TOUR2MARKER` (
-  `fk_tourID` int(20) NOT NULL,
-  `fk_markerID` int(20) NOT NULL
+  `fk_TOURID` int(20) NOT NULL,
+  `fk_MARKERID` int(20) NOT NULL,
+  KEY `fk_MARKERID01` (`fk_MARKERID`),
+  KEY `fk_TOURID01` (`fk_TOURID`),
+  CONSTRAINT `fk_MARKERID01` FOREIGN KEY (`fk_MARKERID`) REFERENCES `MARKER` (`id`),
+  CONSTRAINT `fk_TOURID01` FOREIGN KEY (`fk_TOURID`) REFERENCES `TOUR` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
+-- Exportiere Daten aus Tabelle bar-hopping.TOUR2MARKER: ~0 rows (ungefähr)
+DELETE FROM `TOUR2MARKER`;
+/*!40000 ALTER TABLE `TOUR2MARKER` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TOUR2MARKER` ENABLE KEYS */;
 
---
--- Tabellenstruktur für Tabelle `USER`
---
-
+-- Exportiere Struktur von Tabelle bar-hopping.USER
 CREATE TABLE IF NOT EXISTS `USER` (
-`id` int(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `yearOfBirth` date DEFAULT NULL,
   `joinedSince` date NOT NULL,
-  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `USERname` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(50) COLLATE utf8_bin NOT NULL,
   `sex` char(10) COLLATE utf8_bin DEFAULT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `profileImage` varchar(100) COLLATE utf8_bin DEFAULT NULL
+  `email` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profileImage` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Indizes der exportierten Tabellen
---
+-- Exportiere Daten aus Tabelle bar-hopping.USER: ~0 rows (ungefähr)
+DELETE FROM `USER`;
+/*!40000 ALTER TABLE `USER` DISABLE KEYS */;
+/*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 
---
--- Indizes für die Tabelle `MARKER`
---
-ALTER TABLE `MARKER`
- ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `RATING`
---
-ALTER TABLE `RATING`
- ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `TOUR`
---
-ALTER TABLE `TOUR`
- ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `USER`
---
-ALTER TABLE `USER`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `MARKER`
---
-ALTER TABLE `MARKER`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `RATING`
---
-ALTER TABLE `RATING`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `TOUR`
---
-ALTER TABLE `TOUR`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `USER`
---
-ALTER TABLE `USER`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
