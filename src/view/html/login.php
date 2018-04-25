@@ -11,19 +11,15 @@
         ?>
     </head>
     <body>
-
         <br>
         <br>
-
         <br>
-
         <fieldset>
             <img src="../../../img/logo.png" alt="Bar Hopping" title="Bar Hopping" height="150" width="150"/><br>
             &copy; seit 2018
             <br>
-            <img src="../../../img/quote.png" alt="quote" title="quote" height="30" width="20"/><cite><strong>Realität
-                    ist
-                    eine Illusion, die sich aus Mangel an Drinks einstellt.</strong></cite>
+            <img src="../../../img/quote.png" alt="quote" title="quote" height="30" width="20"/>
+            <cite><strong>Realität ist eine Illusion, die sich aus Mangel an Drinks einstellt.</strong></cite>
             <br>
             <br>
             <h2>Login</h2>
