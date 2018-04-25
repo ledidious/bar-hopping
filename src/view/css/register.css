@@ -1,28 +1,38 @@
 
 body {
-    background: url("/img/login/login_background.jpg") no-repeat fixed;
+    background: url("../../../img/login/login_background.jpg") no-repeat fixed;
 }
 
 form {
     text-align: center;
 }
 
-img#one {
+#one {
     position: absolute; /*siehe untern*/
     margin-left: -35px; /*margin dafür, dass es sich an fenstergroeße anpasst */
 }
 
-img#two {
+#two {
     position: absolute; /*siehe untern*/
     margin-left: -35px; /*margin dafür, dass es sich an fenstergroeße anpasst */
 }
 
-img#tree {
+#tree {
     position: absolute; /*siehe untern*/
     margin-left: -35px; /*margin dafür, dass es sich an fenstergroeße anpasst */
 }
 
-input#four {
+#logo {
+    height: 50%;
+    width: 50%;
+}
+
+#cit {
+    height: 3%;
+    width: 3%;
+}
+
+#four {
     background-color: #00BFFF;
     color: white;
     font-weight: bold;
@@ -30,7 +40,7 @@ input#four {
     height: 30px;
 }
 
-input#five {
+#five {
     background-color: #00BFFF;
     color: white;
     font-weight: bold;
@@ -38,7 +48,7 @@ input#five {
     height: 30px;
 }
 
-input#six {
+#six {
     background-color: #00BFFF;
     color: white;
     font-weight: bold;
@@ -46,6 +56,33 @@ input#six {
     height: 30px;
 }
 
-@media (min-width: 370px) {
-    .myClass{}
+@media (min-width: 481px) and (max-width: 767px) {
+    fieldset {
+        width: 50%;
+        height: 50%;
+        font-size: 80%;
+    }
+
+    #logo {
+        width: 40%;
+        height: 40%;
+    }
+
+    #cit {
+        width: 1%;
+        height: 1%;
+    }
+
+    input {
+        width: 70%;
+    }
+
+
 }
+
+/*
+  device = smartphone (Portrait)
+  screen = B/w 320px to 479px
+*/
+
+
