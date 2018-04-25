@@ -87,3 +87,7 @@ button {
     font-size: 0.95em;
     background: #ccc;
 }
+
+@media (min-width: 370px) {
+    .myClass{}
+}
