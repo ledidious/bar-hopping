@@ -11,12 +11,9 @@
         ?>
     </head>
     <body>
-
         <br>
         <br>
-
         <br>
-
         <fieldset>
             <img src="../../../img/logo.png" alt="Bar Hopping" title="Bar Hopping" height="150" width="150"/><br>
             &copy; seit 2018

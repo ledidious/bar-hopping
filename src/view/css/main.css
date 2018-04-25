@@ -1,21 +1,29 @@
 @import "main/main_profile.css";
 @import "main/main_tours.css";
+@import "main/main_sidebar.css";
 
 /*
   Identifiers
 */
 
+#sidebar {
+    float: left;
+}
+
 #profile {
-    position: absolute;
+    position: relative;
     width: 250px;
-    height: 97%;
+    height: 98vh;
+
+    float: left;
 }
 
 #tours {
-    position: absolute;
+    position: relative;
     width: 350px;
-    height: 97%;
-    left: 270px;
+    height: 98vh;
+
+    float: left;
 }
 
 #map {
@@ -40,6 +48,10 @@
     padding: 5px;
     margin: 5px;
     background-color: honeydew;
+}
+
+.panel-closer {
+    /* Marker */
 }
 
 .title-buttons {

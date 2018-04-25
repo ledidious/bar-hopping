@@ -6,7 +6,7 @@ $(document).ready(function () {
         let expander = $(this);
 
         // Create, prepare and insert icon
-        let icon = $("<i class=\"material-icons expand-icon_expanded\">expand_less</i>\n");
+        let icon = $("<i class=\"material-icons expand-icon-expanded\">expand_less</i>\n");
         icon.insertBefore(expander);
         icon.click(function (event) {
             onExpanderClicked(expander);
@@ -22,8 +22,13 @@ $(document).ready(function () {
             let targetId = expander.attr("bh-expandable");
             $("#" + targetId).slideToggle();
 
-            icon.toggleClass("expand-icon_expanded");
-            icon.toggleClass("expand-icon_collapsed");
+            icon.toggleClass("expand-icon-expanded");
+            icon.toggleClass("expand-icon-collapsed");
+        }
+
+        // Collapsed on begin
+        if (expander.attr("bh-collapsed") != null) {
+            onExpanderClicked();
         }
     });
 });
