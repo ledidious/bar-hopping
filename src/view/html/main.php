@@ -14,6 +14,9 @@
     <body>
         <div id="nav">
 
+            <div id="sidebar">
+                <?php require_once "main/main_sidebar.php" ?>
+            </div>
             <!-- Profile -->
             <div id="profile" class="panel">
                 <?php require_once "main/main_profile.php" ?>
@@ -38,5 +41,4 @@
             initMap();
         </script>
     </body>
-
 </html>

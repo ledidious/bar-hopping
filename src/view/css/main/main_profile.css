@@ -3,7 +3,7 @@
     float: left;
 }
 
-#profile-back-button {
+#profile-close_button {
     margin-right: 5px;
 }
 
@@ -48,8 +48,4 @@
 
 #profile-favorites {
     clear: left;
-}
-
-#aria div {
-    background: green;
 }

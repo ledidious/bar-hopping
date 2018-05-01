@@ -1,0 +1,6 @@
+
+.sidebar-item {
+    /*text-orientation: upright;*/
+    writing-mode: horizontal-tb;
+    cursor: pointer;
+}
