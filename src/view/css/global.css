@@ -83,3 +83,7 @@ input {
     -webkit-border-radius: 5px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
 }
+
+.expand-button, .expand-icon_expanded, .expand-icon_collapsed:hover {
+    cursor: pointer;
+}
