@@ -1,6 +1,6 @@
 <?php
 
-$aKeys = array("DB_NAME", "DB_USERNAME", "DB_PASSWORD");
+$aKeys = array("DB_SERVER_NAME", "DB_NAME", "DB_USERNAME", "DB_PASSWORD");
 $aParams = array();
 
 // Read file
@@ -26,6 +26,7 @@ while (($sLine = fgets($rFile)) !== false) {
 }
 
 // Define constants
+define("DB_SERVER_NAME", $aParams["DB_SERVER_NAME"]);
 define("DB_NAME", $aParams["DB_NAME"]);
 define("DB_USERNAME", $aParams["DB_USERNAME"]);
 define("DB_PASSWORD", $aParams["DB_PASSWORD"]);
