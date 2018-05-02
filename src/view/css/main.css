@@ -54,14 +54,10 @@
     /* Marker */
 }
 
-.title-buttons {
+button.title-buttons {
     float: right;
-    padding: 0;
     margin-top: 13px;
-}
-
-.title-buttons-icons {
-    font-size: 20px;
+    height: 7vh;
 }
 
 /*

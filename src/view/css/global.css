@@ -16,30 +16,39 @@ hr, div[float = "none"] {
 
 .expand-button {
     /* Marker class */
-    cursor: pointer;
-}
-
-.expand-icon {
-    cursor: pointer;
 }
 
 .expand-icon-expanded {
     transform: rotate(0deg);
     transition: 0.5s;
-
-    cursor: pointer;
 }
 
 .expand-icon-collapsed {
     transform: rotate(180deg);
     transition: 0.5s;
+}
 
+.expand-button, .expand-icon_expanded, .expand-icon_collapsed:hover {
     cursor: pointer;
 }
 
 /*
  * Buttons
  */
+
+button.button-add {
+    height: 27px;
+}
+
+i.button-add-icon {
+    font-size: 30px;
+    color: darkgreen;
+    line-height: 22px;
+}
+
+/********************************
+ Tag names
+*********************************/
 
 button {
     /* Font */
@@ -84,6 +93,3 @@ input {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
 }
 
-.expand-button, .expand-icon_expanded, .expand-icon_collapsed:hover {
-    cursor: pointer;
-}

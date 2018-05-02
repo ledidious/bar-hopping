@@ -12,7 +12,6 @@
 }
 
 #tours-title-actions-add {
-    height: 27px;
     margin-right: 10px;
 }
 
@@ -20,4 +19,12 @@
     font-size: 30px;
     color: darkgreen;
     line-height: 22px;
+}
+
+/********************************
+ Classes
+*********************************/
+
+button.tours-add {
+    margin-left: 2vh;
 }
