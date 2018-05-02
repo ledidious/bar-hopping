@@ -23,6 +23,10 @@
             </div>
 
             <div id="tours" class="panel">
+                <!-- hidden input to save/ make a new picture -->
+                <form method="post" name="imgUpload" id="imgUpload"  enctype="multipart/form-data">
+                    <input type="file" name="pic" id="pic" accept="image/*" style="display: none;">
+                </form>
                 <?php require_once "main/main_tours.php" ?>
             </div>
         </div>
