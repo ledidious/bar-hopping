@@ -6,19 +6,21 @@
  * Time: 9:37 PM
  */
 
-$msg = "ERROR";
+$msg = 'Error';
 
-// get image type (.png, .jpg, ...)
-$image_type = explode(".", $_FILES['pic']['name']);
 $date = new DateTime();
-$target = "../../images/" . basename($date->format('dmYhms'). rand(1000, 10000) . '.' .$image_type[1]);
 
-//TODO save file name in database
+$file_info = pathinfo($_FILES['pic']['name']);
+// generate unique file name | today + random number(1000 - 100000) + file extension
+$file_name = $date->format('dmYhms'). rand(1000, 100000) . '.' .$file_info['extension'];
 
-if(move_uploaded_file($_FILES['pic']['tmp_name'], $target)) {
-    $msg = "success";
-} else {
-    $msg = "ERROR";
-}
+//TODO save $file_name in database
+
+// construct file path
+$target = "../../images/" . basename($file_name);
+
+// save file
+if(move_uploaded_file($_FILES['pic']['tmp_name'], $target))
+    $msg = "Success";
 
 echo $msg;
