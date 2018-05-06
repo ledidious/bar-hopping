@@ -82,6 +82,37 @@ $("#profile-bar-edit").click(
     }
 );
 
+//open file upload dialog/ make a picture
+$("#tours-title-actions-add").click(function () {
+   $('#pic').click();
+});
+// if image is selected submit the form to send file to the server
+$("#pic").change(() => {
+    // get img data
+    let form = new FormData(document.getElementById("imgUpload"));
+    let file = document.getElementById("pic").files[0];
+
+    if(file) {
+        form.append('pic', file);
+
+        //send data to server
+        $.ajax({
+            type: "POST",
+            url: "../../controller/uploadImage.php",
+            data: form,
+            cache: false,
+            contentType: false,
+            processData: false,
+        })
+            .done(_msg => {
+                alert(_msg);
+            })
+            .fail(_msg => {
+                alert('Error\n' + _msg);
+            })
+    }
+});
+
 // Toggle description of span with id "profile-info-more_button-span"
 //      Document ready listener because we have to wait for global.js to generate the icon for expander
 $(document).ready(function () {
