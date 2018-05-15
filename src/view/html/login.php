@@ -36,7 +36,7 @@
     <p><input id="five" type="submit" onclick="return check(this.form)" placeholder="Anmelden"></p>
     <!--add onClick[...}-->
     <p>
-        <button type="button" name="Zurück" onclick="self.location.href='register.php'" placeholder="Zurück">
+        <button id="seven" type="button" name="Zurück" onclick="self.location.href='register.php'" placeholder="Zurück">
             Zurück
         </button>
         </form>

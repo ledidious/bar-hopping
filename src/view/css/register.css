@@ -56,6 +56,14 @@ form {
     height: 30px;
 }
 
+#seven {
+    background-color: darkgray;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    height: 30px;
+}
+
 @media (min-width: 481px) and (max-width: 767px) {
     fieldset {
         width: 50%;
