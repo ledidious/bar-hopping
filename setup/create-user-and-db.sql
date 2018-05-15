@@ -13,10 +13,12 @@
 use mysql;
 
 -- create user
-create user if not exists `bar-hopping`@`localhost` identified by 'bar-hopping';
+create user if not exists 'bar-hopping'@'localhost' IDENTIFIED BY 'bar-hopping';
 
 -- create schema
 create schema if not exists `bar-hopping`;
 
 -- grant permissions for schema
-grant all on `bar-hopping` to `bar-hopping`@`localhost`;
+GRANT USAGE ON *.* TO 'bar-hopping'@'localhost';
+GRANT SELECT, EXECUTE, SHOW VIEW, ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP, EVENT, INDEX, INSERT, REFERENCES, TRIGGER, UPDATE  ON `bar-hopping`.* TO 'bar-hopping'@'localhost';
+FLUSH PRIVILEGES;
