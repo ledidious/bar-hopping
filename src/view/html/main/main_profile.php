@@ -7,6 +7,12 @@
     </div>
     <hr>
     <div id="profile-bar">
+        <button id="profile-bar-restore" hidden>
+            <i id="profile-bar-restore-icon" class="material-icons">restore</i>
+        </button>
+        <button id="profile-bar-save" hidden>
+            <i id="profile-bar-save-icon" class="material-icons">save</i>
+        </button>
         <button id="profile-bar-edit">
             <i id="profile-bar-edit-icon" class="material-icons">edit</i>
         </button>
@@ -28,7 +34,8 @@
                 <span id="profile-info-since" class="profile-info-edit_field">März diesen Jahres</span>
             </div>
             <div id="profile-info-more_button">
-                <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more" bh-collapsed>Mehr anzeigen</span>
+                <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
+                      bh-collapsed>Mehr anzeigen</span>
             </div>
             <div id="profile-info-more">
                 <label for="profile-info-more-...">Weit. Infos</label>

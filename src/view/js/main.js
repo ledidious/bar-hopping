@@ -43,48 +43,63 @@ $("#profile-bar-edit").click(
      * @param {Event} event
      */
     function (event) {
-
-        let editButton = $(event.currentTarget);
-        let modeActive = editButton.prop("bh-active");
-        modeActive = !modeActive;
-
-        // Toggle state
-        editButton.prop("bh-active", modeActive);
+        $(this).hide();
+        $("#profile-bar-restore").show();
+        $("#profile-bar-save").show();
 
         $(".profile-info-edit_field").each(function (indexInArray, object) {
+            let span = $(object);
+            let content = span.text();
 
-            if (modeActive) {
-                let span = $(object);
-                let content = span.text();
+            let input = $("<input>");
+            input.attr("type", "text");
+            input.attr("bh-old-value", content);
+            input.addClass("profile-info-edit_field");
 
-                let input = $("<input>");
-                input.attr("type", "text");
-                input.addClass("profile-info-edit_field");
-
-                if (content) {
-                    input.val(content);
-                }
-                span.replaceWith(input);
+            if (content) {
+                input.val(content);
             }
-            else {
-                let input = $(object);
-                let content = input.val();
-
-                let span = $("<span/>");
-                span.addClass("profile-info-edit_field");
-
-                if (content) {
-                    span.text(content);
-                }
-                input.replaceWith(span);
-            }
+            span.replaceWith(input);
         });
+    }
+);
+
+$("#profile-bar-restore").click(
+    /**
+     * @param {Event} event
+     */
+    function (event) {
+        $("#profile-bar-edit").show();
+        $("#profile-bar-restore").hide();
+        $("#profile-bar-save").hide();
+
+        $(".profile-info-edit_field").each(function (indexInArray, object) {
+            let input = $(object);
+            let content = input.attr("bh-old-value");
+
+            let span = $("<span/>");
+            span.addClass("profile-info-edit_field");
+
+            if (content) {
+                span.text(content);
+            }
+            input.replaceWith(span);
+        });
+    }
+);
+
+$("#profile-bar-save").click(
+    /**
+     * @param {Event} event
+     */
+    function (event) {
+        alert("Not implemented yet");
     }
 );
 
 //open file upload dialog/ make a picture
 $("#tours-title-actions-add").click(function () {
-   $('#pic').click();
+    $('#pic').click();
 });
 // if image is selected submit the form to send file to the server
 $("#pic").change(() => {
@@ -92,7 +107,7 @@ $("#pic").change(() => {
     let form = new FormData(document.getElementById("imgUpload"));
     let file = document.getElementById("pic").files[0];
 
-    if(file) {
+    if (file) {
         form.append('pic', file);
 
         //send data to server

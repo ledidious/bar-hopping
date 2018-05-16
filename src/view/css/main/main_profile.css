@@ -11,10 +11,6 @@
     height: 5px;
 }
 
-#profile-bar-edit {
-    float: right;
-}
-
 #profile-bar-edit-icon {
     font-size: 20px;
 }
@@ -48,4 +44,9 @@
 
 #profile-favorites {
     clear: left;
+}
+
+#profile-bar > button {
+    float: right;
+    margin: 2px;
 }
