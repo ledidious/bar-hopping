@@ -21,10 +21,6 @@
     line-height: 22px;
 }
 
-/********************************
- Classes
-*********************************/
-
-button.tours-add {
-    margin-left: 2vh;
+.tour-actions {
+    float: right;
 }

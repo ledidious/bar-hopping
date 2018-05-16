@@ -20,9 +20,14 @@
         <div id="tours-list-group_1">
             <div id="tours-list-group_1-tour_1">
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
-                <button class="button-add tours-add">
-                    <i class="button-add-icon">+</i>
-                </button>
+                <div class="tour-actions">
+                    <button class="button-add">
+                        <i class="button-add-icon">+</i>
+                    </button>
+                    <button>
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
                 <ul id="tours-list-group_1-tour_1-bars">
                     <li>Kneipe A</li>
                     <li>Kneipe B</li>
@@ -33,9 +38,14 @@
 
             <div id="tours-list-group_1-tour_2">
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
-                <button class="button-add tours-add">
-                    <i class="button-add-icon">+</i>
-                </button>
+                <div class="tour-actions">
+                    <button class="button-add">
+                        <i class="button-add-icon">+</i>
+                    </button>
+                    <button>
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
                 <ul id="tours-list-group_1-tour_2-bars">
                     <li>Kneipe A</li>
                     <li>Kneipe B</li>
