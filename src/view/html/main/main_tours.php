@@ -18,12 +18,12 @@
         <span class="expand-button" bh-expandable="tours-list-group_1">Geplante Touren</span>
         <hr>
         <div id="tours-list-group_1">
-            <div>
-                <span class="expand-button" bh-expandable="tours-list-group_1-tour_1">Tour 1</span>
+            <div id="tours-list-group_1-tour_1">
+                <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                 <button class="button-add tours-add">
                     <i class="button-add-icon">+</i>
                 </button>
-                <ul id="tours-list-group_1-tour_1">
+                <ul id="tours-list-group_1-tour_1-bars">
                     <li>Kneipe A</li>
                     <li>Kneipe B</li>
                     <li>Kneipe C</li>
@@ -31,12 +31,12 @@
             </div>
             <hr>
 
-            <div>
-                <span class="expand-button" bh-expandable="tours-list-group_1-tour_2">Tour 2</span>
+            <div id="tours-list-group_1-tour_2">
+                <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
                 <button class="button-add tours-add">
                     <i class="button-add-icon">+</i>
                 </button>
-                <ul id="tours-list-group_1-tour_2">
+                <ul id="tours-list-group_1-tour_2-bars">
                     <li>Kneipe A</li>
                     <li>Kneipe B</li>
                     <li>Kneipe C</li>
