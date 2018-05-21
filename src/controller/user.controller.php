@@ -23,7 +23,8 @@ function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = N
     if ($profImg === NULL)
         $profImg = 'NULL';
 
-    $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg');");
+    $pw = password_hash($pw,PASSWORD_DEFAULT);
+    $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
 }
 
 

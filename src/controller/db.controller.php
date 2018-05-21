@@ -22,12 +22,13 @@ class DbController {
     }
 
     public function execute($sSql){
-        //$mysqli_stmt = $this->_oConnection->prepare($sSql); //Erzeuge mysql-Object
-        $mysqli_stmt = $this->_oConnection->prepare("SELECT District FROM City WHERE Name=?");
-        if ($mysqli_stmt === true)
-            $mysqli_stmt->execute(); //Ausführen von query des objects auf DB
-        else
-            echo 'Fehler im Query! Statement lautet: '.$sSql;
+        if (!($stmt = $this->_oConnection->prepare($sSql))) { //Erzeuge mysql-Object und prüfe ob Syntax korrekt ist
+            echo "Prepare failed: (" . $this->_oConnection->errno . ") " . $this->_oConnection->error;
+        }
+
+        if (!$stmt->execute()) { //Führe Query aus und geben bei Fehler Meldung zurück
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
     }
 
     public static function instance() {
