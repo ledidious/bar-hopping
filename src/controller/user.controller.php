@@ -24,6 +24,8 @@ function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = N
         $profImg = 'NULL';
 
     $pw = password_hash($pw,PASSWORD_DEFAULT);
+    $joinedSince = date("Y-m-d");
+
     $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
 }
 
