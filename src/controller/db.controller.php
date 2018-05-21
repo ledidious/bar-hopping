@@ -21,6 +21,15 @@ class DbController {
         }
     }
 
+    public function execute($sSql){
+        //$mysqli_stmt = $this->_oConnection->prepare($sSql); //Erzeuge mysql-Object
+        $mysqli_stmt = $this->_oConnection->prepare("SELECT District FROM City WHERE Name=?");
+        if ($mysqli_stmt === true)
+            $mysqli_stmt->execute(); //Ausführen von query des objects auf DB
+        else
+            echo 'Fehler im Query! Statement lautet: '.$sSql;
+    }
+
     public static function instance() {
 
         if (self::$_INSTANCE == null) {
@@ -35,4 +44,4 @@ class DbController {
     }
 }
 
-var_dump(DbController::instance()->query("select * from TOUR"));
+//var_dump(DbController::instance()->query("select * from TOUR"));
