@@ -16,7 +16,8 @@ function addTour() {
     toursTemp
         .attr("id", parentList + "-tour_" + ++amountTours)
         .appendTo("#"+parentList)
-        .removeClass("hide");
+        .removeClass("hide")
+        .before('<hr>');
 
     // set child values
     let children = toursTemp.children();
