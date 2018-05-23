@@ -1,22 +1,52 @@
-/**
- * Generator for uniqued IDs
- * Used for location IDs
- */
-function guidGenerator() {
-    /**
-     * @return {string}
-     */
-    let S4 = function () {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    };
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+"use strict";
+
+// ===========================================
+// T O U R  S T U F F
+
+function addTour() {
+    // set which list to add new tour
+    let parentList = $("#select-tour").val(),
+        amountTours = document.getElementById(parentList).querySelectorAll("[type^=tours-list").length,
+        tourName = $("#tour-name").val();
+
+    // get template
+    let toursTemp = $("#tours-list-group-temp").clone();
+
+    // set values for new tour list
+    toursTemp
+        .attr("id", parentList + "-tour_" + ++amountTours)
+        .appendTo("#"+parentList)
+        .removeClass("hide");
+
+    // set child values
+    let children = toursTemp.children();
+    const barId = parentList + "-tour_" + amountTours + "-bars";
+    children[1].setAttribute("bh-expandable", barId);
+    children[1].innerText = tourName;
+    children[3].setAttribute("id", barId);
+
+
+/*    $.ajax({
+        method: "POST",
+        url: "../../router/location.router.php",
+        data: {user: "user", tourName: tourName} // TODO set user!!!
+    })
+        .done(_msg => {
+            console.info("Success add Tour\n" + _msg);
+        })
+        .fail(_msg => {
+            console.error("Error add Tour\n" + _msg);
+        })*/
 }
+
+// ============================================
+
+
+let map, GeoMarker;
 
 /**
  * map init function
  */
-
-let map, GeoMarker;
 function initMap() {
 
     // initial options

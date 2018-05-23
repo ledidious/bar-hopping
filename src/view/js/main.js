@@ -97,15 +97,19 @@ $("#profile-bar-save").click(
     }
 );
 
-//open file upload dialog/ make a picture
-$("#tours-title-actions-add").click(function () {
-    $('#pic').click();
+// ==================================================
+/**
+ * for desktop: image upload dialog
+ * for mobile: make picture
+ */
+$(".tours-add").click(() => {
+    $("#button-add-pic").click();
 });
 // if image is selected submit the form to send file to the server
-$("#pic").change(() => {
+$("#button-add-pic").change(() => {
     // get img data
-    let form = new FormData(document.getElementById("imgUpload"));
-    let file = document.getElementById("pic").files[0];
+    let form = new FormData(document.getElementById("tours-form-imgUpload"));
+    let file = document.getElementById("button-add-pic").files[0];
 
     if (file) {
         form.append('pic', file);
@@ -120,12 +124,33 @@ $("#pic").change(() => {
             processData: false,
         })
             .done(_msg => {
-                alert(_msg);
+                console.info("Success\n" + _msg);
             })
             .fail(_msg => {
-                alert('Error\n' + _msg);
+                console.error('Error\t try to upload image\n' + _msg);
             })
     }
+});
+
+// stuff for the tour popup window
+let tour_popupWindow = $("#tour-popup-window");
+$("#tours-title-actions-add").click(() => {
+    tour_popupWindow.fadeIn();
+    $("#tour-name").val(""); // reset tour-name input
+
+    // console.log(document.querySelectorAll('[type^="tours-list"]'));
+});
+$(".popup-window-close").click(() => { tour_popupWindow.fadeOut(); });
+$("#tour-popup-window-btn-ok").click(() => {
+    tour_popupWindow.fadeOut();
+    addTour();
+});
+// ==================================================
+
+$(window).click(_event => {
+    // close tour popup window if clicked outside popup window
+    if(_event.target === tour_popupWindow[0])
+        tour_popupWindow.fadeOut();
 });
 
 // Toggle description of span with id "profile-info-more_button-span"

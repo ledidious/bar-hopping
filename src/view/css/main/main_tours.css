@@ -28,3 +28,7 @@
 button.tours-add {
     margin-left: 2vh;
 }
+
+.hide {
+    display: none;
+}

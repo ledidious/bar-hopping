@@ -22,5 +22,7 @@ $target = "../../images/" . basename($file_name);
 // save file
 if(move_uploaded_file($_FILES['pic']['tmp_name'], $target))
     $msg = "Success";
+else
+    $msg = "Can't upload image. Server Error";
 
 echo $msg;
