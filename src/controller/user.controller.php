@@ -23,10 +23,36 @@ function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = N
     if ($profImg === NULL)
         $profImg = 'NULL';
 
-    $pw = password_hash($pw,PASSWORD_DEFAULT);
+    $pw = password_hash($pw, PASSWORD_DEFAULT);
     $joinedSince = date("Y-m-d");
 
-    $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
+    if (!($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
+        $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
+    else
+        echo 'Username bereits vorhanden!';
+}
+
+function loginUser($user, $pw)
+{
+    $connection = DbController::instance();
+
+    if (password_verify($pw, ((($connection->query("SELECT password FROM user WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
+        echo 'Login erfolgreich!';
+        header("refresh:3;url=../view/html/main.php");
+    } else {
+        echo 'Passwort ist falsch!';
+        header("refresh:3;url=../view/html/login.php");
+    }
+
+    /*
+     $result = $connection->query("SELECT password FROM user WHERE username='$user'");
+     $row = $result->fetch_array(MYSQLI_ASSOC);
+
+     if (password_verify($pw, $row['password'])) {
+         echo 'Valides Passwort!';
+     } else {
+         echo 'Invalides Passwort!';
+     }*/
 }
 
 
