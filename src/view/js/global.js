@@ -9,26 +9,38 @@ $(document).ready(function () {
         let icon = $("<i class=\"material-icons expand-icon-expanded\">expand_less</i>\n");
         icon.insertBefore(expander);
         icon.click(function (event) {
-            onExpanderClicked(expander);
+            onExpanderClicked(expander, icon);
         }.bind(this));
 
         // onClick behavior for button
         expander.click(function (event) {
-            onExpanderClicked(expander);
+            onExpanderClicked(expander, icon);
         }.bind(this));
-
-        // Function called by expander button and icon
-        function onExpanderClicked() {
-            let targetId = expander.attr("bh-expandable");
-            $("#" + targetId).slideToggle();
-
-            icon.toggleClass("expand-icon-expanded");
-            icon.toggleClass("expand-icon-collapsed");
-        }
 
         // Collapsed on begin
         if (expander.attr("bh-collapsed") != null) {
-            onExpanderClicked();
+            onExpanderClicked(expander, icon);
         }
     });
 });
+
+/**
+ * Function called by expander button and icon to perform expanding
+ * @param expander
+ * @param icon
+ */
+function onExpanderClicked(expander, icon) {
+    let targetId = expander.attr("bh-expandable");
+    $("#" + targetId).slideToggle();
+
+    icon.toggleClass("expand-icon-expanded");
+    icon.toggleClass("expand-icon-collapsed");
+}
+
+/**
+ * Pipe function to submit hidden form
+ */
+function onAddImageClicked() {
+    $("#button-add-pic").click();
+}
+

@@ -15,29 +15,33 @@ function addTour() {
     // set values for new tour list
     toursTemp
         .attr("id", parentList + "-tour_" + ++amountTours)
-        .appendTo("#"+parentList)
+        .appendTo("#" + parentList)
         .removeClass("hide")
         .before('<hr>');
 
     // set child values
-    let children = toursTemp.children();
     const barId = parentList + "-tour_" + amountTours + "-bars";
+    let children = toursTemp.children();
     children[1].setAttribute("bh-expandable", barId);
     children[1].innerText = tourName;
     children[3].setAttribute("id", barId);
 
+    // update click event
+    children[0].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
+    children[1].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
+    children[2].addEventListener("click", onAddImageClicked);
 
-/*    $.ajax({
-        method: "POST",
-        url: "../../router/location.router.php",
-        data: {user: "user", tourName: tourName} // TODO set user!!!
-    })
-        .done(_msg => {
-            console.info("Success add Tour\n" + _msg);
+    /*    $.ajax({
+            method: "POST",
+            url: "../../router/location.router.php",
+            data: {user: "user", tourName: tourName} // TODO set user!!!
         })
-        .fail(_msg => {
-            console.error("Error add Tour\n" + _msg);
-        })*/
+            .done(_msg => {
+                console.info("Success add Tour\n" + _msg);
+            })
+            .fail(_msg => {
+                console.error("Error add Tour\n" + _msg);
+            })*/
 }
 
 // ============================================
@@ -58,7 +62,7 @@ function initMap() {
         },
         zoom: 15,
         mapTypeControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
     });
 
     // track user location and display blue dot ass current position

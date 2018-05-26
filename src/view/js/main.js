@@ -102,9 +102,8 @@ $("#profile-bar-save").click(
  * for desktop: image upload dialog
  * for mobile: make picture
  */
-$(".tours-add").click(() => {
-    $("#button-add-pic").click();
-});
+$(".tours-add").click(onAddImageClicked);
+
 // if image is selected submit the form to send file to the server
 $("#button-add-pic").change(() => {
     // get img data
@@ -133,12 +132,11 @@ $("#button-add-pic").change(() => {
 });
 
 // stuff for the tour popup window
+// ==================================================
 let tour_popupWindow = $("#tour-popup-window");
 $("#tours-title-actions-add").click(() => {
     tour_popupWindow.fadeIn();
     $("#tour-name").val(""); // reset tour-name input
-
-    // console.log(document.querySelectorAll('[type^="tours-list"]'));
 });
 $(".popup-window-close").click(() => { tour_popupWindow.fadeOut(); });
 $("#tour-popup-window-btn-ok").click(() => {
@@ -148,7 +146,7 @@ $("#tour-popup-window-btn-ok").click(() => {
 // ==================================================
 
 $(window).click(_event => {
-    // close tour popup window if clicked outside popup window
+    // close tour popup window if clicked outside the popup window
     if(_event.target === tour_popupWindow[0])
         tour_popupWindow.fadeOut();
 });
