@@ -1,6 +1,7 @@
 @import "main/main_profile.css";
 @import "main/main_tours.css";
 @import "main/main_sidebar.css";
+@import "main/main_mobile.css";
 
 /*
   Identifiers
@@ -106,3 +107,4 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
