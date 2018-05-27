@@ -3,17 +3,15 @@
     <div id="tours-title">
         <h3 id="tours-title-heading">Touren</h3>
         <div id="tours-title-actions">
-            <button id="tours-title-actions-close" class="title-buttons panel-closer">
-                <i id="tours-title-actions-close-icon" class="material-icons title-buttons-icons">close</i>
+            <button id="tours-title-actions-add" class="button-add">
+                <i id="tours-title-actions-add-icon" class="title-buttons-icons">+</i>
             </button>
-            <button id="tours-title-actions-add" class="title-buttons button-add">
-                <i id="tours-title-actions-add-icon" class="title-buttons-icons button-add-icon">+</i>
+            <button id="tours-title-actions-close" class="panel-closer">
+                <i id="tours-title-actions-close-icon" class="material-icons title-buttons-icons">close</i>
             </button>
         </div>
     </div>
-
     <hr>
-
     <div id="tours-list">
         <span class="expand-button" bh-expandable="tours-list-group_1">Geplante Touren</span>
         <hr>
@@ -22,9 +20,9 @@
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                 <div class="tour-actions">
                     <button class="button-add">
-                        <i class="button-add-icon">+</i>
+                        <i class="">+</i>
                     </button>
-                    <button>
+                    <button class="button-edit">
                         <i class="material-icons">edit</i>
                     </button>
                 </div>
@@ -40,9 +38,9 @@
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
                 <div class="tour-actions">
                     <button class="button-add">
-                        <i class="button-add-icon">+</i>
+                        <i class="">+</i>
                     </button>
-                    <button>
+                    <button class="button-edit">
                         <i class="material-icons">edit</i>
                     </button>
                 </div>

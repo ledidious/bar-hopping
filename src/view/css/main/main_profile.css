@@ -3,7 +3,7 @@
     float: left;
 }
 
-#profile-close_button {
+#profile-title-actions-close_button {
     margin-right: 5px;
 }
 
@@ -49,4 +49,9 @@
 #profile-bar > button {
     float: right;
     margin: 2px;
+}
+
+#profile-title-actions {
+    float: right;
+    margin-top: 1vh;
 }
