@@ -1,7 +1,6 @@
 @import "main/main_profile.css";
 @import "main/main_tours.css";
 @import "main/main_sidebar.css";
-@import "main/main_mobile.css";
 
 /*
   Identifiers
@@ -21,7 +20,7 @@
 
 #tours {
     position: relative;
-    width: 350px;
+    width: 300px;
     height: 97vh;
 
     float: left;
@@ -68,5 +67,18 @@ button.title-buttons {
 body, html {
     margin: 0;
     padding: 0;
+}
+
+/*
+  Media types
+*/
+@media (max-width: 800px) {
+
+    #profile, #tours {
+        clear: left;
+        width: 93%;
+        margin-right: 10vh;
+        height: unset;
+    }
 }
 
