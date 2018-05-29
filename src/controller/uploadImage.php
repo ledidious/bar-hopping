@@ -12,7 +12,7 @@ $date = new DateTime();
 
 $file_info = pathinfo($_FILES['pic']['name']);
 // generate unique file name | today + random number(1000 - 100000) + file extension
-$file_name = $date->format('dmYhms'). rand(1000, 100000) . '.' .$file_info['extension'];
+$file_name = $date->format('dmYhms'). rand(10000, 999999) . '.' .$file_info['extension'];
 
 //TODO save $file_name in database
 

@@ -97,14 +97,10 @@ $("#profile-bar-save").click(
     }
 );
 
-// ==================================================
 /**
- * for desktop: image upload dialog
- * for mobile: make picture
+ * upload image
+ * if image is selected and submit the form to send the file to the server
  */
-$(".tours-add").click(onAddImageClicked);
-
-// if image is selected submit the form to send file to the server
 $("#button-add-pic").change(() => {
     // get img data
     let form = new FormData(document.getElementById("tours-form-imgUpload"));
@@ -173,3 +169,4 @@ $(document).ready(function () {
         }
     }
 });
+

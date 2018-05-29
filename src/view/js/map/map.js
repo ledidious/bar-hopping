@@ -22,14 +22,19 @@ function addTour() {
     // set child values
     const barId = parentList + "-tour_" + amountTours + "-bars";
     let children = toursTemp.children();
+    console.log(children);
+
     children[1].setAttribute("bh-expandable", barId);
     children[1].innerText = tourName;
+
+    //TODO update toggle event
+    // $($(children[2]).children()[0]).click(function() {onEditTour($(this)); });
     children[3].setAttribute("id", barId);
 
     // update click event
     children[0].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
     children[1].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
-    children[2].addEventListener("click", onAddImageClicked);
+
 
     /*    $.ajax({
             method: "POST",

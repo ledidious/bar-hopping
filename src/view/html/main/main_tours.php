@@ -25,11 +25,17 @@
             <div id="tours-list-group_1-tour_1" type="tours-list">
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                 <div class="tour-actions">
-                    <button class="button-add">
+                    <button class="button-add" onclick="onAddImageClicked()">
                         <i class="button-add-icon">+</i>
                     </button>
-                    <button>
+                    <button class="button-edit" onclick="onEditTour($(this))">
                         <i class="material-icons">edit</i>
+                    </button>
+                    <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
+                        <i class="material-icons">ok</i>
+                    </button>
+                    <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                        <i class="material-icons">close</i>
                     </button>
                 </div>
                 <ul id="tours-list-group_1-tour_1-bars">
@@ -43,11 +49,17 @@
             <div id="tours-list-group_1-tour_2" type="tours-list">
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
                 <div class="tour-actions">
-                    <button class="button-add">
+                    <button class="button-add" onclick="onAddImageClicked()">
                         <i class="button-add-icon">+</i>
                     </button>
-                    <button>
+                    <button class="button-edit" onclick="onEditTour($(this))">
                         <i class="material-icons">edit</i>
+                    </button>
+                    <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
+                        <i class="material-icons">ok</i>
+                    </button>
+                    <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                        <i class="material-icons">close</i>
                     </button>
                 </div>
                 <ul id="tours-list-group_1-tour_2-bars">
@@ -81,10 +93,21 @@
 
         <!-- Tour-list template -->
         <div id="tours-list-group-temp" class="hide" type="tours-list">
-            <span class="expand-button" bh-expandable=""></span>
-            <button class="button-add tours-add">
-                <i class="button-add-icon">+</i>
-            </button>
+            <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars"></span>
+            <div class="tour-actions">
+                <button class="button-add" onclick="onAddImageClicked()">
+                    <i class="button-add-icon">+</i>
+                </button>
+                <button class="button-edit" onclick="onEditTour($(this))">
+                    <i class="material-icons">edit</i>
+                </button>
+                <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
+                    <i class="material-icons">ok</i>
+                </button>
+                <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
             <ul id="">
             </ul>
         </div>
