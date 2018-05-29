@@ -1,10 +1,19 @@
 
-#profile-title {
+#profile-title-heading {
     float: left;
 }
 
 #profile-title-actions-close_button {
     margin-right: 5px;
+}
+
+#profile-title {
+    height: 6vh;
+}
+
+#profile-title-actions {
+    float: right;
+    margin-top: 1vh;
 }
 
 #profile-bar {
@@ -25,7 +34,7 @@
 }
 
 #profile-info div {
-    margin-top: 5px;
+    margin-top: 1vh;
     margin-bottom: 5px;
     height: 20px;
 }
@@ -36,6 +45,7 @@
 
 #profile-info input {
     float: right;
+    width: 15vh;
 }
 
 #profile-info span {
@@ -49,9 +59,4 @@
 #profile-bar > button {
     float: right;
     margin: 2px;
-}
-
-#profile-title-actions {
-    float: right;
-    margin-top: 1vh;
 }

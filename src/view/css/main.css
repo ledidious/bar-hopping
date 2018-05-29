@@ -44,10 +44,10 @@
 */
 
 .panel {
-    border: 1px solid black;
+    border: 3px double black;
     padding: 5px;
     margin: 5px;
-    background-color: honeydew;
+    background-color: #a7cdd6;
 }
 
 .panel-closer {

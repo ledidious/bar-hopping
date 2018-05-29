@@ -1,9 +1,6 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="src/view/css/main/main_profile.css"/>
-    </head>
-    <div>
-        <h3 id="profile-title">Profil</h3>
+    <div id="profile-title">
+        <h3 id="profile-title-heading">Profil</h3>
         <div id="profile-title-actions">
             <button id="profile-title-actions-close_button" class="panel-closer">
                 <i id="profile-title-actions-close_button-icon" class="material-icons title-buttons-icons">close</i>

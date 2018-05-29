@@ -15,3 +15,7 @@
 .tour-actions {
     float: right;
 }
+
+#tours-title {
+    height: 6vh;
+}
