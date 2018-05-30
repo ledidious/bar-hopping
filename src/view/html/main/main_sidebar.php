@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <div id="sidebar-profile" class="sidebar-item panel" bh-open_panel="profile">
-        Profil
+        <i class="material-icons">person</i>
     </div>
     <div id="sidebar-tours" class="sidebar-item panel" bh-open_panel="tours">
-        Touren
+        <i class="material-icons">local_bar</i>
     </div>
 </html>
