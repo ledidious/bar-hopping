@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `USER` (
   `yearOfBirth` date DEFAULT NULL,
   `joinedSince` date NOT NULL,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
-  `password` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(100) COLLATE utf8_bin NOT NULL,
   `sex` char(10) COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
   `profileImage` varchar(50) COLLATE utf8_bin DEFAULT NULL,
