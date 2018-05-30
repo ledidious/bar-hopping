@@ -4,6 +4,7 @@
 }
 
 #tours-title-actions {
+    margin-top: 1vh;
     float: right;
 }
 
@@ -11,20 +12,10 @@
     margin-right: 5px;
 }
 
-#tours-title-actions-add {
-    margin-right: 10px;
-}
-
-#tours-title-actions-add-icon {
-    font-size: 30px;
-    color: darkgreen;
-    line-height: 22px;
-}
-
 .tour-actions {
     float: right;
 }
 
-.hide {
-    display: none;
+#tours-title {
+    height: 6vh;
 }

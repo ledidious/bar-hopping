@@ -150,23 +150,43 @@ $(window).click(_event => {
 // Toggle description of span with id "profile-info-more_button-span"
 //      Document ready listener because we have to wait for global.js to generate the icon for expander
 $(document).ready(function () {
-    let span = $("#profile-info-more_button-span");
-    let icon = $("#profile-info-more_button i");
 
-    span.click(toggleDescription);
-    icon.click(toggleDescription);
-
-    function toggleDescription() {
+    // Toggle description of span with id "profile-info-more_button-span"
+    //      Document ready listener because we have to wait for global.js to generate the icon for expander
+    function toggleProfileMoreInfo() {
         let span = $("#profile-info-more_button-span");
+        let icon = $("#profile-info-more_button i");
 
-        if (span.prop("bh-expanded")) {
-            span.text("Mehr anzeigen");
-            span.prop("bh-expanded", false);
-        }
-        else {
-            span.text("Weniger anzeigen");
-            span.prop("bh-expanded", true);
+        span.click(toggleDescription);
+        icon.click(toggleDescription);
+
+        function toggleDescription() {
+            let span = $("#profile-info-more_button-span");
+
+            if (span.prop("bh-expanded")) {
+                span.text("Mehr anzeigen");
+                span.prop("bh-expanded", false);
+            }
+            else {
+                span.text("Weniger anzeigen");
+                span.prop("bh-expanded", true);
+            }
         }
     }
+
+    function closePanelsIfMobileView() {
+        let width = $(document).width();
+
+        if (width < 800) {
+            $(".panel-closer").each(function () {
+                let panel = $(this);
+                // Init click event to cause closing
+                panel.click();
+            });
+        }
+    }
+
+    toggleProfileMoreInfo();
+    closePanelsIfMobileView();
 });
 

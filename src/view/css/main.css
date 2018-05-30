@@ -1,7 +1,6 @@
 @import "main/main_profile.css";
 @import "main/main_tours.css";
 @import "main/main_sidebar.css";
-@import "main/main_mobile.css";
 
 /*
   Identifiers
@@ -21,7 +20,7 @@
 
 #tours {
     position: relative;
-    width: 350px;
+    width: 300px;
     height: 97vh;
 
     float: left;
@@ -45,20 +44,14 @@
 */
 
 .panel {
-    border: 1px solid black;
+    border: 3px double black;
     padding: 5px;
     margin: 5px;
-    background-color: #FFF;
+    background-color: #a7cdd6;
 }
 
 .panel-closer {
     /* Marker */
-}
-
-button.title-buttons {
-    float: right;
-    margin-top: 13px;
-    height: 7vh;
 }
 
 /*
@@ -106,5 +99,18 @@ button.title-buttons {
 body, html {
     margin: 0;
     padding: 0;
+}
+
+/*
+  Media types
+*/
+@media (max-width: 800px) {
+
+    #profile, #tours {
+        clear: left;
+        width: 93%;
+        margin-right: 10vh;
+        height: unset;
+    }
 }
 
