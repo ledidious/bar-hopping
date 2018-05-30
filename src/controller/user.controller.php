@@ -55,5 +55,17 @@ function loginUser($user, $pw)
      }*/
 }
 
+function changePassword($user, $pw){
+
+    $connection = DbController::instance();
+
+    $pw = password_hash($pw, PASSWORD_DEFAULT);
+
+    if (($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
+        $connection->execute("UPDATE user SET password = '$pw' WHERE username = '$user'");
+    else
+        echo 'Username nicht vorhanden!';
+}
+
 
 

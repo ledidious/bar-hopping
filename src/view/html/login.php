@@ -36,11 +36,11 @@
     <p><input id="five" type="submit" onclick="return check(this.form)" placeholder="Anmelden"></p>
     <!--add onClick[...}-->
     <p>
-        <button id="seven" type="button" name="Zurück" onclick="return check(this.form)" placeholder="Zurück">
+        <button id="seven" type="button" name="Zurück" onclick="self.location.href='register.php'" placeholder="Zurück">
             Zurück
         </button>
-        </form>
     </p>
+        </form>
     <br>
     Du hast dein Passwort vergessen? Dann klicke <a href="reset_password.php"> hier</a>.
 </fieldset>

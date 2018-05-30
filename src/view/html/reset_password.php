@@ -7,7 +7,10 @@
         <!-- Header -->
         <?php
             $sPageName = basename(__FILE__, ".php");
-            require_once "header.php"
+            require_once "header.php";
+        /*generate new password*/
+        $newpw = substr(md5(rand()),0,20);
+
         ?>
 
     </head>
@@ -38,9 +41,11 @@
             <div id="reset" style="display: none">
                 Ihr neues Password:
                 <p><img id="tree" src="../../../img/lock.gif" height="25px" width="25px"/>
-                    <input type="text" name="password" size="30" maxlength="40" placeholder="neues Password"/></p>
+                    <input type="text" name="password" size="30" maxlength="40" value="<?= $newpw ?>"/></p>
+                <br>
+               <span style="color: #ff0000; font-weight: bold"> Bitte notieren Sie sich das Password. Weiterleitung in 5 Sekunden!</span>
             </div>
-            <p><input id="six" type="submit" onclick="return check(this.form)" style="display: none"></p>
+            <p><input id="six" type="submit" onclick="return check(this.form)"style="display: none"></p>
             <p><button type="button" id="eight">Zurücksetzen</button></p>
             <!--add onClick[...}-->
             <p>
@@ -57,7 +62,18 @@
         <script>
             $( "button" ).click(function() {
                 $( "#reset" ).toggle();
+                $(this).prop('disabled', true);
+
+                setTimeout(function(){document.getElementById("six").click()}, 5000);
             });
+
+            function clicksimulator() {
+                document.getElementById("six").click();
+            }
+
         </script>
+
     </body>
 </html>
+
+
