@@ -1,18 +1,23 @@
 
-#profile-title {
+#profile-title-heading {
     float: left;
 }
 
-#profile-close_button {
+#profile-title-actions-close_button {
     margin-right: 5px;
+}
+
+#profile-title {
+    height: 6vh;
+}
+
+#profile-title-actions {
+    float: right;
+    margin-top: 1vh;
 }
 
 #profile-bar {
     height: 5px;
-}
-
-#profile-bar-edit {
-    float: right;
 }
 
 #profile-bar-edit-icon {
@@ -20,7 +25,7 @@
 }
 
 #profile-image {
-    background: url("/img/google.png") no-repeat;
+    background: url("/img/google.png") no-repeat; /* TODO: error image not found */
     background-size: auto;
     width: 100%;
     height: 100px;
@@ -29,7 +34,7 @@
 }
 
 #profile-info div {
-    margin-top: 5px;
+    margin-top: 1vh;
     margin-bottom: 5px;
     height: 20px;
 }
@@ -40,6 +45,7 @@
 
 #profile-info input {
     float: right;
+    width: 15vh;
 }
 
 #profile-info span {
@@ -48,4 +54,9 @@
 
 #profile-favorites {
     clear: left;
+}
+
+#profile-bar > button {
+    float: right;
+    margin: 2px;
 }
