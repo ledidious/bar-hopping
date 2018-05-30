@@ -35,7 +35,13 @@
             <br>
             <p><img id="one" src="../../../img/user.png" height="25px" width="25px"/>
                 <input type="text" name="username" size="30" maxlength="40" placeholder="Benutzername"/></p>
-            <p><input id="six" type="submit" onclick="return check(this.form)" placeholder="Passwort zurücksetzen"></p>
+            <div id="reset" style="display: none">
+                Ihr neues Password:
+                <p><img id="tree" src="../../../img/lock.gif" height="25px" width="25px"/>
+                    <input type="text" name="password" size="30" maxlength="40" placeholder="neues Password"/></p>
+            </div>
+            <p><input id="six" type="submit" onclick="return check(this.form)" style="display: none"></p>
+            <p><button type="button" id="eight">Zurücksetzen</button></p>
             <!--add onClick[...}-->
             <p>
                 <button id="seven" type="button" name="Zurück" onclick="self.location.href='login.php'" placeholder="Zurück">
@@ -47,5 +53,11 @@
 
             <!-- Footer -->
             <?php require_once "footer.php" ?>
+
+        <script>
+            $( "button" ).click(function() {
+                $( "#reset" ).toggle();
+            });
+        </script>
     </body>
 </html>
