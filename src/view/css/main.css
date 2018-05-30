@@ -43,6 +43,10 @@
   Classes
 */
 
+.hide {
+    display: none;
+}
+
 .panel {
     border: 3px double black;
     padding: 5px;
