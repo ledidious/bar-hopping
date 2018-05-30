@@ -26,10 +26,13 @@ function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = N
     $pw = password_hash($pw, PASSWORD_DEFAULT);
     $joinedSince = date("Y-m-d");
 
-    if (!($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
+    if (!($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
         $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
-    else
+        header("refresh:3;url=../view/html/login.php");
+    } else {
         echo 'Username bereits vorhanden!';
+        header("refresh:3;url=../view/html/register.php");
+    }
 }
 
 function loginUser($user, $pw)
@@ -55,7 +58,8 @@ function loginUser($user, $pw)
      }*/
 }
 
-function changePassword($user, $pw){
+function changePassword($user, $pw)
+{
 
     $connection = DbController::instance();
 
