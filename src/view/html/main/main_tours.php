@@ -41,7 +41,8 @@
                 <hr>
                 <div id="tours-list-group_1-tour_2-bars">
                     <div id="tours-list-group_1-tour_2-bars_1" class="tour-bar">
-                        <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars_1-content">Kneipe A</span>
+                        <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars_1-content">Kneipe
+                            A</span>
                         <hr>
                         <div id="tours-list-group_1-tour_2-bars_1-content">
                             <div id="tours-list-group_1-tour_2-bars_1-content-image" class="tour-bar-image"></div>
@@ -63,16 +64,21 @@
         <!-- popup window to chose tour-->
         <div id="tour-popup-window" class="popup-window">
             <div class="popup-window-content">
-                <span class="popup-window-close">&times;</span>
-                <label for="select-tour"><h1>Tour auswählen</h1></label>
-                <!-- TODO style combobox -->
-                <label for="tour-name"><b>Name:</b></label>
-                <input type="text" id="tour-name">
-                <select id="select-tour">
-                    <option value="tours-list-group_1">Geplante Touren</option>
-                </select>
-
-                <button id="tour-popup-window-btn-ok">Erstellen</button>
+                <h1>Tour auswählen</h1>
+                <div>
+                    <!-- TODO style combobox -->
+                    <label for="tour-name"><b>Name:</b></label>
+                    <input type="text" id="tour-name">
+                </div>
+                <div>
+                    <label for="select-tour"><b>Gruppe</b></label>
+                    <select id="select-tour">
+                        <option value="tours-list-group_1">Geplante Touren</option>
+                    </select>
+                </div>
+                <div>
+                    <button id="tour-popup-window-btn-ok">Erstellen</button>
+                </div>
             </div>
         </div>
 
