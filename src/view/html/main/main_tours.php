@@ -19,52 +19,39 @@
     <div id="tours-list">
         <span class="expand-button" bh-expandable="tours-list-group_1">Geplante Touren</span>
         <hr>
-        <div id="tours-list-group_1">
-            <div id="tours-list-group_1-tour_1" type="tours-list">
-                <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
-                <div class="tour-actions">
-                    <button class="button-add" onclick="onAddImageClicked()">
-                        <i class="">+</i>
-                    </button>
-                    <button class="button-edit" onclick="onEditTour($(this))">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                        <i class="material-icons">ok</i>
-                    </button>
-                    <button class="button-close hide" onclick="onEditDenyTour($(this))">
-                        <i class="material-icons">close</i>
-                    </button>
-                </div>
-                <ul id="tours-list-group_1-tour_1-bars">
-                    <li>Kneipe A</li>
-                    <li>Kneipe B</li>
-                    <li>Kneipe C</li>
-                </ul>
-            </div>
-            <hr>
-
+        <div class="tour-group" id="tours-list-group_1">
             <div id="tours-list-group_1-tour_2" type="tours-list">
-                <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
-                <div class="tour-actions">
-                    <button class="button-add" onclick="onAddImageClicked()">
-                        <i class="">+</i>
-                    </button>
-                    <button class="button-edit" onclick="onEditTour($(this))">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                        <i class="material-icons">ok</i>
-                    </button>
-                    <button class="button-close hide" onclick="onEditDenyTour($(this))">
-                        <i class="material-icons">close</i>
-                    </button>
+                <div class="tour-heading">
+                    <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
+                    <div class="tour-actions">
+                        <button class="button-add" onclick="onAddImageClicked()">
+                            <i class="">+</i>
+                        </button>
+                        <button class="button-edit" onclick="onEditTour($(this))">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
+                            <i class="material-icons">ok</i>
+                        </button>
+                        <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
                 </div>
-                <ul id="tours-list-group_1-tour_2-bars">
-                    <li>Kneipe A</li>
-                    <li>Kneipe B</li>
-                    <li>Kneipe C</li>
-                </ul>
+                <hr>
+                <div id="tours-list-group_1-tour_2-bars">
+                    <div id="tours-list-group_1-tour_2-bars_1" class="tour-bar">
+                        <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars_1-content">Kneipe A</span>
+                        <hr>
+                        <div id="tours-list-group_1-tour_2-bars_1-content">
+                            <div id="tours-list-group_1-tour_2-bars_1-content-image" class="tour-bar-image"></div>
+                            <div class="tour-bar-description">
+                                Diese tolle Kneipe überzeugt mit großartigem Bier und
+                                ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -72,7 +59,7 @@
             Keine weiteren Touren gefunden ...<br>
             <a href="#">Du kannst aber weitere anlegen.</a>
         </div>
-        
+
         <!-- popup window to chose tour-->
         <div id="tour-popup-window" class="popup-window">
             <div class="popup-window-content">
