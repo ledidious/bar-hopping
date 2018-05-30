@@ -17,7 +17,7 @@
         <br>
 
         <br>
-
+        <form method="post" action="../../router/user.router.php">
         <fieldset>
             <img id="logo" src="../../../img/logo.png" alt="Bar Hopping" title="Bar Hopping" height="150" width="150"/><br>
             &copy; seit 2018
@@ -29,12 +29,12 @@
             <br>
             <br>
             <h2>Passwort zurücksetzen</h2>
-            Wir können dir beim Zurücksetzen deines Passworts über die mit deinem Konto verknüpfte E-Mail-Adresse
+            Wir können dir beim Zurücksetzen deines Passworts über den mit deinem Konto verknüpfte Benutzernamen
             behilflich sein.
             <br>
             <br>
-            <p><img id="one" src="../../../img/mail.png" height="25px" width="25px"/>
-                <input type="text" name="E-Mail" size="30" maxlength="40" placeholder="E-Mail Adresse"/></p>
+            <p><img id="one" src="../../../img/user.png" height="25px" width="25px"/>
+                <input type="text" name="username" size="30" maxlength="40" placeholder="Benutzername"/></p>
             <p><input id="six" type="submit" onclick="return check(this.form)" placeholder="Passwort zurücksetzen"></p>
             <!--add onClick[...}-->
             <p>
@@ -42,6 +42,8 @@
                     Zurück
                 </button>
             </p>
+        </fieldset>
+        </form>
 
             <!-- Footer -->
             <?php require_once "footer.php" ?>
