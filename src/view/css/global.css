@@ -78,7 +78,6 @@ button {
 }
 
 fieldset {
-    font-family: sans-serif;
     border: 1px solid white;
     border-radius: 10px;
     background: white;
@@ -89,7 +88,6 @@ fieldset {
 }
 
 input {
-    font-family: sans-serif;
     background: #f5f5f5;
     border: 1px solid #FFF;
     border-radius: 5px;
@@ -98,3 +96,6 @@ input {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
 }
 
+body {
+    font-family: sans-serif;
+}
