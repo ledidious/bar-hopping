@@ -6,6 +6,7 @@
  * Time: 14:23
  */
 require_once('db.controller.php');
+require_once('../model/user.php');
 
 function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL)
 {
@@ -41,6 +42,8 @@ function loginUser($user, $pw)
 
     if (password_verify($pw, ((($connection->query("SELECT password FROM user WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
         echo 'Login erfolgreich!';
+        session_start();
+        $_SESSION["userObject"] = new user($user);
         header("refresh:3;url=../view/html/main.php");
     } else {
         echo 'Passwort ist falsch!';
