@@ -77,7 +77,7 @@ function onEditAcceptTour(ele) {
         tourEditInput = tour.children("input"),
         tourEditVal = tourEditInput.val();
 
-    if (!tourEditVal)
+    if(!tourEditVal)
         tourEditVal = tourEditInput.attr("bh-old-value");
 
     tour.children(".tour-actions").children().toggle();
@@ -85,9 +85,9 @@ function onEditAcceptTour(ele) {
     restoreDefaultTourDesign(tourEditInput, tourEditVal, tour.attr("id"));
 
     // TODO implement
-    /*    $.ajax({
+/*    $.ajax({
 
-        })*/
+    })*/
 }
 
 /**
