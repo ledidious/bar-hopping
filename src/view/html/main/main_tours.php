@@ -22,7 +22,7 @@
         <div class="tour-group" id="tours-list-group_1">
             <div id="tours-list-group_1-tour_2" type="tours-list">
                 <div class="tour-heading">
-                    <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars">Tour 2</span>
+                    <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                     <div class="tour-actions">
                         <button class="button-add" onclick="onAddImageClicked()">
                             <i class="">+</i>
@@ -39,13 +39,13 @@
                     </div>
                 </div>
                 <hr>
-                <div id="tours-list-group_1-tour_2-bars">
-                    <div id="tours-list-group_1-tour_2-bars_1" class="tour-bar">
-                        <span class="expand-button" bh-expandable="tours-list-group_1-tour_2-bars_1-content">Kneipe
+                <div id="tours-list-group_1-tour_1-bars">
+                    <div id="tours-list-group_1-tour_1-bars_1" class="tour-bar">
+                        <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars_1-content">Kneipe
                             A</span>
                         <hr>
-                        <div id="tours-list-group_1-tour_2-bars_1-content">
-                            <div id="tours-list-group_1-tour_2-bars_1-content-image" class="tour-bar-image"></div>
+                        <div id="tours-list-group_1-tour_1-bars_1-content">
+                            <div id="tours-list-group_1-tour_1-bars_1-content-image" class="tour-bar-image"></div>
                             <div class="tour-bar-description">
                                 Diese tolle Kneipe überzeugt mit großartigem Bier und
                                 ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
