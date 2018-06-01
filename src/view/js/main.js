@@ -130,6 +130,8 @@ $("#button-add-pic").change(() => {
 // stuff for the tour popup window
 // ==================================================
 let tour_popupWindow = $("#tour-popup-window");
+let changePwdPopup = $("#profile-info-more-change_pwd-popup");
+
 $("#tours-title-actions-add").click(() => {
     tour_popupWindow.fadeIn();
     $("#tour-name").val(""); // reset tour-name input
@@ -143,35 +145,40 @@ $("#tour-popup-window-btn-ok").click(() => {
 });
 // ==================================================
 
+/*
+ * Close dialogs
+ */
 $(window).click(_event => {
     // close tour popup window if clicked outside the popup window
-    if (_event.target === tour_popupWindow[0])
+    if (_event.target === tour_popupWindow[0]) {
         tour_popupWindow.fadeOut();
+    }
+    if (_event.target === changePwdPopup[0]) {
+        changePwdPopup.fadeOut();
+    }
 });
 
 /*
- * Change password popup
+ * Change password
  */
-(function () {
-    let popup = $("#profile-info-more-change_pwd-popup");
+$("#profile-info-more-change_pwd-link").click(
+    function (event) {
+        changePwdPopup.fadeIn();
+    }
+);
 
-    $("#profile-info-more-change_pwd-link").click(
-        function (event) {
-            popup.fadeIn();
-        }
-    );
+$("#change_pwd-submit").click(
+    /**
+     * @param {Event} event
+     */
+    function (event) {
+        // Do not submit form synchronous
+        event.preventDefault();
 
-    $("#change_pwd-submit").click(
-        /**
-         * @param {Event} event
-         */
-        function (event) {
-            // Do not submit form synchronous
-            event.preventDefault();
+        $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-more-change_pwd-popup-form").serialize());
+    });
 
-            $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-more-change_pwd-popup-form").serialize());
-        });
-})();
+// ==================================================
 
 // Toggle description of span with id "profile-info-more_button-span"
 //      Document ready listener because we have to wait for global.js to generate the icon for expander
