@@ -11,7 +11,7 @@ require_once('db.controller.php');
 
     function addUser($user, $pw, $email, $joinedSince, $sex=null, $yearOfBirth=null, $profImg=null){
         $connection = DbController::instance();
-        $text = $connection->query("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ($user, $pw, $email, $joinedSince, $sex, $yearOfBirth, $profImg)");
+        $text = $connection->query("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ($user, $pw, $email, $joinedSince, $sex, $yearOfBirth, $profImg)");
 }
 
 

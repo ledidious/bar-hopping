@@ -27,8 +27,8 @@ function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg 
     $pw = password_hash($pw, PASSWORD_DEFAULT);
     $joinedSince = date("Y-m-d");
 
-    if (!($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
-        $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
+    if (!($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
+        $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
         header("refresh:3;url=../view/html/login.php");
     } else {
         echo 'Username bereits vorhanden!';
@@ -40,7 +40,7 @@ function loginUser($user, $pw)
 {
     $connection = DbController::instance();
 
-    if (password_verify($pw, ((($connection->query("SELECT password FROM user WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
+    if (password_verify($pw, ((($connection->query("SELECT password FROM USER WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
         echo 'Login erfolgreich!';
         session_start();
         $_SESSION["userObject"] = new user($user);
@@ -68,8 +68,8 @@ function changePassword($user, $pw)
 
     $pw = password_hash($pw, PASSWORD_DEFAULT);
 
-    if (($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
-        $connection->execute("UPDATE user SET password = '$pw' WHERE username = '$user'");
+    if (($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
+        $connection->execute("UPDATE USER SET password = '$pw' WHERE username = '$user'");
     else
         echo 'Username nicht vorhanden!';
 }
