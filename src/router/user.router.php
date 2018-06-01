@@ -15,3 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         loginUser($_POST["username"], $_POST["password"]);
     else if (basename($_SERVER['HTTP_REFERER']) == 'reset_password.php'){
         changePassword($_POST["username"], $_POST["password"]); header("refresh:3;url=../view/html/login.php");}
+    else if (basename($_SERVER['HTTP_REFERER']) == 'main.php'){
+        if ($_POST["password"] === $_POST["password_repeat"])
+            changePassword($_POST["username"], $_POST["password"]); header("refresh:3;url=../view/html/main.php");
+    }
