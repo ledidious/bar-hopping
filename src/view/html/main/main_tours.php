@@ -51,6 +51,20 @@
                                 ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
                             </div>
                         </div>
+                        <div id="tours-list-group_1-tour_2-bars_1-comments">
+                            <label for="tours-list-group_1-tour_2-bars_1-001">Henning123</label>
+                            <textarea id="tours-list-group_1-tour_2-bars_1-new_comment" readonly>Das ist ein schon bestehender Kommentar.</textarea>
+                            <hr>
+                            <div class="tours-comment-new">
+                                <form name="addComment" method="post">
+                                    <input type="hidden" value><!-- todo enter tour id to associate with comment -->
+                                    <textarea name="comment"></textarea>
+                                    <button class="button-add tours-comment-new-submit">
+                                        <i class="">+</i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

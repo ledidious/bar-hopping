@@ -176,7 +176,18 @@ $("#change_pwd-submit").click(
         event.preventDefault();
 
         $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-more-change_pwd-popup-form").serialize());
-    });
+    }
+);
+
+/*
+ * Add comment
+ */
+$(".tours-comment-new-submit").each(function () {
+    $(this).click(function (event) {
+        event.preventDefault();
+        $.post(/* Url to enter*/ "controller", $(this.parentElement).serialize());
+    })
+});
 
 // ==================================================
 

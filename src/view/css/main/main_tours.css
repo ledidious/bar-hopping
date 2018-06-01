@@ -50,3 +50,27 @@
     background: url("../../../../img/bar.jpeg") no-repeat;
     background-size: auto;
 }
+
+#tours-list-group_1-tour_2-bars_1-content {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+#tours-list-group_1-tour_2-bars_1-comments textarea {
+    width: 100%;
+    margin-bottom: 0.2vh;
+}
+
+.tours-comment-new {
+    overflow: auto;
+}
+
+.tours-comment-new textarea {
+    float: left;
+    width: 80% !important;
+    height: 100%;
+}
+
+.tours-comment-new button {
+    float: right;
+}
