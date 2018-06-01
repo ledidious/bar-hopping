@@ -134,7 +134,9 @@ $("#tours-title-actions-add").click(() => {
     tour_popupWindow.fadeIn();
     $("#tour-name").val(""); // reset tour-name input
 });
-$(".popup-window-close").click(() => { tour_popupWindow.fadeOut(); });
+$(".popup-window-close").click(() => {
+    tour_popupWindow.fadeOut();
+});
 $("#tour-popup-window-btn-ok").click(() => {
     tour_popupWindow.fadeOut();
     addTour();
@@ -143,9 +145,33 @@ $("#tour-popup-window-btn-ok").click(() => {
 
 $(window).click(_event => {
     // close tour popup window if clicked outside the popup window
-    if(_event.target === tour_popupWindow[0])
+    if (_event.target === tour_popupWindow[0])
         tour_popupWindow.fadeOut();
 });
+
+/*
+ * Change password popup
+ */
+(function () {
+    let popup = $("#profile-info-more-change_pwd-popup");
+
+    $("#profile-info-more-change_pwd-link").click(
+        function (event) {
+            popup.fadeIn();
+        }
+    );
+
+    $("#change_pwd-submit").click(
+        /**
+         * @param {Event} event
+         */
+        function (event) {
+            // Do not submit form synchronous
+            event.preventDefault();
+
+            $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-more-change_pwd-popup-form").serialize());
+        });
+})();
 
 // Toggle description of span with id "profile-info-more_button-span"
 //      Document ready listener because we have to wait for global.js to generate the icon for expander

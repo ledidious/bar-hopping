@@ -22,28 +22,51 @@
     <div id="profile-image"></div>
     <hr>
     <div id="profile-info">
-        <form>
+        <div>
+            <label for="profile-info-name">Name</label>
+            <span id="profile-info-name" class="profile-info-edit_field">John Doe</span>
+        </div>
+        <div>
+            <label for="profile-info-alias">Alias</label>
+            <span id="profile-info-alias" class="profile-info-edit_field">Johnny</span>
+        </div>
+        <div>
+            <label for="profile-info-since">Dabei seit</label>
+            <span id="profile-info-since" class="profile-info-edit_field">März diesen Jahres</span>
+        </div>
+        <div id="profile-info-more_button">
+            <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
+                  bh-collapsed>Mehr anzeigen</span>
+        </div>
+        <div id="profile-info-more">
             <div>
-                <label for="profile-info-name">Name</label>
-                <span id="profile-info-name" class="profile-info-edit_field">John Doe</span>
-            </div>
-            <div>
-                <label for="profile-info-alias">Alias</label>
-                <span id="profile-info-alias" class="profile-info-edit_field">Johnny</span>
-            </div>
-            <div>
-                <label for="profile-info-since">Dabei seit</label>
-                <span id="profile-info-since" class="profile-info-edit_field">März diesen Jahres</span>
-            </div>
-            <div id="profile-info-more_button">
-                <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
-                      bh-collapsed>Mehr anzeigen</span>
-            </div>
-            <div id="profile-info-more">
                 <label for="profile-info-more-...">Weit. Infos</label>
                 <span id="profile-info-more-..." class="profile-info-edit_field">Bla bla</span>
             </div>
-        </form>
+            <div>
+                <a id="profile-info-more-change_pwd-link">Passwort ändern</a>
+
+                <!-- popup window to chose tour-->
+                <div id="profile-info-more-change_pwd-popup" class="popup-window">
+                    <div class="popup-window-content">
+                        <h1>Passwort ändern</h1>
+                        <form id="profile-info-more-change_pwd-popup-form" method="get" name="change_pwd">
+                            <div>
+                                <label for="change_pwd-password">Passwort</label>
+                                <input id="change_pwd-password" name="password" type="text" placeholder="Passwort">
+                            </div>
+                            <div>
+                                <label for="change_pwd-password_repeat">Passwort wiederholen</label>
+                                <input id="change_pwd-password_repeat" name="password_repeat" type="text" placeholder="Passwort wiederholen">
+                            </div>
+                            <div>
+                                <input id="change_pwd-submit" type="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <hr>
     <div id="tours-favorites">

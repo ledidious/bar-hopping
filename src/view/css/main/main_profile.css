@@ -34,9 +34,8 @@
 }
 
 #profile-info div {
-    margin-top: 1vh;
-    margin-bottom: 5px;
-    height: 20px;
+    clear: left;
+    padding: 0.5vh;
 }
 
 #profile-info label {
@@ -46,6 +45,10 @@
 #profile-info input {
     float: right;
     width: 15vh;
+}
+
+#profile-info-more {
+    margin-top: 1vh;
 }
 
 #profile-info span {
@@ -59,4 +62,21 @@
 #profile-bar > button {
     float: right;
     margin: 2px;
+}
+
+#profile-info-more-change_pwd-popup-form {
+    height: 11vh;
+}
+
+#profile-info-more-change_pwd-popup-form div {
+    clear: both;
+    margin: 1vh;
+}
+
+#profile-info-more-change_pwd-popup-form div label {
+    float: left;
+}
+
+#profile-info-more-change_pwd-popup-form div input {
+    float: right;
 }
