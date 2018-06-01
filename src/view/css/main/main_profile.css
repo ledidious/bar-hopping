@@ -80,3 +80,12 @@
 #profile-info-more-change_pwd-popup-form div input {
     float: right;
 }
+
+#profile-info-more-change_pwd-link {
+    color: blue;
+}
+
+#profile-info-more-change_pwd-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
