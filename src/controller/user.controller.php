@@ -6,8 +6,9 @@
  * Time: 14:23
  */
 require_once('db.controller.php');
+require_once('../model/user.php');
 
-function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL)
+function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL, $name)
 {
     $connection = DbController::instance();
     //$result = $connection->query("SELECT username FROM user;");
@@ -27,7 +28,7 @@ function addUser($user, $pw, $email, $joinedSince, $sex = NULL, $yearOfBirth = N
     $joinedSince = date("Y-m-d");
 
     if (!($connection->query("SELECT username FROM user WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
-        $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
+        $connection->execute("INSERT INTO user (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
         header("refresh:3;url=../view/html/login.php");
     } else {
         echo 'Username bereits vorhanden!';
@@ -41,6 +42,8 @@ function loginUser($user, $pw)
 
     if (password_verify($pw, ((($connection->query("SELECT password FROM user WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
         echo 'Login erfolgreich!';
+        session_start();
+        $_SESSION["userObject"] = new user($user);
         header("refresh:3;url=../view/html/main.php");
     } else {
         echo 'Passwort ist falsch!';

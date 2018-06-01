@@ -1,4 +1,7 @@
 <html>
+<?php
+    require_once("../../model/user.php");
+?>
     <div id="profile-title">
         <h3 id="profile-title-heading">Profil</h3>
         <div id="profile-title-actions">
@@ -24,15 +27,15 @@
     <div id="profile-info">
         <div>
             <label for="profile-info-name">Name</label>
-            <span id="profile-info-name" class="profile-info-edit_field">John Doe</span>
+            <span id="profile-info-name" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getSName()?></span>
         </div>
         <div>
             <label for="profile-info-alias">Alias</label>
-            <span id="profile-info-alias" class="profile-info-edit_field">Johnny</span>
+            <span id="profile-info-alias" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getSUsername()?></span>
         </div>
         <div>
             <label for="profile-info-since">Dabei seit</label>
-            <span id="profile-info-since" class="profile-info-edit_field">März diesen Jahres</span>
+            <span id="profile-info-since" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getDJoinedSince()?></span>
         </div>
         <div id="profile-info-more_button">
             <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
