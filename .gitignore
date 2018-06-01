@@ -6,8 +6,8 @@
 ### IntelliJ
 
 # .idea directory
-.idea/
-!.idea/vcs.xml
+.idea/*
+!.idea/runConfigurations/
 
 # Project settings
 *.iml
