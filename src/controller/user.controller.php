@@ -6,10 +6,10 @@
  * Time: 14:23
  */
 require_once('db.controller.php');
-require_once('../model/user.php');
+require_once(__DIR__ . '/../model/user.php');
+require_once(__DIR__ . '/../common/session_vars.php');
 
-function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL, $name)
-{
+function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL, $name) {
     $connection = DbController::instance();
     //$result = $connection->query("SELECT username FROM user;");
     /*if ($result.mysqli_fetch_field() === $user)*/
@@ -28,7 +28,7 @@ function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg 
     $joinedSince = date("Y-m-d");
 
     if (!($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
-        $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
+        $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
         header("refresh:3;url=../view/html/login.php");
     } else {
         echo 'Username bereits vorhanden!';
@@ -36,20 +36,18 @@ function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg 
     }
 }
 
-function loginUser($user, $pw)
-{
+function loginUser($username, $pw) {
     $connection = DbController::instance();
 
-    if (password_verify($pw, ((($connection->query("SELECT password FROM USER WHERE username='$user'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
+    if (password_verify($pw, ((($connection->query("SELECT password FROM USER WHERE username='$username'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
         echo 'Login erfolgreich!';
         session_start();
-        $_SESSION["userObject"] = new user($user);
+        $_SESSION[SESSION_USERNAME] = $username;
         header("refresh:3;url=../view/html/main.php");
     } else {
         echo 'Passwort ist falsch!';
         header("refresh:3;url=../view/html/login.php");
     }
-
     /*
      $result = $connection->query("SELECT password FROM user WHERE username='$user'");
      $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -61,9 +59,7 @@ function loginUser($user, $pw)
      }*/
 }
 
-function changePassword($user, $pw)
-{
-
+function changePassword($user, $pw) {
     $connection = DbController::instance();
 
     $pw = password_hash($pw, PASSWORD_DEFAULT);
@@ -74,5 +70,26 @@ function changePassword($user, $pw)
         echo 'Username nicht vorhanden!';
 }
 
+/**
+ * Returns the current logged in user or null if
+ * none is logged in. Be careful!
+ *
+ * @return null|user
+ */
+function getUser() {
 
+    // Caching
+    static $oUser = null;
 
+    if ($oUser !== null) {
+        return $oUser;
+    }
+
+    $sUserName = $_SESSION[SESSION_USERNAME];
+
+    if (empty($sUserName)) {
+        return null;
+    }
+
+    return new user($sUserName);
+}

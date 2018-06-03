@@ -6,110 +6,67 @@
  * Time: 10:20
  */
 
-class user
-{
-    private $_sUsername;
-    private $_sName;
-    private $_sMail;
-    private $_sImage;
-    private $_dJoinedSince;
+require_once __DIR__ . "/../controller/db.controller.php";
+
+class user {
+
+    private $_sUsername = null;
+    private $_sMail = null;
+    private $_sImage = null;
+    private $_dJoinedSince = null;
 
     /**
      * user constructor.
      * @param $_sUsername
      */
-    public function __construct($_sUsername)
-    {
+    public function __construct($_sUsername = null) {
         $this->_sUsername = $_sUsername;
-        $connection = DbController::instance();
 
-        $this->_sName = ((($connection->query("SELECT name FROM USER WHERE username='$_sUsername'"))->fetch_array(MYSQLI_ASSOC))['name']);
-        $this->_sMail = ((($connection->query("SELECT email FROM USER WHERE username='$_sUsername'"))->fetch_array(MYSQLI_ASSOC))['email']);
-        $this->_sImage = ((($connection->query("SELECT profileImage FROM USER WHERE username='$_sUsername'"))->fetch_array(MYSQLI_ASSOC))['profileImage']);
-        $this->_dJoinedSince = ((($connection->query("SELECT joinedSince FROM USER WHERE username='$_sUsername'"))->fetch_array(MYSQLI_ASSOC))['joinedSince']);
+        $oConnection = DbController::instance();
+
+        if (!empty($_sUsername)) {
+
+            $aRow = $oConnection->query("
+                SELECT email, profileImage, joinedSince
+                FROM USER
+                WHERE username = '$_sUsername'
+            ")->fetch_array(MYSQLI_ASSOC);
+
+            $this->_sMail = $aRow["email"];
+            $this->_sImage = $aRow["profileImage"];
+            $this->_dJoinedSince = $aRow["joinedSince"];
+        }
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSUsername()
-    {
+    public function getSUsername(): string {
         return $this->_sUsername;
     }
 
-    /**
-     * @param mixed $sUsername
-     */
-    public function setSUsername($sUsername): void
-    {
+    public function setSUsername($sUsername): void {
         $this->_sUsername = $sUsername;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSName()
-    {
-        return $this->_sName;
-    }
-
-    /**
-     * @param mixed $sName
-     */
-    public function setSName($sName): void
-    {
-        $this->_sName = $sName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSMail()
-    {
+    public function getSMail(): string {
         return $this->_sMail;
     }
 
-    /**
-     * @param mixed $sMail
-     */
-    public function setSMail($sMail): void
-    {
+    public function setSMail($sMail): void {
         $this->_sMail = $sMail;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSImage()
-    {
+    public function getSImage(): string {
         return $this->_sImage;
     }
 
-    /**
-     * @param mixed $sImage
-     */
-    public function setSImage($sImage): void
-    {
+    public function setSImage($sImage): void {
         $this->_sImage = $sImage;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDJoinedSince()
-    {
+    public function getDJoinedSince(): string {
         return $this->_dJoinedSince;
     }
 
-    /**
-     * @param mixed $dJoinedSince
-     */
-    public function setDJoinedSince($dJoinedSince): void
-    {
+    public function setDJoinedSince($dJoinedSince): void {
         $this->_dJoinedSince = $dJoinedSince;
     }
 }
-
-
-
-

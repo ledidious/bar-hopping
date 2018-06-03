@@ -25,12 +25,11 @@
 }
 
 #profile-image {
-    background: url("/img/google.png") no-repeat; /* TODO: error image not found */
-    background-size: auto;
-    width: 100%;
-    height: 100px;
-
+    display: block;
+    margin: auto;
     margin-top: 35px;
+    height: 100px;
+    text-align: center;
 }
 
 #profile-info div {

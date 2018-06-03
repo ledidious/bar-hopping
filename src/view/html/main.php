@@ -6,13 +6,9 @@
 
         <!-- Header -->
         <?php
-            $sPageName = basename(__FILE__, ".php");
-            require_once "header.php";
-            require_once "../../model/user.php";
-            session_start();
-
-            //echo $_SESSION["userObject"]->getSName();
-            //var_dump($_SESSION["userObject"]);
+        $sPageName = basename(__FILE__, ".php");
+        require_once "header.php";
+        session_start();
         ?>
     </head>
 

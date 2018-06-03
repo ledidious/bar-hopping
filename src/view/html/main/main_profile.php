@@ -1,7 +1,10 @@
 <html>
-<?php
-    require_once("../../model/user.php");
-?>
+    <?php
+    require_once(__DIR__ . "/../../../model/user.php");
+    require_once(__DIR__ . "/../../../controller/user.controller.php");
+
+    $oUser = getUser();
+    ?>
     <div id="profile-title">
         <h3 id="profile-title-heading">Profil</h3>
         <div id="profile-title-actions">
@@ -22,20 +25,27 @@
             <i id="profile-bar-edit-icon" class="material-icons button-edit">edit</i>
         </button>
     </div>
-    <div id="profile-image"></div>
+    <!-- Retrieve avatar image -->
+    <?php
+    $sImagePath = "/img/avatars/{$oUser->getSImage()}";
+    if (!file_exists(__DIR__ . "/../../../../" . $sImagePath)) {
+        $sImagePath = "/img/avatars/avatar.png";
+    }
+    ?>
+    <img id="profile-image" src="<?php echo $sImagePath ?>">
     <hr>
     <div id="profile-info">
         <div>
             <label for="profile-info-name">Name</label>
-            <span id="profile-info-name" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getSName()?></span>
+            <span id="profile-info-name" class="profile-info-edit_field"><?php echo $oUser->getSUsername() ?></span>
         </div>
         <div>
             <label for="profile-info-alias">Alias</label>
-            <span id="profile-info-alias" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getSUsername()?></span>
+            <span id="profile-info-alias" class="profile-info-edit_field"><?php echo $oUser->getSUsername() ?></span>
         </div>
         <div>
             <label for="profile-info-since">Dabei seit</label>
-            <span id="profile-info-since" class="profile-info-edit_field"><?=$_SESSION["userObject"]->getDJoinedSince()?></span>
+            <span id="profile-info-since" class="profile-info-edit_field"><?php echo $oUser->getDJoinedSince() ?></span>
         </div>
         <div id="profile-info-more_button">
             <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
@@ -60,7 +70,8 @@
                             </div>
                             <div>
                                 <label for="change_pwd-password_repeat">Passwort wiederholen</label>
-                                <input id="change_pwd-password_repeat" name="password_repeat" type="text" placeholder="Passwort wiederholen">
+                                <input id="change_pwd-password_repeat" name="password_repeat" type="text"
+                                       placeholder="Passwort wiederholen">
                             </div>
                             <div>
                                 <input id="change_pwd-submit" type="submit">
