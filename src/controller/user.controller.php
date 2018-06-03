@@ -78,6 +78,9 @@ function changePassword($user, $pw) {
  */
 function getUser() {
 
+    // When not happened until now, start session here
+    session_start();
+
     // Caching
     static $oUser = null;
 

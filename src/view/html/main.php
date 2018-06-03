@@ -6,9 +6,10 @@
 
         <!-- Header -->
         <?php
+        session_start();
+
         $sPageName = basename(__FILE__, ".php");
         require_once "header.php";
-        session_start();
         ?>
     </head>
 

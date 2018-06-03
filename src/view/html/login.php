@@ -7,6 +7,9 @@
 
     <!-- Header -->
     <?php
+    require_once __DIR__ . "/../../controller/session.controller.php";
+    allowWithoutSession();
+
     $sPageName = basename(__FILE__, ".php");
     require_once "header.php"
     ?>
