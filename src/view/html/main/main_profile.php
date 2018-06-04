@@ -14,17 +14,6 @@
         </div>
     </div>
     <hr>
-    <div id="profile-bar">
-        <button id="profile-bar-restore" hidden>
-            <i id="profile-bar-restore-icon" class="material-icons">restore</i>
-        </button>
-        <button id="profile-bar-save" hidden>
-            <i id="profile-bar-save-icon" class="material-icons">save</i>
-        </button>
-        <button id="profile-bar-edit">
-            <i id="profile-bar-edit-icon" class="material-icons button-edit">edit</i>
-        </button>
-    </div>
     <!-- Retrieve avatar image -->
     <?php
     $sImagePath = "/img/avatars/{$oUser->getSImage()}";
@@ -32,7 +21,23 @@
         $sImagePath = "/img/avatars/avatar.png";
     }
     ?>
+    <button id="profile-image_edit" class="button-edit">
+        <i class="material-icons">edit</i>
+    </button>
     <img id="profile-image" src="<?php echo $sImagePath ?>">
+    <hr>
+    <div id="profile-info_actions">
+        <h4 id="profile-info_actions-heading">Profilinformationen</h4>
+        <button id="profile-info_actions-restore" hidden>
+            <i id="profile-info_actions-restore-icon" class="material-icons">restore</i>
+        </button>
+        <button id="profile-info_actions-save" hidden>
+            <i id="profile-info_actions-save-icon" class="material-icons">save</i>
+        </button>
+        <button id="profile-info_actions-edit">
+            <i id="profile-info_actions-edit-icon" class="material-icons button-edit">edit</i>
+        </button>
+    </div>
     <hr>
     <div id="profile-info">
         <div>
@@ -47,37 +52,28 @@
             <label for="profile-info-since">Dabei seit</label>
             <span id="profile-info-since" class="profile-info-edit_field"><?php echo $oUser->getDJoinedSince() ?></span>
         </div>
-        <div id="profile-info-more_button">
-            <span id="profile-info-more_button-span" class="expand-button" bh-expandable="profile-info-more"
-                  bh-collapsed>Mehr anzeigen</span>
-        </div>
-        <div id="profile-info-more">
-            <div>
-                <label for="profile-info-more-...">Weit. Infos</label>
-                <span id="profile-info-more-..." class="profile-info-edit_field">Bla bla</span>
-            </div>
-            <div>
-                <a id="profile-info-more-change_pwd-link">Passwort ändern</a>
+        <div>
+            <label>Passwort</label>
+            <span id="profile-info-password">Ändern</span>
 
-                <!-- popup window to chose tour-->
-                <div id="profile-info-more-change_pwd-popup" class="popup-window">
-                    <div class="popup-window-content">
-                        <h1>Passwort ändern</h1>
-                        <form id="profile-info-more-change_pwd-popup-form" method="get" name="change_pwd">
-                            <div>
-                                <label for="change_pwd-password">Passwort</label>
-                                <input id="change_pwd-password" name="password" type="text" placeholder="Passwort">
-                            </div>
-                            <div>
-                                <label for="change_pwd-password_repeat">Passwort wiederholen</label>
-                                <input id="change_pwd-password_repeat" name="password_repeat" type="text"
-                                       placeholder="Passwort wiederholen">
-                            </div>
-                            <div>
-                                <input id="change_pwd-submit" type="submit">
-                            </div>
-                        </form>
-                    </div>
+            <!-- popup window to chose tour-->
+            <div id="profile-info-change_pwd-popup" class="popup-window">
+                <div class="popup-window-content">
+                    <h1>Passwort ändern</h1>
+                    <form id="profile-info-change_pwd-popup-form" method="get" name="change_pwd">
+                        <div>
+                            <label for="change_pwd-password">Passwort</label>
+                            <input id="change_pwd-password" name="password" type="text" placeholder="Passwort">
+                        </div>
+                        <div>
+                            <label for="change_pwd-password_repeat">Passwort wiederholen</label>
+                            <input id="change_pwd-password_repeat" name="password_repeat" type="text"
+                                   placeholder="Passwort wiederholen">
+                        </div>
+                        <div>
+                            <input id="change_pwd-submit" type="submit">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

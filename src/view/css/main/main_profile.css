@@ -11,16 +11,26 @@
     height: 6vh;
 }
 
+#profile-image_edit {
+    float: right;
+}
+
 #profile-title-actions {
     float: right;
     margin-top: 1vh;
 }
 
-#profile-bar {
-    height: 5px;
+#profile-info_actions {
+    height: 4.5vh;
+    overflow: auto;
 }
 
-#profile-bar-edit-icon {
+#profile-info_actions-heading {
+    float: left;
+    margin-bottom: 0vh;
+}
+
+#profile-info_actions-edit-icon {
     font-size: 20px;
 }
 
@@ -30,6 +40,10 @@
     margin-top: 35px;
     height: 100px;
     text-align: center;
+}
+
+#profile-info {
+    margin-bottom: 3vh;
 }
 
 #profile-info div {
@@ -58,33 +72,33 @@
     clear: left;
 }
 
-#profile-bar > button {
+#profile-info_actions > button {
     float: right;
     margin: 2px;
 }
 
-#profile-info-more-change_pwd-popup-form {
+#profile-info-change_pwd-popup-form {
     height: 11vh;
 }
 
-#profile-info-more-change_pwd-popup-form div {
+#profile-info-change_pwd-popup-form div {
     clear: both;
     margin: 1vh;
 }
 
-#profile-info-more-change_pwd-popup-form div label {
+#profile-info-change_pwd-popup-form div label {
     float: left;
 }
 
-#profile-info-more-change_pwd-popup-form div input {
+#profile-info-change_pwd-popup-form div input {
     float: right;
 }
 
-#profile-info-more-change_pwd-link {
+#profile-info-password {
     color: blue;
 }
 
-#profile-info-more-change_pwd-link:hover {
+#profile-info-password:hover {
     text-decoration: underline;
     cursor: pointer;
 }

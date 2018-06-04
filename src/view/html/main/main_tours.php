@@ -69,8 +69,10 @@
                 </div>
             </div>
         </div>
-        <hr>
-        <div id="tours-list-no_more">
+
+        <!-- todo only show if no tours present yet -->
+        <div id="tours-list-no_more" hidden>
+            <hr>
             Keine weiteren Touren gefunden ...<br>
             <a href="#">Du kannst aber weitere anlegen.</a>
         </div>
@@ -116,6 +118,5 @@
             <ul id="">
             </ul>
         </div>
-
     </div>
 </html>

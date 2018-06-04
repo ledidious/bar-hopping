@@ -38,14 +38,14 @@ $(".sidebar-item")
     );
 
 // Switching between read and edit mode
-$("#profile-bar-edit").click(
+$("#profile-info_actions-edit").click(
     /**
      * @param {Event} event
      */
     function (event) {
         $(this).hide();
-        $("#profile-bar-restore").show();
-        $("#profile-bar-save").show();
+        $("#profile-info_actions-restore").show();
+        $("#profile-info_actions-save").show();
 
         $(".profile-info-edit_field").each(function (indexInArray, object) {
             let span = $(object);
@@ -64,14 +64,14 @@ $("#profile-bar-edit").click(
     }
 );
 
-$("#profile-bar-restore").click(
+$("#profile-info_actions-restore").click(
     /**
      * @param {Event} event
      */
     function (event) {
-        $("#profile-bar-edit").show();
-        $("#profile-bar-restore").hide();
-        $("#profile-bar-save").hide();
+        $("#profile-info_actions-edit").show();
+        $("#profile-info_actions-restore").hide();
+        $("#profile-info_actions-save").hide();
 
         $(".profile-info-edit_field").each(function (indexInArray, object) {
             let input = $(object);
@@ -88,7 +88,7 @@ $("#profile-bar-restore").click(
     }
 );
 
-$("#profile-bar-save").click(
+$("#profile-info_actions-save").click(
     /**
      * @param {Event} event
      */
@@ -130,7 +130,7 @@ $("#button-add-pic").change(() => {
 // stuff for the tour popup window
 // ==================================================
 let tour_popupWindow = $("#tour-popup-window");
-let changePwdPopup = $("#profile-info-more-change_pwd-popup");
+let changePwdPopup = $("#profile-info-change_pwd-popup");
 
 $("#tours-title-actions-add").click(() => {
     tour_popupWindow.fadeIn();
@@ -161,7 +161,7 @@ $(window).click(_event => {
 /*
  * Change password
  */
-$("#profile-info-more-change_pwd-link").click(
+$("#profile-info-password").click(
     function (event) {
         changePwdPopup.fadeIn();
     }
@@ -175,7 +175,7 @@ $("#change_pwd-submit").click(
         // Do not submit form synchronous
         event.preventDefault();
 
-        $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-more-change_pwd-popup-form").serialize());
+        $.post(/* Url to enter */ "/src/view/html/main.php", $("#profile-info-change_pwd-popup-form").serialize());
     }
 );
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <?php
+error_reporting(E_ALL);
+
 require_once __DIR__ . "/../../controller/session.controller.php";
 require_once __DIR__ . "/../../controller/user.controller.php";
 require_once __DIR__ . "/../../controller/header.controller.php";
