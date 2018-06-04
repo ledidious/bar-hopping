@@ -6,16 +6,21 @@
  * Time: 14:47
  */
 require_once('../controller/user.controller.php');
+require_once('../controller/header.controller.php');
 
 //var_dump($_POST);
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (basename($_SERVER['HTTP_REFERER']) == 'register.php')
         addUser($_POST["username"], $_POST["password"], $_POST["mail"], 'neutral', '9999-12-30', 'avatar.png', $_POST["name"]);
     else if (basename($_SERVER['HTTP_REFERER']) == 'login.php')
         loginUser($_POST["username"], $_POST["password"]);
-    else if (basename($_SERVER['HTTP_REFERER']) == 'reset_password.php'){
-        changePassword($_POST["username"], $_POST["password"]); header("refresh:3;url=../view/html/login.php");}
-    else if (basename($_SERVER['HTTP_REFERER']) == 'main.php'){
-        if ($_POST["password"] === $_POST["password_repeat"])
-            changePassword($_POST["username"], $_POST["password"]); header("refresh:3;url=../view/html/main.php");
+    else if (basename($_SERVER['HTTP_REFERER']) == 'reset_password.php') {
+        changePassword($_POST["username"], $_POST["password"]);
+        sendHeader("refresh:3;url=../view/html/login.php");
+    } else if (basename($_SERVER['HTTP_REFERER']) == 'main.php') {
+        if ($_POST["password"] === $_POST["password_repeat"]) {
+            changePassword($_POST["username"], $_POST["password"]);
+            sendHeader("refresh:3;url=../view/html/main.php");
+        }
     }
+}

@@ -1,19 +1,20 @@
 <?php
 
-// Datei einfach kopieren, um Test für andere PHP-Datei anzulegen
-
-use PHPUnit\Framework\TestCase;
-
+require_once __DIR__ . "/AbstractDbTest.php";
 require_once __DIR__ . "/../controller/user.controller.php";
+require_once __DIR__ . "/../controller/db.controller.php";
 
-final class UserTest extends TestCase {
+class UserTest extends AbstractDbTest {
 
+    // Fertiger test
     public function testAddUser() {
-        addUser("username", "password", "email", "2018-07-01");
+        addUser("Hans", "password", "email", "2018-07-01", "m", "2018-01-01", "avatar.png");
 
-        // Datenbankabfrage ob Benutzer existiert. Am besten gucken, wie das in user.controlller.php gemacht wurde.
+        $oController = DbController::instance();
+        $oMysqliResult = $oController->query("select * from USER where username = 'Hans'");
+        $aRow = $oMysqliResult->fetch_array(MYSQLI_ASSOC);
 
-        // $this->assertEquals(<expected>, <actual>);
+        $this->assertEquals("Hans", $aRow["username"]);
     }
 
     public function testAddUser_usernameNotSet() {
@@ -23,6 +24,4 @@ final class UserTest extends TestCase {
     public function testLoginUser() {
         // Login mit userLogin() testen
     }
-
-    // Weitere Tests ...
 }

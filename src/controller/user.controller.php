@@ -8,6 +8,7 @@
 require_once('db.controller.php');
 require_once(__DIR__ . '/../model/user.php');
 require_once(__DIR__ . '/../common/session_vars.php');
+require_once(__DIR__ . '/../controller/header.controller.php');
 
 function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL, $name) {
     $connection = DbController::instance();
@@ -29,10 +30,10 @@ function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg 
 
     if (!($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
         $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
-        header("refresh:3;url=../view/html/login.php");
+        sendHeader("refresh:3;url=../view/html/login.php");
     } else {
         echo 'Username bereits vorhanden!';
-        header("refresh:3;url=../view/html/register.php");
+        sendHeader("refresh:3;url=../view/html/register.php");
     }
 }
 
@@ -43,10 +44,10 @@ function loginUser($username, $pw) {
         echo 'Login erfolgreich!';
         session_start();
         $_SESSION[SESSION_USERNAME] = $username;
-        header("refresh:3;url=../view/html/main.php");
+        sendHeader("refresh:3;url=../view/html/main.php");
     } else {
         echo 'Passwort ist falsch!';
-        header("refresh:3;url=../view/html/login.php");
+        sendHeader("refresh:3;url=../view/html/login.php");
     }
     /*
      $result = $connection->query("SELECT password FROM user WHERE username='$user'");

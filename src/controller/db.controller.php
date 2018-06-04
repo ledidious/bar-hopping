@@ -11,9 +11,16 @@ class DbController {
     private $_sUsername = DB_USERNAME;
     private $_sPassword = DB_PASSWORD;
 
+    /**
+     * @var mysqli
+     */
     private $_oConnection;
 
     public function __construct() {
+        $this->_connect();
+    }
+
+    private function _connect() {
         $this->_oConnection = new mysqli($this->_sServerName, $this->_sUsername, $this->_sPassword, $this->_sDbName);
 
         if ($this->_oConnection->connect_error) {
@@ -21,7 +28,7 @@ class DbController {
         }
     }
 
-    public function execute($sSql){
+    public function execute($sSql) {
         if (!($stmt = $this->_oConnection->prepare($sSql))) { //Erzeuge mysql-Object und prüfe ob Syntax korrekt ist
             echo "Prepare failed: (" . $this->_oConnection->errno . ") " . $this->_oConnection->error;
         }
@@ -32,7 +39,6 @@ class DbController {
     }
 
     public static function instance() {
-
         if (self::$_INSTANCE == null) {
             self::$_INSTANCE = new DbController();
         }
@@ -43,6 +49,17 @@ class DbController {
     public function query($sSql) {
         return $this->_oConnection->query($sSql);
     }
-}
 
-//var_dump(DbController::instance()->query("select * from TOUR"));
+    // Setters (only for testing purposes)
+    // ====================================
+
+    public function setSDbName($sDbName): void {
+        $this->_sDbName = $sDbName;
+        $this->_connect();
+    }
+
+    public function getOConnection(): mysqli {
+        return $this->_oConnection;
+    }
+
+}

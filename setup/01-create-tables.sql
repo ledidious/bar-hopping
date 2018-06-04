@@ -1,3 +1,9 @@
+-- HOW TO EXECUTE WITH INTELLIJ
+-- Right click on this file in file tree. Then select "Run" and select
+-- the database (schema) on which you want to execute this migration script.
+-- To see the databases, you need to configure the data sources in IntelliJ
+-- in right sidebar "Databases".
+
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
 -- Server Version:               10.1.31-MariaDB - mariadb.org binary distribution
@@ -10,11 +16,6 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-
--- Exportiere Datenbank Struktur für bar-hopping
-CREATE DATABASE IF NOT EXISTS `bar-hopping` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
-USE `bar-hopping`;
 
 -- Exportiere Struktur von Tabelle bar-hopping.MARKER
 CREATE TABLE IF NOT EXISTS `MARKER` (

@@ -3,9 +3,10 @@
 <?php
 require_once __DIR__ . "/../../controller/session.controller.php";
 require_once __DIR__ . "/../../controller/user.controller.php";
+require_once __DIR__ . "/../../controller/header.controller.php";
 
 if (isSessionNeeded() && getUser() === null) {
-    header("Location: /src/view/html/login.php");
+    sendHeader("Location: /src/view/html/login.php");
     die();
 }
 ?>
