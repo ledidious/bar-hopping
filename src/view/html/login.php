@@ -45,8 +45,7 @@
     </p>
         </form>
     <br>
-    Du hast dein Passwort vergessen? Dann klicke <a href="reset_password.php"> hier</a>.<br>
-    Du willst dich neu <a href="register.php">registrieren</a>?
+    Du hast dein Passwort vergessen? Dann klicke <a href="reset_password.php"> hier</a>.
 </fieldset>
 
 <!-- Footer -->
