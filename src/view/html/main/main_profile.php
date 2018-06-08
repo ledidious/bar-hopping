@@ -8,7 +8,7 @@
     <div id="profile-title">
         <h3 id="profile-title-heading">Profil</h3>
         <div id="profile-title-actions">
-            <button id="profile-title-actions-close_button" class="panel-closer">
+            <button id="profile-title-actions-close_button" class="panel-closer button-close">
                 <i id="profile-title-actions-close_button-icon" class="material-icons title-buttons-icons">close</i>
             </button>
         </div>
@@ -26,15 +26,15 @@
     </button>
     <img id="profile-image" src="<?php echo $sImagePath ?>">
     <hr>
+    <h4 id="profile-info_actions-heading">Profil-Informationen</h4>
     <div id="profile-info_actions">
-        <h4 id="profile-info_actions-heading">Profilinformationen</h4>
         <button id="profile-info_actions-restore" hidden>
             <i id="profile-info_actions-restore-icon" class="material-icons">restore</i>
         </button>
         <button id="profile-info_actions-save" hidden>
             <i id="profile-info_actions-save-icon" class="material-icons">save</i>
         </button>
-        <button id="profile-info_actions-edit">
+        <button id="profile-info_actions-edit" class="button-edit">
             <i id="profile-info_actions-edit-icon" class="material-icons button-edit">edit</i>
         </button>
     </div>

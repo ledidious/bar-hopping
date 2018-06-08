@@ -18,7 +18,7 @@
             <button id="tours-title-actions-add" class="button-add">
                 <i id="tours-title-actions-add-icon" class="title-buttons-icons">+</i>
             </button>
-            <button id="tours-title-actions-close" class="panel-closer">
+            <button id="tours-title-actions-close" class="panel-closer button-close">
                 <i id="tours-title-actions-close-icon" class="material-icons title-buttons-icons">close</i>
             </button>
         </div>
@@ -109,8 +109,8 @@
                                 <button class="button-edit" onclick="onEditTour($(this))">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                                    <i class="material-icons">ok</i>
+                                <button class="button-save hide" onclick="onEditAcceptTour($(this))">
+                                    <i class="material-icons">save</i>
                                 </button>
                                 <button class="button-close hide" onclick="onEditDenyTour($(this))">
                                     <i class="material-icons">close</i>
@@ -186,8 +186,8 @@
                 <button class="button-edit" onclick="onEditTour($(this))">
                     <i class="material-icons">edit</i>
                 </button>
-                <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                    <i class="material-icons">ok</i>
+                <button class="button-save hide" onclick="onEditAcceptTour($(this))">
+                    <i class="material-icons">save</i>
                 </button>
                 <button class="button-close hide" onclick="onEditDenyTour($(this))">
                     <i class="material-icons">close</i>

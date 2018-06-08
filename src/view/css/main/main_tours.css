@@ -4,8 +4,9 @@
 }
 
 #tours-title-actions {
-    margin-top: 1vh;
+    margin-top: 10px;
     float: right;
+    margin-right: 9px;
 }
 
 #tours-title-actions-close {
@@ -14,10 +15,12 @@
 
 .tour-actions {
     float: right;
+    margin-top: -4px;
+    margin-right: 5px;
 }
 
 #tours-title {
-    height: 6vh;
+    height: 60px;
 }
 
 #tours-list {
@@ -26,36 +29,36 @@
 }
 
 .tour-heading {
-    height: 4vh;
+    height: 24px;
 }
 
 .tour-group {
-    margin-left: 1vh;
-    padding: 1vh;
+    padding: 10px;
     background-color: #dcd9e25c;
+    margin-bottom: 5px;
 }
 
 .tour-bar {
-    margin-left: 1vh;
-    padding: 1vh;
-    padding-left: 2vh;
+    margin-left: 1px;
+    padding: 10px;
     background-color: #dcd9e25c;
 }
 
 .tour-bar-content {
     overflow: auto;
+    padding-left: 10px;
 }
 
 .tour-bar-description {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 60%;
     float: left;
 }
 
 .tour-bar-image {
     width: 30%;
-    height: 10vh;
+    height: 10px;
     background-size: auto;
     float: right;
 }
