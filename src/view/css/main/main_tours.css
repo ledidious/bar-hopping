@@ -42,32 +42,20 @@
     background-color: #dcd9e25c;
 }
 
-.tour-bar-description {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-}
-
-.tour-bar-image {
-    width: 100%;
-    height: 10vh;
-    background-size: auto;
-}
-
-.tour-bar-comments textarea {
-    width: 100%;
-    margin-bottom: 0.2vh;
-}
-
-.tour-bar-comments-new {
+.tour-bar-content {
     overflow: auto;
 }
 
-.tour-bar-comments-new textarea {
+.tour-bar-description {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 60%;
     float: left;
-    width: 80% !important;
-    height: 100%;
 }
 
-.tour-bar-comments-new button {
+.tour-bar-image {
+    width: 30%;
+    height: 10vh;
+    background-size: auto;
     float: right;
 }

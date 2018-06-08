@@ -133,27 +133,12 @@
                                     </span>
                                     <hr>
                                     <div class="tour-bar-content" id="<?php echo $sMarkerHtmlId ?>-content">
-                                        <div class="tour-bar-image"></div>
                                         <div class="tour-bar-description">
                                             <!-- todo insert marker description -->
                                             Diese tolle Kneipe überzeugt mit großartigem Bier und
                                             ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
                                         </div>
-                                    </div>
-                                    <div id="<?php echo $sMarkerHtmlId ?>-comments">
-                                        <label for="<?php echo $sMarkerHtmlId ?>-001">Henning123</label>
-                                        <textarea id="<?php echo $sMarkerHtmlId ?>-new_comment" readonly>Das ist ein schon bestehender Kommentar.</textarea>
-                                        <hr>
-                                        <div class="tour-bar-comments-new">
-                                            <form name="addComment" method="post">
-                                                <input type="hidden" value>
-                                                <!-- todo enter tour id to associate with comment -->
-                                                <textarea name="comment"></textarea>
-                                                <button class="button-add tours-comment-new-submit">
-                                                    <i class="">+</i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <div class="tour-bar-image"></div>
                                     </div>
                                 </div>
                             <?php } ?>
