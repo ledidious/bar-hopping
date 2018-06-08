@@ -21,6 +21,10 @@ hr, div[float = "none"] {
     /* Marker class */
 }
 
+.expand-icon {
+    cursor: pointer;
+}
+
 .expand-icon-expanded {
     transform: rotate(0deg);
     transition: 0.5s;
