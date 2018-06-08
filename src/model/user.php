@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . "/../controller/db.controller.php";
+require_once __DIR__ . "/tour.php";
 
 class user {
 
@@ -36,6 +37,21 @@ class user {
             $this->_sImage = $aRow["profileImage"];
             $this->_dJoinedSince = $aRow["joinedSince"];
         }
+    }
+
+    // todo dummy data, please fill with real data
+    /**
+     * @return tour[]
+     */
+    public function getATours() {
+        return array(
+            new tour(new DateTime("2017-01-01")),
+            new tour(new DateTime("2017-05-01")),
+            new tour(new DateTime("2017-05-02")),
+            new tour(new DateTime("2018-01-01")),
+            new tour(new DateTime("2019-01-01")),
+            new tour(new DateTime("2019-01-01")),
+        );
     }
 
     public function getSUsername(): string {

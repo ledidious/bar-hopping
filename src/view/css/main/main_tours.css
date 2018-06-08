@@ -20,6 +20,11 @@
     height: 6vh;
 }
 
+#tours-list {
+    height: 90%;
+    overflow: auto;
+}
+
 .tour-heading {
     height: 4vh;
 }
@@ -39,38 +44,30 @@
 
 .tour-bar-description {
     margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 .tour-bar-image {
     width: 100%;
     height: 10vh;
-}
-
-#tours-list-group_1-tour_1-bars_1-content-image {
-    background: url("../../../../img/bar.jpeg") no-repeat;
     background-size: auto;
 }
 
-#tours-list-group_1-tour_2-bars_1-content {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-}
-
-#tours-list-group_1-tour_2-bars_1-comments textarea {
+.tour-bar-comments textarea {
     width: 100%;
     margin-bottom: 0.2vh;
 }
 
-.tours-comment-new {
+.tour-bar-comments-new {
     overflow: auto;
 }
 
-.tours-comment-new textarea {
+.tour-bar-comments-new textarea {
     float: left;
     width: 80% !important;
     height: 100%;
 }
 
-.tours-comment-new button {
+.tour-bar-comments-new button {
     float: right;
 }
