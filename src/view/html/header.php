@@ -7,9 +7,13 @@ require_once __DIR__ . "/../../controller/session.controller.php";
 require_once __DIR__ . "/../../controller/user.controller.php";
 require_once __DIR__ . "/../../controller/header.controller.php";
 
-if (isSessionNeeded() && getUser() === null) {
-    sendHeader("Location: /src/view/html/login.php");
-    die();
+if (isSessionNeeded()) {
+    session_start();
+
+    if (getUser() === null) {
+        sendHeader("Location: /src/view/html/login.php");
+        die();
+    }
 }
 ?>
 

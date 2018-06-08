@@ -80,7 +80,9 @@ function changePassword($user, $pw) {
 function getUser() {
 
     // When not happened until now, start session here
-    session_start();
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        return null;
+    }
 
     // Caching
     static $oUser = null;
@@ -95,5 +97,6 @@ function getUser() {
         return null;
     }
 
-    return new user($sUserName);
+    $oUser = new user($sUserName);
+    return $oUser;
 }
