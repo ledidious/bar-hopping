@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . "/../controller/db.controller.php";
+require_once "tour.php";
 
 class user {
 
@@ -14,6 +15,7 @@ class user {
     private $_sMail = null;
     private $_sImage = null;
     private $_dJoinedSince = null;
+    private $_aTours = array();
 
     /**
      * user constructor.
@@ -26,15 +28,32 @@ class user {
 
         if (!empty($_sUsername)) {
 
-            $aRow = $oConnection->query("
+            $aData = $oConnection->query("
                 SELECT email, profileImage, joinedSince
                 FROM USER
                 WHERE username = '$_sUsername'
             ")->fetch_array(MYSQLI_ASSOC);
 
-            $this->_sMail = $aRow["email"];
-            $this->_sImage = $aRow["profileImage"];
-            $this->_dJoinedSince = $aRow["joinedSince"];
+            $this->_sMail = $aData["email"];
+            $this->_sImage = $aData["profileImage"];
+            $this->_dJoinedSince = $aData["joinedSince"];
+
+            $aData = $oConnection->query("
+                SELECT tour.name, tour.rating, tour.imagePath, tour.comment FROM USER
+                LEFT JOIN TOUR ON user.ID = tour.fk_userID
+                WHERE username='hackerman';
+            ");
+
+            $iCounter = 0;
+            foreach ($aData as $zeile) {
+                $this->_aTours[$iCounter] = new tour($zeile['name'],$this->_sUsername,(int)$zeile['rating'],$zeile['imagePath'],$zeile['comment']);
+                $iCounter++;
+            }
+
+            //echo var_dump($this->_aTours);
+           /* for ($c = 0; $c < $_aRow->num_rows; $c++){
+                echo var_dump($_aRow->fetch_array());
+            }*/
         }
     }
 

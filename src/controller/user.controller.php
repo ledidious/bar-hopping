@@ -41,10 +41,9 @@ function loginUser($username, $pw) {
     $connection = DbController::instance();
 
     if (password_verify($pw, ((($connection->query("SELECT password FROM USER WHERE username='$username'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
-        echo 'Login erfolgreich!';
         session_start();
         $_SESSION[SESSION_USERNAME] = $username;
-        sendHeader("refresh:3;url=../view/html/main.php");
+        sendHeader("refresh:0;url=../view/html/main.php");
     } else {
         echo 'Passwort ist falsch!';
         sendHeader("refresh:3;url=../view/html/login.php");
@@ -80,7 +79,7 @@ function changePassword($user, $pw) {
 function getUser() {
 
     // When not happened until now, start session here
-    session_start();
+    //session_start();
 
     // Caching
     static $oUser = null;
