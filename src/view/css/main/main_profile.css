@@ -3,35 +3,31 @@
     float: left;
 }
 
-#profile-title-actions-close_button {
-    margin-right: 5px;
-}
-
 #profile-title {
-    height: 6vh;
+    height: 60px;
 }
 
 #profile-image_edit {
     float: right;
+    margin-right: 15px;
 }
 
 #profile-title-actions {
     float: right;
-    margin-top: 1vh;
+    margin-top: 10px;
+    margin-right: 15px;
 }
 
 #profile-info_actions {
-    height: 4.5vh;
+    height: 45px;
     overflow: auto;
+    margin-right: 14px;
 }
 
 #profile-info_actions-heading {
     float: left;
-    margin-bottom: 0vh;
-}
-
-#profile-info_actions-edit-icon {
-    font-size: 20px;
+    height: 30px;
+    margin-bottom: auto;
 }
 
 #profile-image {
@@ -43,12 +39,13 @@
 }
 
 #profile-info {
-    margin-bottom: 3vh;
+    margin-bottom: 10px;
+    overflow: auto;
 }
 
 #profile-info div {
     clear: left;
-    padding: 0.5vh;
+    padding: 5px;
 }
 
 #profile-info label {
@@ -57,11 +54,7 @@
 
 #profile-info input {
     float: right;
-    width: 15vh;
-}
-
-#profile-info-more {
-    margin-top: 1vh;
+    width: 150px;
 }
 
 #profile-info span {
@@ -78,7 +71,7 @@
 }
 
 #profile-info-change_pwd-popup-form {
-    height: 11vh;
+    height: 110px;
 }
 
 #profile-info-change_pwd-popup-form div {

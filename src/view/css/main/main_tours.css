@@ -4,8 +4,9 @@
 }
 
 #tours-title-actions {
-    margin-top: 1vh;
+    margin-top: 10px;
     float: right;
+    margin-right: 9px;
 }
 
 #tours-title-actions-close {
@@ -14,63 +15,50 @@
 
 .tour-actions {
     float: right;
+    margin-top: -4px;
+    margin-right: 5px;
 }
 
 #tours-title {
-    height: 6vh;
+    height: 60px;
 }
 
-.tour-heading {
-    height: 4vh;
-}
-
-.tour-group {
-    margin-left: 1vh;
-    padding: 1vh;
-    background-color: #dcd9e25c;
-}
-
-.tour-bar {
-    margin-left: 1vh;
-    padding: 1vh;
-    padding-left: 2vh;
-    background-color: #dcd9e25c;
-}
-
-.tour-bar-description {
-    margin-top: 1vh;
-}
-
-.tour-bar-image {
-    width: 100%;
-    height: 10vh;
-}
-
-#tours-list-group_1-tour_1-bars_1-content-image {
-    background: url("../../../../img/bar.jpeg") no-repeat;
-    background-size: auto;
-}
-
-#tours-list-group_1-tour_2-bars_1-content {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-}
-
-#tours-list-group_1-tour_2-bars_1-comments textarea {
-    width: 100%;
-    margin-bottom: 0.2vh;
-}
-
-.tours-comment-new {
+#tours-list {
+    height: 90%;
     overflow: auto;
 }
 
-.tours-comment-new textarea {
-    float: left;
-    width: 80% !important;
-    height: 100%;
+.tour-heading {
+    height: 24px;
 }
 
-.tours-comment-new button {
+.tour-group {
+    padding: 10px;
+    background-color: #dcd9e25c;
+    margin-bottom: 5px;
+}
+
+.tour-bar {
+    margin-left: 1px;
+    padding: 10px;
+    background-color: #dcd9e25c;
+}
+
+.tour-bar-content {
+    overflow: auto;
+    padding-left: 10px;
+}
+
+.tour-bar-description {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
+    float: left;
+}
+
+.tour-bar-image {
+    width: 30%;
+    height: 10px;
+    background-size: auto;
     float: right;
 }

@@ -57,6 +57,13 @@ class user {
         }
     }
 
+    /**
+     * @return tour[]
+     */
+    public function getATours() {
+        return $this->_aTours;
+    }
+
     public function getSUsername(): string {
         return $this->_sUsername;
     }
