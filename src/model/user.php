@@ -39,14 +39,16 @@ class user {
             $this->_dJoinedSince = $aData["joinedSince"];
 
             $aData = $oConnection->query("
-                SELECT tour.name, tour.rating, tour.imagePath, tour.comment FROM USER
-                LEFT JOIN TOUR ON user.ID = tour.fk_userID
-                WHERE username='hackerman';
+                SELECT tour.name, tour.rating, tour.imagePath, tour.comment FROM USER user
+                LEFT JOIN TOUR tour ON user.ID = tour.fk_userID
+                WHERE user.username='$_sUsername';
             ");
 
             $iCounter = 0;
             foreach ($aData as $zeile) {
-                $this->_aTours[$iCounter] = new tour($zeile['name'],$this->_sUsername,(int)$zeile['rating'],$zeile['imagePath'],$zeile['comment']);
+                $oTour = new tour($zeile['name'], $this->_sUsername, (int)$zeile['rating'], $zeile['imagePath'], $zeile['comment']);
+                $oTour->setODate(new DateTime("2018-01-01"));
+                $this->_aTours[$iCounter] = $oTour;
                 $iCounter++;
             }
 

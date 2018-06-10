@@ -28,8 +28,6 @@ class tour {
         $this->_iRating = $iRating;
         $this->_sImagePath = $sImagePath;
         $this->_sComment = $sComment;
-
-        $this->loadMarkers();
     }
 
     public function getSId() {
@@ -37,22 +35,6 @@ class tour {
             $this->_sId = rand(0, 1000);
         }
         return $this->_sId;
-    }
-
-    private function loadMarkers() {
-        $oConnection = DbController::instance();
-
-        $aData = $oConnection->query("
-                SELECT marker.name FROM tour2marker
-                LEFT JOIN marker ON tour2marker.fk_markerID = marker.id
-                WHERE fk_tourID = 1;
-            ");
-
-        foreach ($aData as $aMarkerData) {
-            $this->_aMarkers[] = new marker();
-        }
-
-        echo var_dump($aData);
     }
 
     public function setODate(DateTime $oDateTime) {
@@ -70,6 +52,22 @@ class tour {
      * @return marker[]
      */
     public function getAMarkers() {
+
+        if ($this->_aMarkers === null) {
+            $oConnection = DbController::instance();
+
+            $aData = $oConnection->query("
+                SELECT marker.name FROM TOUR2MARKER tour2marker
+                LEFT JOIN MARKER marker ON tour2marker.fk_markerID = marker.id
+                WHERE fk_tourID = 1;
+            ");
+
+            $this->_aMarkers = array();
+            foreach ($aData as $aMarkerData) {
+                $this->_aMarkers[] = new marker("Kneipe XYZ");
+            }
+        }
+
         return $this->_aMarkers;
     }
 }
