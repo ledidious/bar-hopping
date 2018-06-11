@@ -44,6 +44,20 @@ function onAddImageClicked() {
     $("#button-add-pic").click();
 }
 
+function getInput(val) {
+    let input = $("<input>");
+    input.attr("type", "text");
+    input.val(val);
+    return input;
+}
+
+function getTextArea(string) {
+    let textarea = $("<textarea>");
+    textarea.val(string);
+    textarea.addClass("text-area");
+    return textarea;
+}
+
 /**
  * edit tour values
  * change button and add inputs to edit values
@@ -51,69 +65,101 @@ function onAddImageClicked() {
  */
 function onEditTour(ele) {
     // show edit button and hide other buttons
-    ele.parent().children().toggle();
+    let tourActions = ele.parent().children();
+    tourActions.toggle();
 
-    let tour = $(ele.parent()).parent();
+    // tour div
+    let tourContainer = $(ele.parent()).parent();
 
-    let tourNameEle = tour.children("span"),
-        tourName = tourNameEle.text();
+    // tour stuff
+    let tourNameElement = tourContainer.children("span"),
+        tourName = tourNameElement.text();
+    tourNameElement.hide();
 
-    let tourNameIN = $("<input>");
-    tourNameIN.attr("type", "text");
-    tourNameIN.attr("bh-old-value", tourName);
+    let tourNameInput = getInput(tourName);
+    tourNameElement.before(tourNameInput);
 
-    if (tourName)
-        tourNameIN.val(tourName);
+    //=======================================
+    // marker stuff
+    let barsContainer = $("#" + $(tourContainer.parent()).attr("id") + "-bars"),
+        barsChildren = barsContainer.children();
 
-    tourNameEle.replaceWith(tourNameIN);
-}
+    let barElements = [];
 
-/**
- * change values from tour
- * @param ele edit button
- */
-function onEditAcceptTour(ele) {
-    let tour = ele.parent().parent(),
-        tourEditInput = tour.children("input"),
-        tourEditVal = tourEditInput.val();
+    // create input elements for each bar name and content.
+    // hide the name element (span) and each content element (div...-content)
+    // add new input element for each bar name and content
+    for (const bar of barsChildren) {
+        // barq is the bar as jquery object
+        let barq = $(bar);
 
-    if(!tourEditVal)
-        tourEditVal = tourEditInput.attr("bh-old-value");
+        let barNameElement = barq.children("span"),
+            barName = barNameElement.text();
+        barNameElement.hide();
 
-    tour.children(".tour-actions").children().toggle();
+        let barNameInput = getInput(barName);
+        barNameElement.before(barNameInput);
 
-    restoreDefaultTourDesign(tourEditInput, tourEditVal, tour.attr("id"));
+        let barContentContainer = $("#" + barq.attr("id") + "-content"),
+            barContentElement = barContentContainer.children(".tour-bar-description");
+        barContentElement.hide();
 
-    // TODO implement
-/*    $.ajax({
+        let barContentInput = getTextArea(barContentElement.text());
+        barContentElement.before(barContentInput);
 
-    })*/
-}
+        // object to store bar elements for future use
+        barElements.push({
+            barNameEle: barNameElement,
+            barNameIn: barNameInput,
+            barContentEle: barContentElement,
+            barContentIn: barContentInput,
+        });
+    }
 
-/**
- * dose not change values from tour
- * @param ele tour
- */
-function onEditDenyTour(ele) {
-    let tour = ele.parent().parent(),
-        tourEditInput = tour.children("input"),
-        tourEditVal = tourEditInput.attr("bh-old-value");
+    //========================================
 
-    tour.children(".tour-actions").children().toggle();
+    // tour action buttons
+    let okBtn = tourActions[2],
+        closeBtn = tourActions[3];
 
-    restoreDefaultTourDesign(tourEditInput, tourEditVal, tour.attr("id"));
-}
+    let changeTextTour = function () {
+        if (tourNameInput.val())
+            tourNameElement.text(tourNameInput.val());
+        changeTextBar();
+    };
 
-/**
- * replace input with span
- * @param tourEditInput reference to input node to replace
- * @param tourEditVal value to set for node
- */
-function restoreDefaultTourDesign(tourEditInput, tourEditVal, tourId) {
-    let tourDefaultSpan = $("#tours-list-group-temp").children("span").clone();
+    let changeTextBar = function () {
+        for (const bar of barElements) {
+            if (bar.barNameIn.val()) bar.barNameEle.text(bar.barNameIn.val());
 
-    tourDefaultSpan.attr("id", tourId + "-bars");
-    tourDefaultSpan.attr("bh-expandable", tourId + "-bars");
-    tourDefaultSpan.text(tourEditVal);
-    tourEditInput.replaceWith(tourDefaultSpan);
+            if (bar.barContentIn.val()) bar.barContentEle.text(bar.barContentIn.val());
+        }
+    };
+
+    // display old tour/ bar element and remove input elements
+    let restoreDefault = function () {
+        tourActions.toggle();
+        tourNameInput.remove();
+        tourNameInput = null;
+        tourNameElement.toggle();
+
+        for (const bar of barElements) {
+            bar.barNameEle.show();
+            bar.barContentEle.show();
+            bar.barNameIn.remove();
+            bar.barContentIn.remove();
+        }
+        barElements = null;
+    };
+
+    // unbind present click listener and attach new one
+    $(okBtn).unbind("click");
+    $(okBtn).click(function () {
+        changeTextTour(tourNameInput.val());
+        restoreDefault();
+    });
+    $(closeBtn).unbind("click");
+    $(closeBtn).click(function () {
+        restoreDefault();
+    });
 }

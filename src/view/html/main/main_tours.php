@@ -30,10 +30,10 @@
                         <button class="button-edit" onclick="onEditTour($(this))">
                             <i class="material-icons">edit</i>
                         </button>
-                        <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                            <i class="material-icons">ok</i>
+                        <button class="button-ok hide">
+                            <i class="material-icons">save</i>
                         </button>
-                        <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                        <button class="button-close hide">
                             <i class="material-icons">close</i>
                         </button>
                     </div>
@@ -49,20 +49,6 @@
                             <div class="tour-bar-description">
                                 Diese tolle Kneipe überzeugt mit großartigem Bier und
                                 ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
-                            </div>
-                        </div>
-                        <div id="tours-list-group_1-tour_2-bars_1-comments">
-                            <label for="tours-list-group_1-tour_2-bars_1-001">Henning123</label>
-                            <textarea id="tours-list-group_1-tour_2-bars_1-new_comment" readonly>Das ist ein schon bestehender Kommentar.</textarea>
-                            <hr>
-                            <div class="tours-comment-new">
-                                <form name="addComment" method="post">
-                                    <input type="hidden" value><!-- todo enter tour id to associate with comment -->
-                                    <textarea name="comment"></textarea>
-                                    <button class="button-add tours-comment-new-submit">
-                                        <i class="">+</i>
-                                    </button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -98,6 +84,41 @@
             </div>
         </div>
 
+        <div id="tours-list-group_1-tour_1" class="hide" type="tours-list">
+            <div class="tour-heading">
+                <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
+                <div class="tour-actions">
+                    <button class="button-add" onclick="onAddImageClicked()">
+                        <i class="">+</i>
+                    </button>
+                    <button class="button-edit" onclick="onEditTour($(this))">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button class="button-ok hide">
+                        <i class="material-icons">save</i>
+                    </button>
+                    <button class="button-close hide">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div id="tours-list-group_1-tour_1-bars">
+                <div id="tours-list-group_1-tour_1-bars_1" class="tour-bar">
+                    <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars_1-content">Kneipe
+                        A</span>
+                    <hr>
+                    <div id="tours-list-group_1-tour_1-bars_1-content">
+                        <div id="tours-list-group_1-tour_1-bars_1-content-image" class="tour-bar-image"></div>
+                        <div class="tour-bar-description">
+                            Diese tolle Kneipe überzeugt mit großartigem Bier und
+                            ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Tour-list template -->
         <div id="tours-list-group-temp" class="hide" type="tours-list">
             <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars"></span>
@@ -108,10 +129,10 @@
                 <button class="button-edit" onclick="onEditTour($(this))">
                     <i class="material-icons">edit</i>
                 </button>
-                <button class="button-ok hide" onclick="onEditAcceptTour($(this))">
-                    <i class="material-icons">ok</i>
+                <button class="button-ok hide">
+                    <i class="material-icons">save</i>
                 </button>
-                <button class="button-close hide" onclick="onEditDenyTour($(this))">
+                <button class="button-close hide">
                     <i class="material-icons">close</i>
                 </button>
             </div>
