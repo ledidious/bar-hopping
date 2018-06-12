@@ -101,7 +101,8 @@ function onEditTour(ele) {
         barNameElement.before(barNameInput);
 
         let barContentContainer = $("#" + barq.attr("id") + "-content"),
-            barContentElement = barContentContainer.children(".tour-bar-description");
+            barContentElement = barContentContainer.children(".tour-bar-description"),
+            barImage = barContentContainer.children(".tour-bar-image");
         barContentElement.hide();
 
         let barContentInput = getTextArea(barContentElement.text());
@@ -162,4 +163,14 @@ function onEditTour(ele) {
     $(closeBtn).click(function () {
         restoreDefault();
     });
+
+    $(barImage).unbind("click");
+    $(barImage).click(function () {
+
+    });
+
+}
+
+function changeImage() {
+    // do chnage image stuff
 }

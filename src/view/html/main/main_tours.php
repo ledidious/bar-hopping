@@ -24,7 +24,7 @@
                 <div class="tour-heading">
                     <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                     <div class="tour-actions">
-                        <button class="button-add" onclick="onAddImageClicked()">
+                        <button class="button-add" onclick="onAddBar($(this))">
                             <i class="">+</i>
                         </button>
                         <button class="button-edit" onclick="onEditTour($(this))">
@@ -84,11 +84,12 @@
             </div>
         </div>
 
-        <div id="tours-list-group_1-tour_1" class="hide" type="tours-list">
+        <!-- tour template -->
+        <div id="tours-list-group-temp" class="hide" type="tours-list">
             <div class="tour-heading">
                 <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars">Tour 1</span>
                 <div class="tour-actions">
-                    <button class="button-add" onclick="onAddImageClicked()">
+                    <button class="button-add" onclick="onAddBar($(this))">
                         <i class="">+</i>
                     </button>
                     <button class="button-edit" onclick="onEditTour($(this))">
@@ -103,41 +104,23 @@
                 </div>
             </div>
             <hr>
-            <div id="tours-list-group_1-tour_1-bars">
-                <div id="tours-list-group_1-tour_1-bars_1" class="tour-bar">
-                    <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars_1-content">Kneipe
-                        A</span>
-                    <hr>
-                    <div id="tours-list-group_1-tour_1-bars_1-content">
-                        <div id="tours-list-group_1-tour_1-bars_1-content-image" class="tour-bar-image"></div>
-                        <div class="tour-bar-description">
-                            Diese tolle Kneipe überzeugt mit großartigem Bier und
-                            ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
-                        </div>
-                    </div>
+            <div id="tour-bar-container">
+            </div>
+        </div>
+
+        <!-- bar template -->
+        <div id="bar-container-temp" class="tour-bar hide">
+            <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars_1-content">Kneipe
+                A</span>
+            <hr>
+            <div id="tours-list-group_1-tour_2-bars_1-content">
+                <div id="tours-list-group_1-tour_2-bars_1-content-image" class="tour-bar-image"></div>
+                <div class="tour-bar-description">
+                    Diese tolle Kneipe überzeugt mit großartigem Bier und
+                    ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
                 </div>
             </div>
         </div>
 
-        <!-- Tour-list template -->
-        <div id="tours-list-group-temp" class="hide" type="tours-list">
-            <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars"></span>
-            <div class="tour-actions">
-                <button class="button-add" onclick="onAddImageClicked()">
-                    <i class="button-add-icon">+</i>
-                </button>
-                <button class="button-edit" onclick="onEditTour($(this))">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button class="button-ok hide">
-                    <i class="material-icons">save</i>
-                </button>
-                <button class="button-close hide">
-                    <i class="material-icons">close</i>
-                </button>
-            </div>
-            <ul id="">
-            </ul>
-        </div>
     </div>
 </html>

@@ -5,36 +5,37 @@
 
 function addTour() {
     // set which list to add new tour
-    let parentList = $("#select-tour").val(),
-        amountTours = document.getElementById(parentList).querySelectorAll("[type^=tours-list").length,
+    let parentListId = $("#select-tour").val(),
+        amountTours = document.getElementById(parentListId).querySelectorAll("[type^=tours-list").length,
         tourName = $("#tour-name").val();
 
-    // get template
+    // clone template
     let toursTemp = $("#tours-list-group-temp").clone();
-
     // set values for new tour list
     toursTemp
-        .attr("id", parentList + "-tour_" + ++amountTours)
-        .appendTo("#" + parentList)
+        .attr("id", parentListId + "-tour_" + ++amountTours)
+        .appendTo("#" + parentListId)
         .removeClass("hide")
         .before('<hr>');
 
-    // set child values
-    const barId = parentList + "-tour_" + amountTours + "-bars";
-    let children = toursTemp.children();
-    console.log(children);
+    // set expand behaviour
+    const barId = parentListId + "-tour_" + amountTours + "-bars";
+    let tourHeading = $(toursTemp.children(".tour-heading"));
 
-    children[1].setAttribute("bh-expandable", barId);
-    children[1].innerText = tourName;
+    let tourIEle = tourHeading.children("i");
+    tourIEle.click(() => {
+        onExpanderClicked(tourNameEle, tourIEle);
+    });
 
-    //TODO update toggle event
-    // $($(children[2]).children()[0]).click(function() {onEditTour($(this)); });
-    children[3].setAttribute("id", barId);
+    let tourNameEle = tourHeading.children("span");
+    tourNameEle.attr("bh-expandable", barId);
+    tourNameEle.text(tourName);
+    tourNameEle.click(() => {
+        onExpanderClicked(tourNameEle, tourIEle);
+    });
 
-    // update click event
-    children[0].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
-    children[1].addEventListener("click", () => {onExpanderClicked($(children[1]), $(children[0]));});
-
+    let barContainer = toursTemp.children("#tour-bar-container");
+    $(barContainer).attr("id", barId);
 
     /*    $.ajax({
             method: "POST",
@@ -50,8 +51,91 @@ function addTour() {
 }
 
 // ============================================
+// B A R  S T U F F
 
+let markerBuffer = {};
 
+function onAddBar(ele) {
+    // open upload image dialog
+    if (false) {
+        $("#button-add-pic").click();
+    }
+
+    let barContainer = $(ele.parent()).parent().siblings("div");
+    let barTemp = $("#bar-container-temp").clone(),
+        barAmount = barContainer.children().length;
+    barTemp
+        .attr("id", barContainer.attr("id") + "_" + ++barAmount)
+        .appendTo(barContainer)
+        .removeClass("hide");
+
+    let barIEle = barTemp.children("i");
+    barIEle.click(() => {
+        onExpanderClicked(barNameEle, barIEle);
+    });
+
+    let barNameEle = barTemp.children("span");
+    barNameEle.attr("bh-expandable", barTemp.attr("id") + "-content");
+    // change name of bar
+    barNameEle.text("Ein Name");
+    barNameEle.click(() => {
+        onExpanderClicked(barNameEle, barIEle);
+    });
+
+    let barContentEle = barTemp.children("div"),
+        barImgContainer = barContentEle.children(".tour-bar-image"),
+        barDescription = barContentEle.children(".tour-bar-description");
+
+    barContentEle.attr("id", barTemp.attr("id") + "-content");
+    barImgContainer.attr("id", barTemp.attr("id") + "-content-image");
+    // change content of bar
+    barDescription.text("Das soll ein langer Text sein sein sein sein sein sein sein sein sein sein sein ");
+
+    // store marker locally
+    let newMarker = new google.maps.Marker({
+        position: GeoMarker.getPosition(),
+        map: map
+    });
+    markerBuffer[barTemp.attr("id")] = newMarker;
+
+    // attach click event handler to the marker
+    google.maps.event.addListener(newMarker, "click", function (e) {
+        //TODO: add function to scroll to the right location inside the list
+    });
+
+    let newBarObj = {
+        name: barNameEle.text(),
+        content: barContentEle.text(),
+        // ImgName: null // get imgName
+        position: GeoMarker.getPosition(),
+    };
+
+    $.ajax({
+        method: "POST",
+        url: "../../router/location.router.php",
+        data: {user: "userId", barData: newBarObj}
+    })
+        .done(_msg => {
+            console.info("Success add Bar\t" + _msg);
+        })
+        .fail(_msg => {
+            console.error("Error add Bar\t" + _msg);
+        })
+}
+
+function removeMarker(barId) {
+    markerBuffer[barId].setMap(null);
+    delete markerBuffer[barId];
+}
+
+// ==============================================
+
+/* GeoMarker reference https://chadkillingsworth.github.io/geolocation-marker/docs/reference.html
+    get position:
+        GeoMarker.getPosition() => google.maps.LatLng
+                                    lat => GeoMarker.getPosition().lat();
+                                    lng => GeoMarker.getPosition().lng();
+*/
 let map, GeoMarker;
 
 /**
@@ -82,26 +166,9 @@ function initMap() {
     });
     GeoMarker.setMap(map);
     google.maps.event.addDomListener(window, 'load', initMap);
-    if(!navigator.geolocation) {
+    if (!navigator.geolocation) {
         alert('Your browser does not support geolocation');
     }
 
-/*    // add click event listener to create new loctions
-    google.maps.event.addListener(map, "click", function (_value) {
-        // determine the location the user clicked
-        let location = _value.latLng;
-
-        let marker = new google.maps.Marker({
-            position: location,
-            map: map,
-        });
-        /!**TODO: attach create method to click event
-         * process to create tour, rating, and pictures
-         *!/
-
-        // attach click event handler to the marker
-        google.maps.event.addListener(_marker, "click", function (e) {
-            //TODO: add function to scrolle to the right location inside the list
-        });
-    });*/
 }
+
