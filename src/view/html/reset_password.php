@@ -11,9 +11,9 @@
 
         $sPageName = basename(__FILE__, ".php");
         require_once "header.php";
+
         /*generate new password*/
         $newpw = substr(md5(rand()), 0, 20);
-
         ?>
 
     </head>
@@ -55,7 +55,7 @@
                 <p>
                     <button type="button" id="eight">Zurücksetzen</button>
                 </p>
-                <!--add onClick[...}-->
+
                 <p>
                     <button id="seven" type="button" name="Zurück" onclick="self.location.href='login.php'"
                             placeholder="Zurück">
@@ -70,9 +70,12 @@
 
         <script>
             $("button").click(function () {
+
+                /* toogle for visible password */
                 $("#reset").toggle();
                 $(this).prop('disabled', true);
 
+                /* timeout for showing new password */
                 setTimeout(function () {
                     document.getElementById("six").click()
                 }, 5000);

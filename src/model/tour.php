@@ -26,14 +26,15 @@ class tour {
     public function __construct($iId) {
         $oConnection = DbController::instance();
         $aData = $oConnection->query("
-                SELECT user.id, tour.name, tour.rating, tour.imagePath, tour.comment
-                FROM USER USER
+                SELECT user.id, tour.name, tour.rating, tour.imagePath, tour.comment, tour.tourDate
+                FROM USER user
                 LEFT JOIN TOUR tour ON user.id = tour.fk_userID
                 WHERE tour.id = '$iId';
             ");
 
         $aRow = $aData->fetch_array(MYSQLI_ASSOC);
 
+        $this->_oDate = new DateTime($aRow["tourDate"]);
         $this->_sName = $aRow['name'];
         $this->_iId = $iId;
         $this->_iUserId = $aRow['id'];
@@ -52,7 +53,7 @@ class tour {
         }
     }
 
-    public function getIId() {
+    public function getIId(): ?string {
         if ($this->_iId === null) {
             $this->_iId = rand(0, 1000);
         }
@@ -71,6 +72,14 @@ class tour {
     }
 
     /**
+     * @return null
+     */
+    public function getSName() {
+        return $this->_sName;
+    }
+
+
+    /**
      * @return marker[]
      */
     public function getAMarkers() {
@@ -80,7 +89,7 @@ class tour {
 
             // Hole alle Marker, die zu einer Tour gehören aus der Datenbank
             $aData = $oConnection->query("
-                SELECT fk_markerID FROM tour2marker WHERE tour2marker.fk_tourID = '$this->_iId';
+                SELECT fk_markerID FROM TOUR2MARKER WHERE TOUR2MARKER.fk_tourID = '$this->_iId';
             ");
 
             //var_dump($aData);

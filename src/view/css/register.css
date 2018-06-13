@@ -72,11 +72,7 @@ form {
     height: 30px;
 }
 
-
-/*
-Für eine geringere Breite des Gesamtlayouts ab einer Viewport-Breite von 900px bis runter zu 176px sind alle mobilen
-Endgeräte, aber auch Desktop-Browser bedient.
-*/
+/* to optimize page for mobile view*/
 
 @media only screen and (min-width:176px) and (max-width:900px) {
     fieldset {
@@ -102,9 +98,6 @@ Endgeräte, aber auch Desktop-Browser bedient.
 
 }
 
-/*
-  device = smartphone (Portrait)
-  screen = B/w 320px to 479px
-*/
+
 
 

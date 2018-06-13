@@ -46,7 +46,7 @@ class user {
         $oConnection = DbController::instance();
         $aData = $oConnection->query("
                 SELECT tour.id
-                FROM USER USER
+                FROM USER user
                 LEFT JOIN TOUR tour ON user.ID = tour.fk_userID
                 WHERE user.id='$iId';
             ");
@@ -83,7 +83,7 @@ class user {
         $this->_sMail = $sMail;
     }
 
-    public function getSImage(): string {
+    public function getSImage(): ?string {
         return $this->_sImage;
     }
 
@@ -91,7 +91,7 @@ class user {
         $this->_sImage = $sImage;
     }
 
-    public function getDJoinedSince(): string {
+    public function getDJoinedSince(): ?string {
         return $this->_dJoinedSince;
     }
 
