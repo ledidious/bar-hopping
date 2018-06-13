@@ -14,6 +14,27 @@ class marker {
     private $_dLongitude = null;
     private $_sName = null;
 
+    /**
+     * @return null
+     */
+    public function getDLatitude() {
+        return $this->_dLatitude;
+    }
+
+    /**
+     * @return null
+     */
+    public function getDLongitude() {
+        return $this->_dLongitude;
+    }
+
+    /**
+     * @return null
+     */
+    public function getSName() {
+        return $this->_sName;
+    }
+
     public function __construct($iId) {
         if (!self::isMarkerLoaded($iId)) {
             $this->_iId = $iId;

@@ -22,6 +22,7 @@ class tour {
     private $_sComment = null;
     private $_aMarkers = null;
     private $_aMarkerDescriptions = array();
+    private $_aMarkerImage = array();
 
     public function __construct($iId = null, $sName = null, $sTourDate = null) {
         $oConnection = DbController::instance();
@@ -56,6 +57,10 @@ class tour {
         for ($iCount01 = 0; $iCount01 < sizeof($this->_aMarkers); $iCount01++) {
             $this->_aMarkerDescriptions[$iCount01][0] = $this->_aMarkers[0];
         }
+    }
+
+    public function getMarkerDesc($iMId){
+        return $this->_aMarkerDescriptions[$iMId];
     }
 
     public function getIId(): ?string {
