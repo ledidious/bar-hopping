@@ -10,7 +10,7 @@ require_once(__DIR__ . '/../model/user.php');
 require_once(__DIR__ . '/../common/session_vars.php');
 require_once(__DIR__ . '/../controller/header.controller.php');
 
-function addUser($user, $pw, $email, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL, $name) {
+function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL) {
     $connection = DbController::instance();
     //$result = $connection->query("SELECT username FROM user;");
     /*if ($result.mysqli_fetch_field() === $user)*/
@@ -85,12 +85,13 @@ function getUser() {
 
     // Caching
     static $oUser = null;
-
-    if ($oUser !== null) {
-        return $oUser;
-    }
+    static $sLastUserName = null;
 
     $sUserName = $_SESSION[SESSION_USERNAME];
+    if ($oUser !== null && $sUserName === $sLastUserName) {
+        return $oUser;
+    }
+    $sLastUserName = $sUserName;
 
     if (empty($sUserName)) {
         return null;
