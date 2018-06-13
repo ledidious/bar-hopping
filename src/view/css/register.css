@@ -72,21 +72,27 @@ form {
     height: 30px;
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+
+/*
+Für eine geringere Breite des Gesamtlayouts ab einer Viewport-Breite von 600px bis runter zu 176px sind alle mobilen
+Endgeräte, aber auch Desktop-Browser bedient.
+*/
+
+@media only screen and (min-width:176px) and (max-width:600px) {
     fieldset {
-        width: 50%;
-        height: 50%;
-        font-size: 80%;
+        width: 70%;
+        height: 60%;
+        font-size: 60%;
     }
 
     #logo {
-        width: 40%;
-        height: 40%;
+        width: 60%;
+        height: 60%;
     }
 
     #cit {
-        width: 1%;
-        height: 1%;
+        width: 10%;
+        height: 10%;
     }
 
     input {

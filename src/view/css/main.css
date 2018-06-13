@@ -114,13 +114,15 @@ body, html {
 }
 
 /*
-  Media types
+Für eine geringere Breite des Gesamtlayouts ab einer Viewport-Breite von 600px bis runter zu 176px sind alle mobilen
+Endgeräte, aber auch Desktop-Browser bedient.
 */
-@media (max-width: 800px) {
+
+@media only screen and (min-width:176px) and (max-width:600px) {
 
     #profile, #tours {
         clear: left;
-        width: 90%;
+        width: 50%;
         margin-right: 100px;
         height: unset;
     }
