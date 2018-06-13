@@ -10,7 +10,7 @@ require_once __DIR__ . "/marker.php";
 
 class tour {
     private $_sName = null;
-    private $_sId = null;
+    private $_iId = null;
     private $_iUserId = null;
 
     /**
@@ -20,21 +20,45 @@ class tour {
     private $_iRating = null;
     private $_sImagePath = null;
     private $_sComment = null;
-    private $_aMarkers = array();
+    private $_aMarkers = null;
+    private $_aMarkerDescriptions = array();
 
-    public function __construct($sTourname, $sUsername, $iRating = null, $sImagePath = null, $sComment = null) {
-        $this->_sName = $sTourname;
-        $this->_iUserId = $sUsername;
-        $this->_iRating = $iRating;
-        $this->_sImagePath = $sImagePath;
-        $this->_sComment = $sComment;
+    public function __construct($iId) {
+        $oConnection = DbController::instance();
+        $aData = $oConnection->query("
+                SELECT tour.name, tour.rating, tour.imagePath, tour.comment
+                FROM USER USER
+                LEFT JOIN TOUR tour ON user.ID = tour.fk_userID
+                WHERE user.id = '$iId';
+            ");
+
+        $aRow = $aData->fetch_array(MYSQLI_ASSOC);
+
+        $this->_sName = $aRow['name'];
+        $this->_iId = $iId;
+        $this->_iRating = $aRow['rating'];
+        $this->_sImagePath = $aRow['imagePath'];
+        $this->_sComment = $aRow['comment'];
+        $this->getAMarkers();
+        $this->fillMarkerDescArray();
     }
 
-    public function getSId() {
-        if ($this->_sId === null) {
-            $this->_sId = rand(0, 1000);
+    // Da die Marker einer Tour individuelle Beschreibungen,
+    // werden die Berschreibungen hier den unabhängigen Markerobjekten zugeordnet.
+    private function fillMarkerDescArray() {
+        var_dump($this->_aMarkers);
+
+        for ($iCount01 = 0; $iCount01 < sizeof($this->_aMarkers); $iCount01++) {
+            $this->_aMarkerDescriptions[$iCount01][0] = $this->_aMarkers[0];
         }
-        return $this->_sId;
+        //var_dump($this->_aMarkerDescriptions);
+    }
+
+    public function getIId() {
+        if ($this->_iId === null) {
+            $this->_iId = rand(0, 1000);
+        }
+        return $this->_iId;
     }
 
     public function setODate(DateTime $oDateTime) {
@@ -56,15 +80,18 @@ class tour {
         if ($this->_aMarkers === null) {
             $oConnection = DbController::instance();
 
+            // Hole alle Marker, die zu einer Tour gehören aus der Datenbank
             $aData = $oConnection->query("
-                SELECT marker.name FROM TOUR2MARKER tour2marker
-                LEFT JOIN MARKER marker ON tour2marker.fk_markerID = marker.id
-                WHERE fk_tourID = 1;
+                SELECT fk_markerID FROM tour2marker WHERE tour2marker.fk_tourID = '$this->_iId';
             ");
 
+            //var_dump($aData);
+
+            // Die Daten der Abfrage dem Markerobjekten übergeben. Für jeden Eintrag wird ein neuer Marker erzeugt.
             $this->_aMarkers = array();
             foreach ($aData as $aMarkerData) {
-                $this->_aMarkers[] = new marker("Kneipe XYZ");
+                //var_dump($aMarkerData);
+                $this->_aMarkers[] = new marker($aMarkerData['fk_markerID']);
             }
         }
 

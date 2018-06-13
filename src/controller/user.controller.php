@@ -17,19 +17,22 @@ function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = N
     //echo $result.mysqli_fetch_field();
     //echo 'username: '.$user.' passwort: '.$pw.' E-Mail: '.$email.' Dabei seit: '.$joinedSince.' Geschlecht: '.$sex;
     if ($sex === NULL)
-        $sex = 'NULL';
+        $sex = 'neutral';
 
     if ($yearOfBirth === NULL)
-        $yearOfBirth = 'NULL';
+        $yearOfBirth = '9999-12-30';
 
     if ($profImg === NULL)
-        $profImg = 'NULL';
+        $profImg = 'img/avatars/avatar.png';
+
+    if ($name === NULL)
+        $user = '-';
 
     $pw = password_hash($pw, PASSWORD_DEFAULT);
     $joinedSince = date("Y-m-d");
 
     if (!($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
-        $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg')");
+        $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
         sendHeader("refresh:3;url=../view/html/login.php");
     } else {
         echo 'Username bereits vorhanden!';

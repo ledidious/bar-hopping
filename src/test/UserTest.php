@@ -10,7 +10,7 @@ class UserTest extends AbstractDbTest {
 
     // Fertiger test
     public function testAddUser() {
-        addUser("Hans", "password", "email", "avatar.png", "2018-07-01", "m", "2018-01-01");
+        addUser("Hans", "password", "email", 'Hans Peter', 'neutral' ,"2018-07-01", "avatar.png");
 
         $oController = DbController::instance();
         $oMysqliResult = $oController->query("select * from USER where username = 'Hans'");
@@ -23,7 +23,7 @@ class UserTest extends AbstractDbTest {
         $oController = DbController::instance();
         $oController->execute("insert into USER (username) value ('Hans')");
 
-        addUser("Hans", "Werner", "Hans.Werner@gmail.com", "2018-01-01");
+        addUser("Hans", "Werner", "Hans.Werner@gmail.com","Hans Peter");
 
         $oResultSet = $oController->query("select username from USER where username = 'Hans'");
         $this->assertEquals(1, $oResultSet->num_rows, "Found two users with username 'Hans'");

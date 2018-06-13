@@ -20,8 +20,8 @@
 -- Exportiere Struktur von Tabelle bar-hopping.MARKER
 CREATE TABLE IF NOT EXISTS `MARKER` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `lat` double(15,0) NOT NULL,
-  `lng` double(15,0) NOT NULL,
+  `lat` double(15,10) NOT NULL,
+  `lng` double(15,10) NOT NULL,
   `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

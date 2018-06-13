@@ -11,7 +11,7 @@ require_once('../controller/header.controller.php');
 //var_dump($_POST);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (basename($_SERVER['HTTP_REFERER']) == 'register.php')
-        addUser($_POST["username"], $_POST["password"], $_POST["mail"], $_POST["name"], 'neutral', '9999-12-30', 'avatar.png');
+        addUser($_POST["username"], $_POST["password"], $_POST["mail"], $_POST["name"],NULL, NULL, NULL);
     else if (basename($_SERVER['HTTP_REFERER']) == 'login.php')
         loginUser($_POST["username"], $_POST["password"]);
     else if (basename($_SERVER['HTTP_REFERER']) == 'reset_password.php') {

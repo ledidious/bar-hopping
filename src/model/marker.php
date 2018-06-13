@@ -9,32 +9,41 @@
 class marker {
     private static $_aMarkers = array(); //Füge jeden Marker in diesem Array hinzu. Prüfe vor erstellen von neuen Markerobjekten ob bereits in der Liste
 
-    private $_sId = null;
+    private $_iId = null;
     private $_dLatitude = null;
     private $_dLongitude = null;
     private $_sName = null;
 
-    public function __construct($sName) {
-        $this->_sName = $sName;
+    public function __construct($iId) {
+        if (!self::isMarkerLoaded($iId)) {
+            $this->_iId = $iId;
+            $oConnection = DbController::instance();
+            $aData = $oConnection->query("SELECT name, lat, lng FROM marker WHERE id = '$this->_iId';");
+            $aRow = $aData->fetch_array(MYSQLI_ASSOC);
+
+            $this->_sName = $aRow['name'];
+            $this->_dLatitude = $aRow['lat'];
+            $this->_dLongitude = $aRow['lng'];
+            // Füge den neuen Marker der Liste der existierender Marker hinzu.
+
+
+            array_push(self::$_aMarkers, $this);
+        }
     }
 
-    public function getSId() {
-        if ($this->_sId === null) {
-            $this->_sId = rand(0, 1000);
+    // Gibt die ID des Markers zurück oder erzeugt eine, falls noch nicht vorhanden.
+    public function getIId() {
+        if ($this->_iId === null) {
+            $this->_iId = rand(0, 1000);
         }
-        return $this->_sId;
+        return $this->_iId;
     }
 
-    public static function selectForTour($oTour) {
-        $oConnection = DbController::instance();
-        $mysqi_result = $oConnection->query();
-
-        foreach ($mysqi_result as $marker) {
-            if (array_key_exists($marker->getId(), self::$_aMarkers)) {
-
-            } else {
-                new marker();
-            }
+    // Prüft ob ein Marker bereits erzeugt wurde
+    private static function isMarkerLoaded($iId): bool {
+        if (array_key_exists($iId, self::$_aMarkers)) {
+            return true;
         }
+        return false;
     }
 }

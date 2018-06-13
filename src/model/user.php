@@ -11,6 +11,7 @@ require_once "tour.php";
 
 class user {
 
+    private $_iId;
     private $_sUsername = null;
     private $_sMail = null;
     private $_sImage = null;
@@ -23,40 +24,40 @@ class user {
      */
     public function __construct($_sUsername = null) {
         $this->_sUsername = $_sUsername;
-
         $oConnection = DbController::instance();
 
         if (!empty($_sUsername)) {
 
             $aData = $oConnection->query("
-                SELECT email, profileImage, joinedSince
+                SELECT id, email, profileImage, joinedSince
                 FROM USER
                 WHERE username = '$_sUsername'
             ")->fetch_array(MYSQLI_ASSOC);
 
+            $this->_iId = $aData["id"];
             $this->_sMail = $aData["email"];
             $this->_sImage = $aData["profileImage"];
             $this->_dJoinedSince = $aData["joinedSince"];
+            $this->loadTours($this->_iId);
+        }
+    }
 
-            $aData = $oConnection->query("
-                SELECT tour.name, tour.rating, tour.imagePath, tour.comment FROM USER user
+    private function loadTours($iId){
+        $oConnection = DbController::instance();
+        $aData = $oConnection->query("
+                SELECT tour.id
+                FROM USER USER
                 LEFT JOIN TOUR tour ON user.ID = tour.fk_userID
-                WHERE user.username='$_sUsername';
+                WHERE user.id='$iId';
             ");
 
-            $iCounter = 0;
-            foreach ($aData as $zeile) {
-                $oTour = new tour($zeile['name'], $this->_sUsername, (int)$zeile['rating'], $zeile['imagePath'], $zeile['comment']);
-                $oTour->setODate(new DateTime("2018-01-01"));
-                $this->_aTours[$iCounter] = $oTour;
-                $iCounter++;
-            }
-
-            //echo var_dump($this->_aTours);
-           /* for ($c = 0; $c < $_aRow->num_rows; $c++){
-                echo var_dump($_aRow->fetch_array());
-            }*/
+        $iCounter = 0;
+        foreach ($aData as $zeile) {
+            $oTour = new tour($zeile['id']);
+            $this->_aTours[$iCounter] = $oTour;
+            $iCounter++;
         }
+        var_dump($this->_aTours);
     }
 
     /**
