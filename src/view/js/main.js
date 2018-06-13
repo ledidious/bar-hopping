@@ -1,5 +1,33 @@
 "use strict";
 
+// ==================================================
+
+function displayAddToursDialog(button, event) {
+    event.preventDefault();
+    showDialog($("#tour-popup-add_tour"));
+}
+
+function displayAddMarkerDialog(button, event) {
+    event.preventDefault();
+    showDialog($("#tour-popup-add_marker"));
+}
+
+function showDialog(dialog) {
+    dialog.fadeIn();
+    $(".popup-window-content", dialog).fadeIn();
+}
+
+/*
+ * Close dialogs
+ */
+$(window).click(_event => {
+    $(".popup-window").each(function () {
+        if (_event.target === this) {
+            $(this).fadeOut();
+        }
+    });
+});
+
 // Close panels
 $(".panel-closer").click(
     /**
@@ -97,6 +125,120 @@ $("#profile-info_actions-save").click(
     }
 );
 
+function addMainTour(button, event) {
+    event.preventDefault();
+
+    $.post("/src/router/tour.router.php", $(".tour-add_form").serialize(), function (response) {
+        let responseElement = $(response);
+        responseElement.appendTo($("#tours-list-group_0"));
+
+        // Add expander
+        addExpander($(".expand-button", $(responseElement)));
+    });
+
+    $("#tour-popup-add_tour").fadeOut();
+}
+
+function addMainMarker(button, event) {
+    event.preventDefault();
+
+    let actionsForm = $(button).parent();
+    let tourDiv = actionsForm.parent().parent();
+
+    $.post("/src/router/marker.router.php", actionsForm.serialize(), function (response) {
+        let responseElement = $(response);
+        let barList = $(".tour-bar_list", tourDiv);
+
+        responseElement.appendTo(barList);
+
+        addExpander($(".expand-button", $(responseElement)));
+    });
+
+    $("#tour-popup-add_marker").fadeOut();
+}
+
+function editTour(button, event) {
+    event.preventDefault();
+
+    let form = $(button).parent();
+
+    let newName = prompt("Wie soll die Tour heißen?");
+    if (!newName) {
+        return;
+    }
+
+    $(".expand-button", $(button).parent().parent()).html(newName);
+
+    $.ajax({
+        type: "POST",
+        url: "/src/router/tour.router.php",
+        data: {
+            tourName: newName,
+            tourId: $("input[name='tourId']", form).val(),
+            action: "edit"
+        },
+    });
+}
+
+function deleteTour(button, event) {
+    event.preventDefault();
+
+    let form = $(button).parent();
+
+    if (!confirm("Sicher, dass du diese Tour löschen willst?")) {
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/src/router/marker.router.php",
+        data: {
+            markerId: $("input[name='tourId']", form).val(),
+            action: "delete"
+        }
+    })
+}
+
+function editMarker(button, event) {
+    event.preventDefault();
+
+    let newName = prompt("Wie soll der Marker heißen?");
+    if (!newName) {
+        return;
+    }
+
+    let form = $(button).parent();
+    $(".expand-button", $(button).parent().parent()).html(newName);
+
+    $.ajax({
+        type: "POST",
+        url: "/src/router/marker.router.php",
+        data: {
+            markerName: newName,
+            markerId: $("input[name='markerId']", form).val(),
+            action: "edit"
+        },
+    });
+}
+
+function deleteMarker(button, event) {
+    event.preventDefault();
+
+    if (!confirm("Sicher, dass du diesen Marker löschen willst?")) {
+        return;
+    }
+
+    let form = $(button).parent();
+    $.ajax({
+        type: "POST",
+        url: "/src/router/marker.router.php",
+        data: {
+            markerId: $("input[name='markerId']", form).val(),
+            action: "delete"
+        },
+    });
+}
+
 /**
  * upload image
  * if image is selected and submit the form to send the file to the server
@@ -124,37 +266,6 @@ $("#button-add-pic").change(() => {
             .fail(_msg => {
                 console.error('Error\t try to upload image\n' + _msg);
             })
-    }
-});
-
-// stuff for the tour popup window
-// ==================================================
-let tour_popupWindow = $("#tour-popup-window");
-let changePwdPopup = $("#profile-info-change_pwd-popup");
-
-$("#tours-title-actions-add").click(() => {
-    tour_popupWindow.fadeIn();
-    $("#tour-name").val(""); // reset tour-name input
-});
-$(".popup-window-close").click(() => {
-    tour_popupWindow.fadeOut();
-});
-$("#tour-popup-window-btn-ok").click(() => {
-    tour_popupWindow.fadeOut();
-    addTour();
-});
-// ==================================================
-
-/*
- * Close dialogs
- */
-$(window).click(_event => {
-    // close tour popup window if clicked outside the popup window
-    if (_event.target === tour_popupWindow[0]) {
-        tour_popupWindow.fadeOut();
-    }
-    if (_event.target === changePwdPopup[0]) {
-        changePwdPopup.fadeOut();
     }
 });
 

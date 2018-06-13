@@ -62,3 +62,27 @@
     background-size: auto;
     float: right;
 }
+
+.tour-add_form div {
+    clear: left;
+}
+
+.tour-add_form div label {
+    float: left;
+}
+
+.tour-add_form div input {
+    float: right;
+}
+
+#tour-popup-window-btn-ok {
+    width: 200px;
+}
+
+.tour-bar-title {
+    float: left;
+}
+
+.tour-bar-actions {
+    float: right;
+}

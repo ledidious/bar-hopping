@@ -26,7 +26,7 @@ class tour {
 
     public function __construct($iId = null, $sName = null, $sTourDate = null) {
         $oConnection = DbController::instance();
-        if($iId !== null) {
+        if ($iId !== null) {
             $aData = $oConnection->query("
                 SELECT user.id, tour.name, tour.rating, tour.imagePath, tour.comment, tour.tourDate
                 FROM USER user
@@ -59,7 +59,7 @@ class tour {
         }
     }
 
-    public function getMarkerDesc($iMId){
+    public function getMarkerDesc($iMId) {
         return $this->_aMarkerDescriptions[$iMId];
     }
 
@@ -88,6 +88,12 @@ class tour {
         return $this->_sName;
     }
 
+    /**
+     * @param null $sName
+     */
+    public function setSName($sName): void {
+        $this->_sName = $sName;
+    }
 
     /**
      * @return marker[]

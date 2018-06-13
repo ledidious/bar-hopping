@@ -1,27 +1,34 @@
+/**
+ * Function to add expander icon and listeners to the given expander button.
+ *
+ * @param expander
+ */
+function addExpander(expander) {
+
+    // Create, prepare and insert icon
+    let icon = $("<i class=\"material-icons expand-icon expand-icon-expanded\">expand_less</i>\n");
+    icon.insertBefore(expander);
+    icon.click(function (event) {
+        onExpanderClicked(expander, icon);
+    }.bind(this));
+
+    // onClick behavior for button
+    expander.click(function (event) {
+        onExpanderClicked(expander, icon);
+    }.bind(this));
+
+    // Collapsed on begin
+    if (expander.attr("bh-collapsed") != null) {
+        onExpanderClicked(expander, icon);
+    }
+
+}
+
 $(document).ready(function () {
 
-    // Please nest each separate area in a function to limit variable context
-
     $(".expand-button").each(function () {
-        let expander = $(this);
-
-        // Create, prepare and insert icon
-        let icon = $("<i class=\"material-icons expand-icon expand-icon-expanded\">expand_less</i>\n");
-        icon.insertBefore(expander);
-        icon.click(function (event) {
-            onExpanderClicked(expander, icon);
-        }.bind(this));
-
-        // onClick behavior for button
-        expander.click(function (event) {
-            onExpanderClicked(expander, icon);
-        }.bind(this));
-
-        // Collapsed on begin
-        if (expander.attr("bh-collapsed") != null) {
-            onExpanderClicked(expander, icon);
-        }
-    });
+        addExpander($(this));
+    })
 });
 
 /**
@@ -77,7 +84,7 @@ function onEditAcceptTour(ele) {
         tourEditInput = tour.children("input"),
         tourEditVal = tourEditInput.val();
 
-    if(!tourEditVal)
+    if (!tourEditVal)
         tourEditVal = tourEditInput.attr("bh-old-value");
 
     tour.children(".tour-actions").children().toggle();
@@ -85,9 +92,9 @@ function onEditAcceptTour(ele) {
     restoreDefaultTourDesign(tourEditInput, tourEditVal, tour.attr("id"));
 
     // TODO implement
-/*    $.ajax({
+    /*    $.ajax({
 
-    })*/
+        })*/
 }
 
 /**

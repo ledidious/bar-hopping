@@ -35,18 +35,24 @@ class marker {
         return $this->_sName;
     }
 
+    /**
+     * @param null $sName
+     */
+    public function setSName($sName): void {
+        $this->_sName = $sName;
+    }
+
     public function __construct($iId) {
         if (!self::isMarkerLoaded($iId)) {
             $this->_iId = $iId;
             $oConnection = DbController::instance();
-            $aData = $oConnection->query("SELECT name, lat, lng FROM marker WHERE id = '$this->_iId';");
+            $aData = $oConnection->query("SELECT name, lat, lng FROM MARKER WHERE id = '$this->_iId';");
             $aRow = $aData->fetch_array(MYSQLI_ASSOC);
 
             $this->_sName = $aRow['name'];
             $this->_dLatitude = $aRow['lat'];
             $this->_dLongitude = $aRow['lng'];
             // Füge den neuen Marker der Liste der existierender Marker hinzu.
-
 
             array_push(self::$_aMarkers, $this);
         }

@@ -6,6 +6,7 @@
  * Time: 16:16
  */
 require_once(__DIR__ . '/../model/tour.php');
+require_once(__DIR__ . '/../controller/db.controller.php');
 
 function addTour($sTourName, $sTourDate) {
     // Dummy anlegen

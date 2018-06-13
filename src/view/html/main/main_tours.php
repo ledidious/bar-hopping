@@ -15,7 +15,7 @@
     <div id="tours-title">
         <h3 id="tours-title-heading">Touren</h3>
         <div id="tours-title-actions">
-            <button id="tours-title-actions-add" class="button-add">
+            <button id="tours-title-actions-add" class="button-add" onclick="displayAddToursDialog(this, event)">
                 <i id="tours-title-actions-add-icon" class="title-buttons-icons">+</i>
             </button>
             <button id="tours-title-actions-close" class="panel-closer button-close">
@@ -93,58 +93,8 @@
                 <?php
                 $iTourCounter = 0;
                 foreach ($aToursPerMonth as $oTour) {
-                    $sTourHtmlId = $sGroupHtmlId . "-tour_${iTourCounter}";
-                    $iTourCounter++;
-                    ?>
-                    <div id="<?php echo $sTourHtmlId ?>" type="tours-list">
-                        <div class="tour-heading">
-                            <span class="expand-button" bh-collapsed bh-expandable="<?php echo $sTourHtmlId ?>-bars">
-                                <!-- todo insert tour name -->
-                                Tour <?php echo $iTourCounter ?>
-                            </span>
-                            <div class="tour-actions">
-                                <button class="button-add" onclick="onAddImageClicked()">
-                                    <i class="">+</i>
-                                </button>
-                                <button class="button-edit" onclick="onEditTour($(this))">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button class="button-save hide" onclick="onEditAcceptTour($(this))">
-                                    <i class="material-icons">save</i>
-                                </button>
-                                <button class="button-close hide" onclick="onEditDenyTour($(this))">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
-                        <div id="<?php echo $sTourHtmlId ?>-bars">
-                            <?php
-                            $iMarkerCounter = 0;
-                            foreach ($oTour->getAMarkers() as $oMarker) {
-                                $sMarkerHtmlId = $sTourHtmlId . "-bars_" . $iMarkerCounter;
-                                $iMarkerCounter++;
-                                ?>
-                                <div id="<?php echo $sMarkerHtmlId ?>" class="tour-bar">
-                                    <span class="expand-button" bh-collapsed
-                                          bh-expandable="<?php echo $sMarkerHtmlId ?>-content">
-                                        <!-- todo insert bar name -->
-                                        Kneipe <?php echo $iMarkerCounter ?>
-                                    </span>
-                                    <hr>
-                                    <div class="tour-bar-content" id="<?php echo $sMarkerHtmlId ?>-content">
-                                        <div class="tour-bar-description">
-                                            <!-- todo insert marker description -->
-                                            Diese tolle Kneipe überzeugt mit großartigem Bier und
-                                            ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
-                                        </div>
-                                        <div class="tour-bar-image"></div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
+                    require_once __DIR__ . "/tours/main_tours_tour.php";
+                } ?>
             </div>
         <?php } ?>
 
@@ -155,46 +105,7 @@
             <a href="#">Du kannst aber weitere anlegen.</a>
         </div>
 
-        <!-- popup window to chose tour-->
-        <div id="tour-popup-window" class="popup-window">
-            <div class="popup-window-content">
-                <h1>Tour auswählen</h1>
-                <div>
-                    <!-- TODO style combobox -->
-                    <label for="tour-name"><b>Name:</b></label>
-                    <input type="text" id="tour-name">
-                </div>
-                <div>
-                    <label for="select-tour"><b>Gruppe</b></label>
-                    <select id="select-tour">
-                        <option value="tours-list-group_1">Geplante Touren</option>
-                    </select>
-                </div>
-                <div>
-                    <button id="tour-popup-window-btn-ok">Erstellen</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tour-list template -->
-        <div id="tours-list-group-temp" class="hide" type="tours-list">
-            <span class="expand-button" bh-expandable="tours-list-group_1-tour_1-bars"></span>
-            <div class="tour-actions">
-                <button class="button-add" onclick="onAddImageClicked()">
-                    <i class="button-add-icon">+</i>
-                </button>
-                <button class="button-edit" onclick="onEditTour($(this))">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button class="button-save hide" onclick="onEditAcceptTour($(this))">
-                    <i class="material-icons">save</i>
-                </button>
-                <button class="button-close hide" onclick="onEditDenyTour($(this))">
-                    <i class="material-icons">close</i>
-                </button>
-            </div>
-            <ul id="">
-            </ul>
-        </div>
+        <?php require __DIR__ . "/tours/main_tours_addTour.php"?>
+        <?php require __DIR__ . "/tours/main_tours_addMarker.php"?>
     </div>
 </html>

@@ -7,6 +7,7 @@
  */
 
 require_once(__DIR__ . '/../model/marker.php');
+require_once(__DIR__ . '/../controller/db.controller.php');
 
 function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath){
     $oConnection = DbController::instance();
@@ -18,9 +19,9 @@ function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath){
 function editMarker($oMarker){
     $oConnection = DbController::instance();
     $oConnection->execute("
-        UPDATE marker
-        SET marker.name = '$oMarker->getSName()', marker.lat='$oMarker->getDLatitude()', marker.`comment`='$oMarker->getDLongitude()'
-        WHERE marker.id = '$oMarker->getIId()';
+        UPDATE TOUR2MARKER
+        SET TOUR2MARKER.name = '{$oMarker->getSName()}', TOUR2MARKER.lat='{$oMarker->getDLatitude()}', TOUR2MARKER.description='{$oMarker->getDLongitude()}'
+        WHERE MARKER.id = '$oMarker->getIId()';
     ");
 }
 
