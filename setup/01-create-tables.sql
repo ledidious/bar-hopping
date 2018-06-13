@@ -27,27 +27,15 @@ CREATE TABLE IF NOT EXISTS `MARKER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Daten Export vom Benutzer nicht ausgewählt
--- Exportiere Struktur von Tabelle bar-hopping.RATING
-CREATE TABLE IF NOT EXISTS `RATING` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
-  `imagePath` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `comment` text COLLATE utf8_bin,
-  `value` int(1) NOT NULL,
-  `fk_tourID` int(20) DEFAULT NULL,
-  `fk_markerID` int(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_markerID02` (`fk_markerID`),
-  KEY `fk_tourID02` (`fk_tourID`),
-  CONSTRAINT `fk_markerID02` FOREIGN KEY (`fk_markerID`) REFERENCES `MARKER` (`id`),
-  CONSTRAINT `fk_tourID02` FOREIGN KEY (`fk_tourID`) REFERENCES `TOUR` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- Daten Export vom Benutzer nicht ausgewählt
 -- Exportiere Struktur von Tabelle bar-hopping.TOUR
 CREATE TABLE IF NOT EXISTS `TOUR` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `fk_userID` int(20) NOT NULL,
   `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `imagePath` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `comment` text COLLATE utf8_bin,
+  `rating` int(1) DEFAULT NULL,
+  `tourDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_userID` (`fk_userID`),
   CONSTRAINT `fk_userID` FOREIGN KEY (`fk_userID`) REFERENCES `USER` (`id`)
@@ -58,6 +46,8 @@ CREATE TABLE IF NOT EXISTS `TOUR` (
 CREATE TABLE IF NOT EXISTS `TOUR2MARKER` (
   `fk_tourID` int(20) NOT NULL,
   `fk_markerID` int(20) NOT NULL,
+  `description` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `imagePath` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   KEY `fk_markerID01` (`fk_markerID`),
   KEY `fk_tourID01` (`fk_tourID`),
   CONSTRAINT `fk_markerID01` FOREIGN KEY (`fk_markerID`) REFERENCES `MARKER` (`id`),
@@ -75,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `USER` (
   `sex` char(10) COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
   `profileImage` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
