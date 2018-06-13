@@ -55,7 +55,7 @@
                 <p>
                     <button type="button" id="eight">Zurücksetzen</button>
                 </p>
-                
+
                 <p>
                     <button id="seven" type="button" name="Zurück" onclick="self.location.href='login.php'"
                             placeholder="Zurück">
