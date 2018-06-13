@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!--für mobile Ansicht notwendig-->
         <title>index</title>
 
         <!-- Header -->
@@ -12,14 +11,11 @@
 
         $sPageName = basename(__FILE__, ".php");
         require_once "header.php";
-        /*require_once "user.controller.php";
-
-        $regObj = new RegisterController();
-        $regObj->addUser();*/
         ?>
 
     </head>
     <body>
+        <<!-- form to post to user.router.php -->
         <form method="post" action="../../router/user.router.php">
             <br>
             <br>
@@ -50,7 +46,7 @@
                 <p><img id="tree" src="../../../img/lock.gif" height="25px" width="25px"/>
                     <input type="password" name="password" size="30" maxlength="40" placeholder="Passwort"/></p>
                 <p><input id="four" type="submit" onclick="return check(this.form)" placeholder="Anmelden"></p>
-                <!--add onClick[...}-->
+
                 Du hast ein Konto? <a href="login.php"> Melde dich hier an.</a>
             </fieldset>
         </form>
