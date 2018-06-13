@@ -98,4 +98,12 @@ class user {
     public function setDJoinedSince($dJoinedSince): void {
         $this->_dJoinedSince = $dJoinedSince;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIId() {
+        return $this->_iId;
+    }
+
 }

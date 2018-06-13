@@ -23,26 +23,31 @@ class tour {
     private $_aMarkers = null;
     private $_aMarkerDescriptions = array();
 
-    public function __construct($iId) {
+    public function __construct($iId = null, $sName = null, $sTourDate = null) {
         $oConnection = DbController::instance();
-        $aData = $oConnection->query("
+        if($iId !== null) {
+            $aData = $oConnection->query("
                 SELECT user.id, tour.name, tour.rating, tour.imagePath, tour.comment, tour.tourDate
                 FROM USER user
                 LEFT JOIN TOUR tour ON user.id = tour.fk_userID
                 WHERE tour.id = '$iId';
             ");
 
-        $aRow = $aData->fetch_array(MYSQLI_ASSOC);
+            $aRow = $aData->fetch_array(MYSQLI_ASSOC);
 
-        $this->_oDate = new DateTime($aRow["tourDate"]);
-        $this->_sName = $aRow['name'];
-        $this->_iId = $iId;
-        $this->_iUserId = $aRow['id'];
-        $this->_iRating = $aRow['rating'];
-        $this->_sImagePath = $aRow['imagePath'];
-        $this->_sComment = $aRow['comment'];
-        $this->getAMarkers();
-        $this->fillMarkerDescArray();
+            $this->_oDate = new DateTime($aRow["tourDate"]);
+            $this->_sName = $aRow['name'];
+            $this->_iId = $iId;
+            $this->_iUserId = $aRow['id'];
+            $this->_iRating = $aRow['rating'];
+            $this->_sImagePath = $aRow['imagePath'];
+            $this->_sComment = $aRow['comment'];
+            $this->getAMarkers();
+            $this->fillMarkerDescArray();
+        } else {
+            $iUid = getUser()->getIId();
+            $oConnection->execute("INSERT INTO tour(fk_userID, name, tourDate) VALUES ('$iUid', '$sName', '$sTourDate');");
+        }
     }
 
     // Da die Marker einer Tour individuelle Beschreibungen,
@@ -103,5 +108,26 @@ class tour {
         }
 
         return $this->_aMarkers;
+    }
+
+    /**
+     * @return null
+     */
+    public function getIRating() {
+        return $this->_iRating;
+    }
+
+    /**
+     * @return null
+     */
+    public function getSImagePath() {
+        return $this->_sImagePath;
+    }
+
+    /**
+     * @return null
+     */
+    public function getSComment() {
+        return $this->_sComment;
     }
 }
