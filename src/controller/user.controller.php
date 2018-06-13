@@ -27,10 +27,13 @@ function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = N
 
     if ($name === NULL)
         $user = '-';
-
+    /* function to hash the password */
     $pw = password_hash($pw, PASSWORD_DEFAULT);
+
+    /* function to get the current date */
     $joinedSince = date("Y-m-d");
 
+    /* give back false, if user is already registered otherwise add the user */
     if (!($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) { //Prüfen ob username beretis vorhanden
         $connection->execute("INSERT INTO USER (username, password, email, joinedSince, sex, yearOfBirth, profileImage, name) VALUES ('$user', '$pw', '$email', '$joinedSince', '$sex', '$yearOfBirth', '$profImg', '$name')");
         sendHeader("refresh:3;url=../view/html/login.php");
@@ -43,6 +46,7 @@ function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = N
 function loginUser($username, $pw) {
     $connection = DbController::instance();
 
+    /* verify the password from database */
     if (password_verify($pw, ((($connection->query("SELECT password FROM USER WHERE username='$username'"))->fetch_array(MYSQLI_ASSOC))['password']))) {
         session_start();
         $_SESSION[SESSION_USERNAME] = $username;
@@ -51,34 +55,24 @@ function loginUser($username, $pw) {
         echo 'Passwort ist falsch!';
         sendHeader("refresh:3;url=../view/html/login.php");
     }
-    /*
-     $result = $connection->query("SELECT password FROM user WHERE username='$user'");
-     $row = $result->fetch_array(MYSQLI_ASSOC);
 
-     if (password_verify($pw, $row['password'])) {
-         echo 'Valides Passwort!';
-     } else {
-         echo 'Invalides Passwort!';
-     }*/
 }
 
+/* use for reset password*/
 function changePassword($user, $pw) {
     $connection = DbController::instance();
 
+    /* function to hash the password */
     $pw = password_hash($pw, PASSWORD_DEFAULT);
 
+    /* if user is available set new password */
     if (($connection->query("SELECT username FROM USER WHERE username='$user'")->fetch_array(MYSQLI_ASSOC))) //Prüfen ob username beretis vorhanden
         $connection->execute("UPDATE USER SET password = '$pw' WHERE username = '$user'");
     else
         echo 'Username nicht vorhanden!';
 }
 
-/**
- * Returns the current logged in user or null if
- * none is logged in. Be careful!
- *
- * @return null|user
- */
+
 function getUser() {
 
     // When not happened until now, start session here
