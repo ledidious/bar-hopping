@@ -13,19 +13,27 @@ function addTour($sTourName, $sTourDate) {
     $oTour = new tour(null, $sTourName, $sTourDate);
 }
 
+/**
+ * @param tour $oTour
+ */
 function editTour($oTour){
     $oConnection = DbController::instance();
     $oConnection->execute("
-        UPDATE tour
-        SET tour.name = '$oTour->getSName()', tour.imagePath='$oTour->getSImagePath()', tour.`comment`='$oTour->getSComment()'
-        WHERE tour.id = $oTour->getIId();
+        UPDATE TOUR
+        SET TOUR.name = '{$oTour->getSName()}', TOUR.imagePath='{$oTour->getSImagePath()}', TOUR.comment='{$oTour->getSComment()}'
+        WHERE TOUR.id = {$oTour->getIId()};
     ");
 }
 
-function deleteTour($iTId){
+function deleteTour($iTId) {
     $oConnection = DbController::instance();
+
     $oConnection->execute("
-        DELETE FROM tour
-        WHERE tour.id = '$iTId';
+        DELETE FROM TOUR2MARKER
+        WHERE fk_tourID = '$iTId';
+    ");
+    $oConnection->execute("
+        DELETE FROM TOUR
+        WHERE TOUR.id = '$iTId';
     ");
 }

@@ -191,9 +191,9 @@ function deleteTour(button, event) {
 
     $.ajax({
         type: "POST",
-        url: "/src/router/marker.router.php",
+        url: "/src/router/tour.router.php",
         data: {
-            markerId: $("input[name='tourId']", form).val(),
+            tourId: $("input[name='tourId']", form).val(),
             action: "delete"
         }
     })

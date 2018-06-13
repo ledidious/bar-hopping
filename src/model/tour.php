@@ -47,7 +47,7 @@ class tour {
             $this->fillMarkerDescArray();
         } else {
             $iUid = getUser()->getIId();
-            $oConnection->execute("INSERT INTO tour(fk_userID, name, tourDate) VALUES ('$iUid', '$sName', '$sTourDate');");
+            $oConnection->execute("INSERT INTO TOUR(fk_userID, name, tourDate) VALUES ('$iUid', '$sName', '$sTourDate');");
         }
     }
 
