@@ -198,7 +198,7 @@ $(document).ready(function () {
     function closePanelsIfMobileView() {
         let width = $(document).width();
 
-        if (width < 800) {
+        if (width < 1000) {
             $(".panel-closer").each(function () {
                 let panel = $(this);
                 // Init click event to cause closing

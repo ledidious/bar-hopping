@@ -114,11 +114,11 @@ body, html {
 }
 
 /*
-Für eine geringere Breite des Gesamtlayouts ab einer Viewport-Breite von 600px bis runter zu 176px sind alle mobilen
+Für eine geringere Breite des Gesamtlayouts ab einer Viewport-Breite von 900px bis runter zu 176px sind alle mobilen
 Endgeräte, aber auch Desktop-Browser bedient.
 */
 
-@media only screen and (min-width:176px) and (max-width:600px) {
+@media only screen and (min-width:176px) and (max-width:900px) {
 
     #profile, #tours {
         clear: left;
@@ -126,5 +126,6 @@ Endgeräte, aber auch Desktop-Browser bedient.
         margin-right: 100px;
         height: unset;
     }
+
 }
 
