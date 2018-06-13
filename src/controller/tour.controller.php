@@ -6,6 +6,6 @@
  * Time: 16:16
  */
 
-function addTour() {
+function addTour($user) {
 
 }

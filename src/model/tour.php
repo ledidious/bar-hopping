@@ -26,19 +26,17 @@ class tour {
     public function __construct($iId) {
         $oConnection = DbController::instance();
         $aData = $oConnection->query("
-                SELECT tour.id, tour.name, tour.rating, tour.imagePath, tour.comment
+                SELECT user.id, tour.name, tour.rating, tour.imagePath, tour.comment
                 FROM USER USER
                 LEFT JOIN TOUR tour ON user.id = tour.fk_userID
-                WHERE user.id = '$iId';
+                WHERE tour.id = '$iId';
             ");
 
         $aRow = $aData->fetch_array(MYSQLI_ASSOC);
 
         $this->_sName = $aRow['name'];
-        var_dump($iId);
-        var_dump($aRow);
-        $this->_iId = $aRow['id'];
-        $this->_iUserId = $iId;
+        $this->_iId = $iId;
+        $this->_iUserId = $aRow['id'];
         $this->_iRating = $aRow['rating'];
         $this->_sImagePath = $aRow['imagePath'];
         $this->_sComment = $aRow['comment'];
@@ -49,12 +47,9 @@ class tour {
     // Da die Marker einer Tour individuelle Beschreibungen,
     // werden die Berschreibungen hier den unabhängigen Markerobjekten zugeordnet.
     private function fillMarkerDescArray() {
-        var_dump($this->_aMarkers);
-
         for ($iCount01 = 0; $iCount01 < sizeof($this->_aMarkers); $iCount01++) {
             $this->_aMarkerDescriptions[$iCount01][0] = $this->_aMarkers[0];
         }
-        //var_dump($this->_aMarkerDescriptions);
     }
 
     public function getIId() {

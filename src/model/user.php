@@ -57,7 +57,7 @@ class user {
             $this->_aTours[$iCounter] = $oTour;
             $iCounter++;
         }
-        var_dump($this->_aTours);
+        //var_dump($this->_aTours);
     }
 
     /**
