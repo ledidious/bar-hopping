@@ -29,8 +29,8 @@
             <br>
             <br>
             <h2>Login</h2>
-            <p>
-                <<!-- form to post to user.router -->
+            <p
+            <!-- form to post to user.router -->
             <form method="post" action="../../router/user.router.php">
                 <img id="two" src="../../../img/user.png" height="25px" width="25px"/>
                 <input type="text" name="username" size="30" maxlength="40" placeholder="Benutzername"/>
