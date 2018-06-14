@@ -39,7 +39,7 @@ function displayAddMarkerDialog(button, event) {
  */
 $("#profile-info-password").click(
     function (event) {
-        changePwdPopup.fadeIn();
+        showDialog($("#profile-info-change_pwd-popup"));
     }
 );
 
