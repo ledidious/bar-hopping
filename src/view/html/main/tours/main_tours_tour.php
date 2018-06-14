@@ -27,8 +27,7 @@ $iTourCounter++;
 <div id="<?php echo $sTourHtmlId ?>" type="tours-list">
     <div class="tour-heading">
         <span class="expand-button" bh-expandable="<?php echo $sTourHtmlId ?>-bars">
-            <!-- todo insert tour name -->
-            Tour "<?php echo $oTour->getSName(); ?>"
+            <?php echo $oTour->getSName(); ?>
         </span>
         <div class="tour-actions">
             <input type="hidden" name="tourId" value="<?php echo $oTour->getIId() ?>">
@@ -51,7 +50,7 @@ $iTourCounter++;
             $sMarkerHtmlId = $sTourHtmlId . "-bars_" . $iMarkerCounter;
             $iMarkerCounter++;
 
-            require_once __DIR__ . "/main_tours_marker.php";
+            require __DIR__ . "/main_tours_marker.php";
             ?>
         <?php } ?>
     </div>

@@ -2,6 +2,10 @@
 
 // ==================================================
 
+// Remind marker list to append new marker after
+// marker add dialog has been submitted
+let listToAppendNextMarker = null;
+
 function displayAddToursDialog(button, event) {
     event.preventDefault();
     showDialog($("#tour-popup-add_tour"));
@@ -9,6 +13,17 @@ function displayAddToursDialog(button, event) {
 
 function displayAddMarkerDialog(button, event) {
     event.preventDefault();
+
+    // Fetch tour id ...
+    let tourId = $("input[name = 'tourId']", $(button).parent()).val();
+
+    // ... and insert into new form of the dialog
+    $("#tour-popup-add_marker-form input[name = 'tourId']").val(tourId);
+
+    // Remind the list to append the tour bar list
+    listToAppendNextMarker = $(".tour-bar_list", $(button).parent().parent().parent());
+
+    // Show dialog
     showDialog($("#tour-popup-add_marker"));
 }
 
@@ -128,7 +143,9 @@ $("#profile-info_actions-save").click(
 function addMainTour(button, event) {
     event.preventDefault();
 
-    $.post("/src/router/tour.router.php", $(".tour-add_form").serialize(), function (response) {
+    let form = $(".tour-add_form");
+
+    $.post("/src/router/tour.router.php", form.serialize(), function (response) {
         let responseElement = $(response);
         responseElement.appendTo($("#tours-list-group_0"));
 
@@ -136,25 +153,28 @@ function addMainTour(button, event) {
         addExpander($(".expand-button", $(responseElement)));
     });
 
+    clearFormInputs(form);
     $("#tour-popup-add_tour").fadeOut();
 }
 
 function addMainMarker(button, event) {
     event.preventDefault();
 
-    let actionsForm = $(button).parent();
-    let tourDiv = actionsForm.parent().parent();
+    let actionsForm = $(button).parent().parent();
 
     $.post("/src/router/marker.router.php", actionsForm.serialize(), function (response) {
         let responseElement = $(response);
-        let barList = $(".tour-bar_list", tourDiv);
-
-        responseElement.appendTo(barList);
-
+        responseElement.appendTo($(listToAppendNextMarker));
         addExpander($(".expand-button", $(responseElement)));
     });
 
+    clearFormInputs(actionsForm);
     $("#tour-popup-add_marker").fadeOut();
+}
+
+function clearFormInputs(form) {
+    $("input[type != 'hidden']", form).val("");
+    $("textArea", form).val("");
 }
 
 function editTour(button, event) {
@@ -196,7 +216,10 @@ function deleteTour(button, event) {
             tourId: $("input[name='tourId']", form).val(),
             action: "delete"
         }
-    })
+    });
+
+    // Delete tour div
+    $(button).parent().parent().parent().remove();
 }
 
 function editMarker(button, event) {
@@ -237,6 +260,9 @@ function deleteMarker(button, event) {
             action: "delete"
         },
     });
+
+    // Delete marker div
+    $(button).parent().parent().parent().remove();
 }
 
 /**

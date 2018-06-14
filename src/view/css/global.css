@@ -91,7 +91,11 @@ button {
 }
 
 .button-save {
+    /* No styles yet. */
+}
 
+.button-dialog-confirm {
+    width: 150px;
 }
 
 fieldset {

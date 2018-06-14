@@ -16,7 +16,7 @@ class user {
     private $_sMail = null;
     private $_sImage = null;
     private $_dJoinedSince = null;
-    private $_aTours = array();
+    private $_aTours = null;
 
     /**
      * user constructor.
@@ -38,11 +38,10 @@ class user {
             $this->_sMail = $aData["email"];
             $this->_sImage = $aData["profileImage"];
             $this->_dJoinedSince = $aData["joinedSince"];
-            $this->loadTours($this->_iId);
         }
     }
 
-    private function loadTours($iId){
+    private function loadTours($iId) {
         $oConnection = DbController::instance();
         $aData = $oConnection->query("
                 SELECT tour.id
@@ -51,11 +50,10 @@ class user {
                 WHERE user.id='$iId';
             ");
 
-        $iCounter = 0;
+        $this->_aTours = array();
         foreach ($aData as $zeile) {
             $oTour = new tour($zeile['id']);
-            $this->_aTours[$iCounter] = $oTour;
-            $iCounter++;
+            $this->_aTours[] = $oTour;
         }
         //var_dump($this->_aTours);
     }
@@ -64,6 +62,9 @@ class user {
      * @return tour[]
      */
     public function getATours() {
+        if ($this->_aTours === null) {
+            $this->loadTours($this->getIId());
+        }
         return $this->_aTours;
     }
 

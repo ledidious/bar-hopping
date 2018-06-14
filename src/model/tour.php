@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . "/marker.php";
+require_once __DIR__ . "/../controller/user.controller.php";
 
 class tour {
     private $_sName = null;
@@ -48,19 +49,34 @@ class tour {
         } else {
             $iUid = getUser()->getIId();
             $oConnection->execute("INSERT INTO TOUR(fk_userID, name, tourDate) VALUES ('$iUid', '$sName', '$sTourDate');");
+
+            if ($sName !== null) $this->_sName = $sName;
+            if ($sTourDate !== null) $this->_oDate = new DateTime($sTourDate);
         }
     }
 
     // Da die Marker einer Tour individuelle Beschreibungen,
     // werden die Berschreibungen hier den unabhängigen Markerobjekten zugeordnet.
     private function fillMarkerDescArray() {
-        for ($iCount01 = 0; $iCount01 < sizeof($this->_aMarkers); $iCount01++) {
-            $this->_aMarkerDescriptions[$iCount01][0] = $this->_aMarkers[0];
+        $oController = DbController::instance();
+
+        foreach ($this->getAMarkers() as $oMarker) {
+            $aRow = $oMysqliResult = $oController->query("
+                select description 
+                from TOUR2MARKER 
+                where fk_markerID = '{$oMarker->getIId()}'
+            ")->fetch_array(MYSQLI_ASSOC);
+
+            $this->_aMarkerDescriptions[$oMarker->getIId()] = $aRow["description"];
         }
     }
 
     public function getMarkerDesc($iMId) {
         return $this->_aMarkerDescriptions[$iMId];
+    }
+
+    public function setMarkerDesc($iMId, $sDescription) {
+        $this->_aMarkerDescriptions[$iMId] = $sDescription;
     }
 
     public function getIId(): ?string {
@@ -78,7 +94,7 @@ class tour {
      * @return DateTime
      */
     public function getODate(): DateTime {
-        return $this->_oDate;
+        return $this->_oDate ?: $this->_oDate = new DateTime();
     }
 
     /**

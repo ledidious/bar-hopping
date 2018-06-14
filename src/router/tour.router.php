@@ -9,8 +9,12 @@ require_once('../controller/header.controller.php');
 require_once('../model/tour.php');
 require_once(__DIR__ . "/../controller/tour.controller.php");
 
+// Start session
+session_start();
+
 switch ($_POST["action"]) {
     case "add":
+        $oTour = addTour($_POST["tourName"], $_POST["tourDate"]);
         require __DIR__ . "/../view/html/main/tours/main_tours_tour.php";
         break;
     case "edit":

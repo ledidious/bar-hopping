@@ -15,8 +15,7 @@ if (!isset($oMarker)) {
         <div>
             <span class="expand-button tour-bar-title" bh-collapsed
                   bh-expandable="<?php echo $sMarkerHtmlId ?>-content">
-                <!-- todo insert bar name -->
-                Kneipe <?php echo $iMarkerCounter ?>
+                <?php echo $oMarker->getSName() ?>
             </span>
             <div class="tour-bar-actions">
                 <input type="hidden" name="markerId" value="<?php echo $oMarker->getIId(); ?>">
@@ -28,11 +27,11 @@ if (!isset($oMarker)) {
         <hr>
         <div class="tour-bar-content" id="<?php echo $sMarkerHtmlId ?>-content">
             <div class="tour-bar-description">
-                <!-- todo insert marker description -->
-                Diese tolle Kneipe überzeugt mit großartigem Bier und
-                ist für Liebhaber jeden Geschmacks leicht zugänglich und erreichbar.
+                <?php if (isset($oTour)) {
+                    echo $oTour->getMarkerDesc($oMarker->getIId());
+                }?>
             </div>
-            <div class="tour-bar-image"></div>
+            <img class="tour-bar-image" src="../../../../../img/beer.png">
         </div>
     </div>
 </html>

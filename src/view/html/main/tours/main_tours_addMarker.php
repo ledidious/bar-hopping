@@ -3,7 +3,9 @@
     <!-- popup window to chose tour-->
     <div id="tour-popup-add_marker" class="popup-window">
         <div class="popup-window-content">
-            <form name="addMarker" method="post">
+            <form name="addMarker" id="tour-popup-add_marker-form" method="post">
+                <!-- Filled dynamically by javascript. So please leave -->
+                <input hidden name="tourId" value="">
                 <h1>Marker hinzufügen</h1>
                 <div>
                     <label for="marker-name"><b>Name</b></label>
@@ -15,7 +17,7 @@
                 </div>
                 <div>
                     <input type="hidden" name="action" value="add">
-                    <button onclick="addMainMarker(this, event)">Erstellen</button>
+                    <button class="button-dialog-confirm" onclick="addMainMarker(this, event)">Erstellen</button>
                 </div>
             </form>
         </div>

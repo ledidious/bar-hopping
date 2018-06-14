@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <input type="hidden" name="action" value="add">
-                    <button onclick="addMainTour(this, event)">Erstellen</button>
+                    <button class="button-dialog-confirm" onclick="addMainTour(this, event)">Erstellen</button>
                 </div>
             </form>
         </div>

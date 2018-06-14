@@ -57,8 +57,6 @@
 }
 
 .tour-bar-image {
-    width: 30%;
-    height: 10px;
     background-size: auto;
     float: right;
 }
@@ -73,10 +71,6 @@
 
 .tour-add_form div input {
     float: right;
-}
-
-#tour-popup-window-btn-ok {
-    width: 200px;
 }
 
 .tour-bar-title {

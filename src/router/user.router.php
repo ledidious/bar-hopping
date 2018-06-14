@@ -8,6 +8,9 @@
 require_once('../controller/user.controller.php');
 require_once('../controller/header.controller.php');
 
+// Start session
+session_start();
+
 //var_dump($_POST);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (basename($_SERVER['HTTP_REFERER']) == 'register.php')

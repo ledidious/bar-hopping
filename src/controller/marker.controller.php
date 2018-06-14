@@ -9,11 +9,17 @@
 require_once(__DIR__ . '/../model/marker.php');
 require_once(__DIR__ . '/../controller/db.controller.php');
 
+/**
+ * @param tour $oTour
+ * @return marker
+ */
 function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath){
     $oConnection = DbController::instance();
     $oConnection->execute("INSERT INTO MARKER(lat, lng, name) VALUES ('$dLat', '$dLng', '$sMName');");
     $sId = mysqli_insert_id($oConnection->getOConnection()); // ID des letzten Insert
-    $oConnection->execute("INSERT INTO TOUR2MARKER(fk_tourID, fk_markerID, description, imagePath) VALUES ('$oTour->getIId()', '$sId', '$oTour->getMarkerDesc($sId)', '$SImagePath');");
+    $oConnection->execute("INSERT INTO TOUR2MARKER(fk_tourID, fk_markerID, description, imagePath) VALUES ('{$oTour->getIId()}', '$sId', '{$oTour->getMarkerDesc($sId)}', '{$SImagePath}');");
+
+    return new marker($sId);
 }
 
 /**

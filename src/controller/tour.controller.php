@@ -10,7 +10,7 @@ require_once(__DIR__ . '/../controller/db.controller.php');
 
 function addTour($sTourName, $sTourDate) {
     // Dummy anlegen
-    $oTour = new tour(null, $sTourName, $sTourDate);
+    return new tour(null, $sTourName, $sTourDate);
 }
 
 /**

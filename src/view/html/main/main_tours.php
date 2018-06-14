@@ -93,7 +93,7 @@
                 <?php
                 $iTourCounter = 0;
                 foreach ($aToursPerMonth as $oTour) {
-                    require_once __DIR__ . "/tours/main_tours_tour.php";
+                    require __DIR__ . "/tours/main_tours_tour.php";
                 } ?>
             </div>
         <?php } ?>
