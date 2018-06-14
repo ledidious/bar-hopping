@@ -1,6 +1,6 @@
 <html>
 
-    <!-- popup window to chose tour-->
+    <!-- popup window to add tour -->
     <div id="tour-popup-add_marker" class="popup-window">
         <div class="popup-window-content">
             <form name="addMarker" id="tour-popup-add_marker-form" method="post">

@@ -18,6 +18,7 @@
     <?php
     $sImagePath = "/img/avatars/{$oUser->getSImage()}";
     if (!file_exists(__DIR__ . "/../../../../" . $sImagePath)) {
+        // Fallback avatar
         $sImagePath = "/img/avatars/avatar.png";
     }
     ?>
@@ -56,7 +57,7 @@
             <label>Passwort</label>
             <span id="profile-info-password">Ändern</span>
 
-            <!-- popup window to chose tour-->
+            <!-- popup window to change password -->
             <div id="profile-info-change_pwd-popup" class="popup-window">
                 <div class="popup-window-content">
                     <h1>Passwort ändern</h1>

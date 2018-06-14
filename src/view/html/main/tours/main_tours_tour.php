@@ -10,6 +10,11 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $oUser = getUser();
+
+// This file is used both, to generate html
+// - for existing markers and
+// - for new dynamically per ajax added tours. For this case, the local variables from the
+//   superior script are not embedded in this variable context and needs to be set with default values.
 if (!isset($iTourCounter)) {
     $iTourCounter = rand(0, 10000); // In case a tour was added and only this extract is rendered
 }
@@ -17,6 +22,7 @@ if (!isset($sGroupHtmlId)) {
     $sGroupHtmlId = "tours-list-group_0";
 }
 if (!isset($oTour)) {
+    // Create dummy tour
     $oTour = new tour($_POST["tourName"], $oUser->getSUsername());
     $oTour->setODate(new DateTime($_POST["tourDate"]));
 }
@@ -46,6 +52,8 @@ $iTourCounter++;
     <div id="<?php echo $sTourHtmlId ?>-bars" class="tour-bar_list">
         <?php
         $iMarkerCounter = 0;
+
+        // Iterate over all markers of the tour
         foreach ($oTour->getAMarkers() as $oMarker) {
             $sMarkerHtmlId = $sTourHtmlId . "-bars_" . $iMarkerCounter;
             $iMarkerCounter++;

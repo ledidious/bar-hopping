@@ -1,16 +1,23 @@
 "use strict";
 
-// ==================================================
+// Dialogs
+// ===================================
 
 // Remind marker list to append new marker after
 // marker add dialog has been submitted
 let listToAppendNextMarker = null;
 
+/*
+ * Add tour dialog
+ */
 function displayAddToursDialog(button, event) {
     event.preventDefault();
     showDialog($("#tour-popup-add_tour"));
 }
 
+/*
+ * Add marker dialog
+ */
 function displayAddMarkerDialog(button, event) {
     event.preventDefault();
 
@@ -27,6 +34,15 @@ function displayAddMarkerDialog(button, event) {
     showDialog($("#tour-popup-add_marker"));
 }
 
+/*
+ * Change password
+ */
+$("#profile-info-password").click(
+    function (event) {
+        changePwdPopup.fadeIn();
+    }
+);
+
 function showDialog(dialog) {
     dialog.fadeIn();
     $(".popup-window-content", dialog).fadeIn();
@@ -42,6 +58,9 @@ $(window).click(_event => {
         }
     });
 });
+
+// Open and close panels
+// ===================================
 
 // Close panels
 $(".panel-closer").click(
@@ -80,7 +99,9 @@ $(".sidebar-item")
         }
     );
 
-// Switching between read and edit mode
+// Edit profile info
+// ===================================
+
 $("#profile-info_actions-edit").click(
     /**
      * @param {Event} event
@@ -139,6 +160,9 @@ $("#profile-info_actions-save").click(
         alert("Not implemented yet");
     }
 );
+
+// Add, edit and delete tours and markers
+// ===================================
 
 function addMainTour(button, event) {
     event.preventDefault();
@@ -265,6 +289,9 @@ function deleteMarker(button, event) {
     $(button).parent().parent().parent().remove();
 }
 
+// Picture upload
+// ===================================
+
 /**
  * upload image
  * if image is selected and submit the form to send the file to the server
@@ -295,14 +322,8 @@ $("#button-add-pic").change(() => {
     }
 });
 
-/*
- * Change password
- */
-$("#profile-info-password").click(
-    function (event) {
-        changePwdPopup.fadeIn();
-    }
-);
+// Change user password
+// ==================================================
 
 $("#change_pwd-submit").click(
     /**
@@ -316,8 +337,11 @@ $("#change_pwd-submit").click(
     }
 );
 
+// Marker comments
+// ==================================================
+
 /*
- * Add comment
+ * Add comment (todo future feature)
  */
 $(".tours-comment-new-submit").each(function () {
     $(this).click(function (event) {

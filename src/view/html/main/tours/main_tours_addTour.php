@@ -1,6 +1,6 @@
 <html>
 
-    <!-- popup window to chose tour-->
+    <!-- popup window to add tour -->
     <div id="tour-popup-add_tour" class="popup-window">
         <div class="popup-window-content">
             <form name="addTour" class="tour-add_form" method="post">

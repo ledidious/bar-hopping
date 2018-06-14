@@ -27,6 +27,7 @@
     <div id="tours-list">
         <?php
 
+        // Today
         $oToday = new DateTime("now");
 
         /** @var array $aTours */
@@ -34,26 +35,32 @@
         // Key: Tour id -> Value: Tour object
         $aTours = $oUser->getATours();
 
+        // Future tours so with a date in the future
         $aFutureTours = array_filter($aTours, function ($oTour) use ($oToday) {
             /** @var tour $oTour */
             /** @var DateTime $oDateTime */
             $oDateTime = $oTour->getODate();
 
-            // If in future this day or another day ...
+            // If the date of the tour is later than now ...
             if ($oDateTime->getTimestamp() > $oToday->getTimestamp()) {
                 return true;
             }
 
+            // ... otherwise render difference ...
             /** @var DateInterval $oDateInterval */
             $oDateInterval = $oDateTime->diff($oToday);
 
+            // ... and handle as future days if date points to the current day
             if ($oDateInterval->y > 0 || $oDateInterval->m > 0 || $oDateInterval->d > 0) {
                 return false;
             }
+
             return true;
         });
+        // Remove already handled future tours
         $aTours = array_diff_key($aTours, $aFutureTours);
 
+        // Group by yearMonth
         $aToursAggregatedByMonth = array();
         foreach ($aTours as $sTourId => $oTour) {
             /** @var DateTime $oDateTime */
@@ -71,9 +78,12 @@
             }
         }
 
+        // Add future tours as first element to display at top
         array_unshift($aToursAggregatedByMonth, $aFutureTours);
 
+        // Group counter for dynamic html ids (needed for individual expander)
         $iGroupCounter = 0;
+        // Iterate over groups (yearMonths)
         foreach ($aToursAggregatedByMonth as $sYearMonth => $aToursPerMonth) {
             $sGroupHtmlId = "tours-list-group_{$iGroupCounter}";
             $iGroupCounter++;
@@ -91,7 +101,9 @@
             <hr>
             <div id="<?php echo $sGroupHtmlId ?>" class="tour-group">
                 <?php
+                // Tour counter for dynamic html ids (needed for individual expander)
                 $iTourCounter = 0;
+                // Iterate over months
                 foreach ($aToursPerMonth as $oTour) {
                     require __DIR__ . "/tours/main_tours_tour.php";
                 } ?>
@@ -105,7 +117,8 @@
             <a href="#">Du kannst aber weitere anlegen.</a>
         </div>
 
-        <?php require __DIR__ . "/tours/main_tours_addTour.php"?>
-        <?php require __DIR__ . "/tours/main_tours_addMarker.php"?>
+        <!-- Popups -->
+        <?php require __DIR__ . "/tours/main_tours_addTour.php" ?>
+        <?php require __DIR__ . "/tours/main_tours_addMarker.php" ?>
     </div>
 </html>

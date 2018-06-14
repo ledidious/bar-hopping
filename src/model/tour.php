@@ -9,14 +9,18 @@
 require_once __DIR__ . "/marker.php";
 require_once __DIR__ . "/../controller/user.controller.php";
 
+/**
+ * Class tour
+ */
 class tour {
+
+    /*
+     * Local fiels
+     */
     private $_sName = null;
     private $_iId = null;
     private $_iUserId = null;
-
-    /**
-     * @var DateTime
-     */
+    /** @var DateTime */
     private $_oDate = null;
     private $_iRating = null;
     private $_sImagePath = null;
@@ -25,6 +29,12 @@ class tour {
     private $_aMarkerDescriptions = array();
     private $_aMarkerImage = array();
 
+    /**
+     * tour constructor.
+     * @param integer $iId the id to load
+     * @param string $sName the name to forgive
+     * @param string $sTourDate the date to set
+     */
     public function __construct($iId = null, $sName = null, $sTourDate = null) {
         $oConnection = DbController::instance();
         if ($iId !== null) {
@@ -57,6 +67,11 @@ class tour {
 
     // Da die Marker einer Tour individuelle Beschreibungen,
     // werden die Berschreibungen hier den unabhängigen Markerobjekten zugeordnet.
+    /**
+     * Because the marker have individual descriptions dependent of the associated tour
+     * (at least planned ;-)), they are not stored in {@link marker}
+     * but in this class and can be accessed using {@link #getMarkerDesc()).
+     */
     private function fillMarkerDescArray() {
         $oController = DbController::instance();
 
@@ -71,26 +86,49 @@ class tour {
         }
     }
 
+    /**
+     * Get description of marker with id $iMId.
+     *
+     * @param integer $iMId the id of the marker
+     * @return string
+     */
     public function getMarkerDesc($iMId) {
         return $this->_aMarkerDescriptions[$iMId];
     }
 
+    /**
+     * Set the description of the marker with the id $iMId.
+     *
+     * @param integer $iMId
+     * @param string $sDescription
+     */
     public function setMarkerDesc($iMId, $sDescription) {
         $this->_aMarkerDescriptions[$iMId] = $sDescription;
     }
 
+    /**
+     * Returns the id of this tour or generated a new one.
+     *
+     * @return string
+     */
     public function getIId(): ?string {
         if ($this->_iId === null) {
-            $this->_iId = rand(0, 1000);
+            $this->_iId = rand(0, 10000);
         }
         return $this->_iId;
     }
 
+    /**
+     * Sets the date.
+     *
+     * @param DateTime $oDateTime not null
+     */
     public function setODate(DateTime $oDateTime) {
         $this->_oDate = $oDateTime;
     }
 
     /**
+     * Returns the date, not null.
      * @return DateTime
      */
     public function getODate(): DateTime {

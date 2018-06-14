@@ -10,6 +10,16 @@ require_once(__DIR__ . '/../model/user.php');
 require_once(__DIR__ . '/../common/session_vars.php');
 require_once(__DIR__ . '/../controller/header.controller.php');
 
+/**
+ * Add a new user.
+ * @param string $user the username
+ * @param string $pw user password
+ * @param string $email user email
+ * @param string $name the full name of the user
+ * @param string $sex the sex (but optional)
+ * @param string $yearOfBirth year of birth (but optional)
+ * @param string $profImg name of the profile image uploaded (but optional)
+ */
 function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = NULL, $profImg = NULL) {
     $connection = DbController::instance();
     //$result = $connection->query("SELECT username FROM user;");
@@ -43,6 +53,14 @@ function addUser($user, $pw, $email, $name = null, $sex = NULL, $yearOfBirth = N
     }
 }
 
+/**
+ * Function that performs the user login and starts the session
+ * if the password comparison was successful. Redirects to the main page (successful)
+ * or to the login page (failed).
+ *
+ * @param string $username the username of that user to login
+ * @param string $pw the password to compare
+ */
 function loginUser($username, $pw) {
     $connection = DbController::instance();
 
@@ -55,10 +73,14 @@ function loginUser($username, $pw) {
         echo 'Passwort ist falsch!';
         sendHeader("refresh:3;url=../view/html/login.php");
     }
-
 }
 
-/* use for reset password*/
+/**
+ * Changes the password of a single user.
+ *
+ * @param string $user the user whose password to change
+ * @param string $pw the password
+ */
 function changePassword($user, $pw) {
     $connection = DbController::instance();
 
@@ -72,7 +94,12 @@ function changePassword($user, $pw) {
         echo 'Username nicht vorhanden!';
 }
 
-
+/**
+ * Gets the current user from the active session or null if
+ * no session is active.
+ *
+ * @return null|user
+ */
 function getUser() {
 
     // When not happened until now, start session here

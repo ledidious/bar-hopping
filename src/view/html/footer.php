@@ -13,7 +13,7 @@
 <!-- Javascript -->
 <?php if (file_exists($sJsFile = "../js/{$sPageName}.js")) { ?>
 
-    <!-- JS source -->
+    <!-- JS source (self named to page name) -->
     <script src="<?php echo $sJsFile ?>"></script>
 
 <?php } ?>

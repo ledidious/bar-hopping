@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
 <?php
+// Report all errors
 error_reporting(E_ALL);
 
 require_once __DIR__ . "/../../controller/session.controller.php";
 require_once __DIR__ . "/../../controller/user.controller.php";
 require_once __DIR__ . "/../../controller/header.controller.php";
 
+// Start session if needed
 if (isSessionNeeded()) {
     session_start();
 
@@ -38,6 +40,6 @@ if (isSessionNeeded()) {
 <!-- Page specific resources -->
 <?php if (file_exists($sCssFile = "../css/{$sPageName}.css")) { ?>
 
-    <!-- CSS source -->
+    <!-- CSS source (self named to page name) -->
     <link rel="stylesheet" type="text/css" href="<?php echo $sCssFile; ?>">
 <?php } ?>

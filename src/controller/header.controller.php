@@ -10,6 +10,13 @@
 global $blTestMode;
 $blTestMode = false;
 
+/**
+ * Workaround to send a http header.
+ *
+ * @param string $sString
+ * @param bool $blReplace
+ * @param integer $iHttpResponseCode
+ */
 function sendHeader($sString, $blReplace = true, $iHttpResponseCode = null) {
     global $blTestMode;
 

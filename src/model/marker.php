@@ -6,9 +6,19 @@
  * Time: 11:24
  */
 
+/**
+ * Class marker
+ */
 class marker {
+
+    /*
+     * Static fields
+     */
     private static $_aMarkers = array(); //Füge jeden Marker in diesem Array hinzu. Prüfe vor erstellen von neuen Markerobjekten ob bereits in der Liste
 
+    /*
+     * Local fields
+     */
     private $_iId = null;
     private $_dLatitude = null;
     private $_dLongitude = null;
@@ -42,7 +52,12 @@ class marker {
         $this->_sName = $sName;
     }
 
+    /**
+     * marker constructor.
+     * @param $iId
+     */
     public function __construct($iId) {
+
         if (!self::isMarkerLoaded($iId)) {
             $this->_iId = $iId;
             $oConnection = DbController::instance();
@@ -66,7 +81,13 @@ class marker {
         return $this->_iId;
     }
 
-    // Prüft ob ein Marker bereits erzeugt wurde
+    /**
+     * Checks if the marker with $iId already was loaded because
+     * it was cached before.
+     *
+     * @param integer $iId the id of the marker
+     * @return bool
+     */
     private static function isMarkerLoaded($iId): bool {
         if (array_key_exists($iId, self::$_aMarkers)) {
             return true;

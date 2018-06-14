@@ -9,8 +9,14 @@
 require_once __DIR__ . "/../controller/db.controller.php";
 require_once "tour.php";
 
+/**
+ * Class user
+ */
 class user {
 
+    /*
+     * Local fields
+     */
     private $_iId;
     private $_sUsername = null;
     private $_sMail = null;
@@ -41,6 +47,11 @@ class user {
         }
     }
 
+    /**
+     * Loads the tours and creates the underlying tour objects.
+     *
+     * @param integer $iId
+     */
     private function loadTours($iId) {
         $oConnection = DbController::instance();
         $aData = $oConnection->query("
@@ -59,6 +70,8 @@ class user {
     }
 
     /**
+     * Returns all tours by this user.
+     *
      * @return tour[]
      */
     public function getATours() {
@@ -68,40 +81,65 @@ class user {
         return $this->_aTours;
     }
 
+    /**
+     * @return string
+     */
     public function getSUsername(): string {
         return $this->_sUsername;
     }
 
+    /**
+     * @param string $sUsername
+     */
     public function setSUsername($sUsername): void {
         $this->_sUsername = $sUsername;
     }
 
+    /**
+     * @return string
+     */
     public function getSMail(): string {
         return $this->_sMail;
     }
 
+    /**
+     * @param $sMail
+     */
     public function setSMail($sMail): void {
         $this->_sMail = $sMail;
     }
 
+    /**
+     * @return null|string
+     */
     public function getSImage(): ?string {
         return $this->_sImage;
     }
 
+    /**
+     * @param string $sImage
+     */
     public function setSImage($sImage): void {
         $this->_sImage = $sImage;
     }
 
+    // todo use DateTime
+    /**
+     * @return null|string
+     */
     public function getDJoinedSince(): ?string {
         return $this->_dJoinedSince;
     }
 
+    /**
+     * @param string $dJoinedSince
+     */
     public function setDJoinedSince($dJoinedSince): void {
         $this->_dJoinedSince = $dJoinedSince;
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getIId() {
         return $this->_iId;

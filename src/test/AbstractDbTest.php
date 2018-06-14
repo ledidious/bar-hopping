@@ -6,6 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 abstract class AbstractDbTest extends TestCase {
 
+    /**
+     * Set up before this whole class.
+     */
     public static function setUpBeforeClass(): void {
 
         global $blTestMode;
@@ -14,6 +17,9 @@ abstract class AbstractDbTest extends TestCase {
         parent::setUpBeforeClass();
     }
 
+    /**
+     * Setup before every test.
+     */
     protected function setUp() {
 
         // Set name of database to test database
@@ -27,6 +33,9 @@ abstract class AbstractDbTest extends TestCase {
         parent::setUp();
     }
 
+    /**
+     * Tear down every test.
+     */
     protected function tearDown() {
 
         // End transaction and rollback so revert changes of test made

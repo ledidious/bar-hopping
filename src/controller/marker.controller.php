@@ -10,10 +10,12 @@ require_once(__DIR__ . '/../model/marker.php');
 require_once(__DIR__ . '/../controller/db.controller.php');
 
 /**
+ * Add marker to an associated $oTour.
+ *
  * @param tour $oTour
- * @return marker
+ * @return marker the new generated marker object with a new generated database id
  */
-function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath){
+function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath) {
     $oConnection = DbController::instance();
     $oConnection->execute("INSERT INTO MARKER(lat, lng, name) VALUES ('$dLat', '$dLng', '$sMName');");
     $sId = mysqli_insert_id($oConnection->getOConnection()); // ID des letzten Insert
@@ -23,9 +25,11 @@ function addMarker($oTour, $dLat, $dLng, $sMName, $SImagePath){
 }
 
 /**
- * @param marker $oMarker
+ * Update properties of marker object.
+ *
+ * @param marker $oMarker to update
  */
-function editMarker($oMarker){
+function editMarker($oMarker) {
     $oConnection = DbController::instance();
 
     $oConnection->execute("
@@ -35,7 +39,12 @@ function editMarker($oMarker){
     ");
 }
 
-function deleteMarker($iMId){
+/**
+ * Delete marker from database.
+ *
+ * @param integer $iMId id of marker object to delete
+ */
+function deleteMarker($iMId) {
     $oConnection = DbController::instance();
     $oConnection->execute("
         delete from TOUR2MARKER where fk_markerID = '$iMId';
